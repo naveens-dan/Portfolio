@@ -1,1227 +1,1011 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RW Helpline</title>
-    
-    <link rel="stylesheet" href="css/all-css.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio | 2025</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Base Styles */
+    :root {
+      --primary: #2a2a72;
+      --secondary: #009ffd;
+      --accent: #ff7e5f;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --transition: all 0.3s ease-in-out;
+    }
 
-  </head>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <body>
-    <section class="body">
-      <main-menu></main-menu>
-      
-      <div class="details">
-        <table>
-          <thead>
-            <tr>
-              <th>SRegion</th>
-              <th>Email Header</th>
-              <th>Email Footer</th>
-              <th>OFT Footer</th>
-              <th>Link</th>
-              <th>From Name</th>
-              <th>From Address</th>
-              <th>Reply Name</th>
-              <th>Reply Address</th>
-              <th class="min-75">Seed List</th>
-              <th>Time Zone</th>
-              <th>Country</th>
-              <th>Social</th>
-            </tr>
-          </thead>
-          <tbody>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+      overflow-x: hidden;
+    }
 
-            <tr>
-              <th><b>AP</b></th>
-              <td class="content">AP_EN_Responsive</td>
-              <td class="content">AP - SEA - Responsive</td>
-              <td>
-                <div class="popup_main">
-                  <button class="open_popup">SEA</button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table align="center" bgcolor="#ffffff" border="0" cellpadding="5" cellspacing="0">
-  <tbody>
-      <tr>
-          <td id="footeh"
-              style="font-family: Arial,Helvetica,sans-serif; font-size: 10px; line-height: 12px; color: #5e5e5e; text-align: left;">
-              <p>Copyright &copy; 2024&nbsp;Rockwell Automation, Inc. All rights reserved.<br />
-                  To view a complete list of Rockwell Automation trademarks please <b><a data-targettype="webpage"
-                          href="https://www.rockwellautomation.com/en-id/company/about-us/legal-notices/trademarks.html?elqTrack=false"
-                          style="color: #5e5e5e;
-                  font-weight: bold;" title="Trademarks">click here</a></b>.<br />
-                  Trademarks not belonging to Rockwell Automation are property of their respective companies.<br />
-                  <br />
-                  Rockwell Automation Southeast Asia Pte Ltd,<br />
-                  No 2 Corporation Road, #04-05/06 Corporation Place, Singapore 618494.<br />
-                  Tel: (65) 6510 6688, Fax: (65) 6510 6699
-              </p>
-          </td>
-      </tr>
-  </tbody>
-</table>
-                        </textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="content">en-sg</td>
-              <td class="content">Rockwell Automation</td>
-              <td class="content">dtc@rockwellautomation.com</td>
-              <td class="content">Rockwell Automation</td>
-              <td class="content">dtc@rockwellautomation.com</td>
-              <td class="min-75">
-                <div class="content">AP_SEA_Seedlist_2022_10</div>
-                <div class="content">AP_ANZ_Seedlist_2022_10</div>
-                <div class="content">AP_IN_Seedlist_2022_10</div>
-              </td>
-              <td class="content">(UTC+08:00) Kuala Lumpur, Singapore</td>
-              <td class="content">PH,ID,PK,TH,MY,SG,VN,MM,AU,NZ,IN</td>
-              <td class="social">
-                <div class="popup_main">
-                  <button class="open_popup">
-                    Connect with us.&nbsp;&nbsp;
-                    <a href="https://www.facebook.com/ROKAutomationAPAC"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif"
-                        width="18"></a>
-                    <a href="https://www.instagram.com/rokautomation/?hl=en"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif"
-                        width="18"></a>
-                    <a
-                      href="http://www.linkedin.com/company/rockwell-automation"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif"
-                        width="18"></a>
-                    <a href="https://twitter.com/ROKAutoSEA" target="_blank"
-                      style="outline:none;"><img alt="social icon"
-                        title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png"
-                        width="18"></a>
-                  </button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table style="width: 100%; text-align:right;">
-  <tr>
-    <td><p style="display:inline; font-size:11px; font-family:Arial, san-serif; text-align:right; font-weight:500">Connect with us. &nbsp;</p></td>
-      <td width="22"><a href="https://www.facebook.com/ROKAutomationAPAC" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif" width="18"></a></td>
-      <td width="22"><a href="https://www.instagram.com/rokautomation/?hl=en" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif" width="18"></a></td>
-      <td width="22"><a href="http://www.linkedin.com/company/rockwell-automation" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif" width="18"></a></td>
-      <td width="22"><a href="https://twitter.com/ROKAutoSEA" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png" width="18"></a></td>
-  </tr>
-</table></textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
 
-            <tr>
-              <th><b>SEA</b></th>
-              <td class="content">AP_EN_Responsive</td>
-              <td class="content">AP - SEA - Responsive</td>
-              <td>
-                <div class="popup_main">
-                  <button class="open_popup">SEA</button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table align="center" bgcolor="#ffffff" border="0" cellpadding="5" cellspacing="0">
-  <tbody>
-      <tr>
-          <td id="footeh"
-              style="font-family: Arial,Helvetica,sans-serif; font-size: 10px; line-height: 12px; color: #5e5e5e; text-align: left;">
-              <p>Copyright &copy; 2024&nbsp;Rockwell Automation, Inc. All rights reserved.<br />
-                  To view a complete list of Rockwell Automation trademarks please <b><a data-targettype="webpage"
-                          href="https://www.rockwellautomation.com/en-id/company/about-us/legal-notices/trademarks.html?elqTrack=false"
-                          style="color: #5e5e5e;
-                  font-weight: bold;" title="Trademarks">click here</a></b>.<br />
-                  Trademarks not belonging to Rockwell Automation are property of their respective companies.<br />
-                  <br />
-                  Rockwell Automation Southeast Asia Pte Ltd,<br />
-                  No 2 Corporation Road, #04-05/06 Corporation Place, Singapore 618494.<br />
-                  Tel: (65) 6510 6688, Fax: (65) 6510 6699
-              </p>
-          </td>
-      </tr>
-  </tbody>
-</table>
-                        </textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="content">en-sg</td>
-              <td class="content">Rockwell Automation</td>
-              <td class="content">seamarcom@rockwellautomation.com</td>
-              <td class="content">Rockwell Automation</td>
-              <td class="content">dtc@rockwellautomation.com</td>
-              <td>
-                <div class="content">AP_SEA_Seedlist_2022_10</div>
-                <div class="content">AP_ANZ_Seedlist_2022_10</div>
-                <div class="content">AP_IN_Seedlist_2022_10</div>
-              </td>
-              <td class="min-50">SGT: <span class="content">(UTC+08:00) Kuala Lumpur, Singapore</span></td>
-              <td class="content">PH,ID,PK,TH,MY,SG,VN,MM</td>
-              <td class="social">
-                <div class="popup_main">
-                  <button class="open_popup">
-                    Connect with us.&nbsp;&nbsp;
-                    <a href="https://www.facebook.com/ROKAutomationAPAC"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif"
-                        width="18"></a>
-                    <a href="https://www.instagram.com/rokautomation/?hl=en"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif"
-                        width="18"></a>
-                    <a
-                      href="http://www.linkedin.com/company/rockwell-automation"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif"
-                        width="18"></a>
-                    <a href="https://twitter.com/ROKAutoSEA" target="_blank"
-                      style="outline:none;"><img alt="social icon"
-                        title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png"
-                        width="18"></a>
-                  </button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table style="width: 100%; text-align:right;">
-  <tr>
-    <td><p style="display:inline; font-size:11px; font-family:Arial, san-serif; text-align:right; font-weight:500">Connect with us. &nbsp;</p></td>
-      <td width="22"><a href="https://www.facebook.com/ROKAutomationAPAC" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif" width="18"></a></td>
-      <td width="22"><a href="https://www.instagram.com/rokautomation/?hl=en" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif" width="18"></a></td>
-      <td width="22"><a href="http://www.linkedin.com/company/rockwell-automation" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif" width="18"></a></td>
-      <td width="22"><a href="https://twitter.com/ROKAutoSEA" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png" width="18"></a></td>
-  </tr>
-</table></textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
+    ::-webkit-scrollbar-track {
+      background: var(--light);
+    }
 
+    ::-webkit-scrollbar-thumb {
+      background: var(--secondary);
+      border-radius: 5px;
+    }
 
-            <tr>
-              <th><b>ID</b></th>
-              <td class="content">AP_EN_Responsive</td>
-              <td class="content">AP - SEA - Responsive</td>
-              <td>
-                <div class="popup_main">
-                  <button class="open_popup">SEA</button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table align="center" bgcolor="#ffffff" border="0" cellpadding="5" cellspacing="0">
-  <tbody>
-      <tr>
-          <td id="footeh"
-              style="font-family: Arial,Helvetica,sans-serif; font-size: 10px; line-height: 12px; color: #5e5e5e; text-align: left;">
-              <p>Copyright &copy; 2024&nbsp;Rockwell Automation, Inc. All rights reserved.<br />
-                  To view a complete list of Rockwell Automation trademarks please <b><a data-targettype="webpage"
-                          href="https://www.rockwellautomation.com/en-id/company/about-us/legal-notices/trademarks.html?elqTrack=false"
-                          style="color: #5e5e5e;
-                  font-weight: bold;" title="Trademarks">click here</a></b>.<br />
-                  Trademarks not belonging to Rockwell Automation are property of their respective companies.<br />
-                  <br />
-                  Rockwell Automation Southeast Asia Pte Ltd,<br />
-                  No 2 Corporation Road, #04-05/06 Corporation Place, Singapore 618494.<br />
-                  Tel: (65) 6510 6688, Fax: (65) 6510 6699
-              </p>
-          </td>
-      </tr>
-  </tbody>
-</table>
-                        </textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="content">en-id</td>
-              <td class="content">Rockwell Automation</td>
-              <td class="content">seamarcom@rockwellautomation.com</td>
-              <td class="content">Rockwell Automation</td>
-              <td class="content">dtc@rockwellautomation.com</td>
-              <td class="content min-75">
-                AP_SEA_Seedlist_2022_10
-              </td>
-              <td>SAST/WIB/ID: <span class="content">(UTC+07:00) Bangkok, Hanoi, Jakarta</span>
-              </td>
-              <td class="content">Indonesia</td>
-              <td class="social">
-                <div class="popup_main">
-                  <button class="open_popup">
-                    Connect with us.&nbsp;&nbsp;
-                    <a href="https://www.facebook.com/ROKAutomationAPAC"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif"
-                        width="18"></a>
-                    <a href="https://www.instagram.com/rokautomation/?hl=en"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif"
-                        width="18"></a>
-                    <a
-                      href="http://www.linkedin.com/company/rockwell-automation"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif"
-                        width="18"></a>
-                    <a href="https://twitter.com/ROKAutoSEA" target="_blank"
-                      style="outline:none;"><img alt="social icon"
-                        title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png"
-                        width="18"></a>
-                  </button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table style="width: 100%; text-align:right;">
-  <tr>
-    <td><p style="display:inline; font-size:11px; font-family:Arial, san-serif; text-align:right; font-weight:500">Connect with us. &nbsp;</p></td>
-      <td width="22"><a href="https://www.facebook.com/ROKAutomationAPAC" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif" width="18"></a></td>
-      <td width="22"><a href="https://www.instagram.com/rokautomation/?hl=en" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif" width="18"></a></td>
-      <td width="22"><a href="http://www.linkedin.com/company/rockwell-automation" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif" width="18"></a></td>
-      <td width="22"><a href="https://twitter.com/ROKAutoSEA" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png" width="18"></a></td>
-  </tr>
-</table></textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
+    /* Header */
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      overflow: hidden;
+    }
 
-<tr>
-  <th><b>EN</b></th>
-  <td class="content">AP_EN_Responsive</td>
-  <td class="content">AP - SEA - Responsive</td>
-  <td>
-    <div class="popup_main">
-      <button class="open_popup">SEA</button>
-      <div class="popup_body">
-        <div class="popup_back"></div>
-        <div class="popup_contain">
-          <div class="popup_close">x</div>
-          <textarea name id readonly cols="30" rows="1">
-<table align="center" bgcolor="#ffffff" border="0" cellpadding="5" cellspacing="0">
-  <tbody>
-      <tr>
-        <td id="footeh"
-              style="font-family: Arial,Helvetica,sans-serif; font-size: 10px; line-height: 12px; color: #5e5e5e; text-align: left;">
-              <p>Copyright &copy; 2024&nbsp;Rockwell Automation, Inc. All rights reserved.<br />
-                  To view a complete list of Rockwell Automation trademarks please <b><a data-targettype="webpage"
-                          href="https://www.rockwellautomation.com/en-id/company/about-us/legal-notices/trademarks.html?elqTrack=false"
-                          style="color: #5e5e5e;
-                  font-weight: bold;" title="Trademarks">click here</a></b>.<br />
-                  Trademarks not belonging to Rockwell Automation are property of their respective companies.<br />
-                  <br />
-                  Rockwell Automation Southeast Asia Pte Ltd,<br />
-                  No 2 Corporation Road, #04-05/06 Corporation Place, Singapore 618494.<br />
-                  Tel: (65) 6510 6688, Fax: (65) 6510 6699
-              </p>
-          </td>
-      </tr>
-  </tbody>
-</table>
-                        </textarea>
-          <button type="button" class="btn-hide"></button>
+    .header-content {
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeInUp 1s forwards 0.5s;
+    }
+
+    .header-title {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .header-cta {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-cta:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    nav.scrolled {
+      background-color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      padding: 1rem 2rem;
+    }
+
+    nav.scrolled .nav-link {
+      color: var(--dark);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    nav.scrolled .logo {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-item {
+      margin-left: 2rem;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    nav.scrolled .menu-toggle {
+      color: var(--dark);
+    }
+
+    /* Sections */
+    section {
+      padding: 6rem 2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: var(--transition);
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+      font-size: 2.5rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* About Section */
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+    }
+
+    .about-image {
+      flex: 1;
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+    }
+
+    .about-image::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 100%;
+      height: 100%;
+      border: 5px solid var(--secondary);
+      border-radius: 10px;
+      z-index: -1;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .skill {
+      padding: 8px 16px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .skill:hover {
+      transform: translateY(-5px);
+      background-color: var(--secondary);
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.1);
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-tag {
+      padding: 4px 10px;
+      background-color: #f0f0f0;
+      border-radius: 50px;
+      font-size: 0.8rem;
+    }
+
+    .project-description {
+      margin-bottom: 1.5rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .project-link {
+      padding: 8px 16px;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .project-link:hover {
+      background-color: var(--secondary);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .contact-container {
+      display: flex;
+      gap: 4rem;
+    }
+
+    .contact-info {
+      flex: 1;
+    }
+
+    .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info p {
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .contact-icon {
+      margin-right: 1rem;
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+
+    .contact-form {
+      flex: 1;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(0, 159, 253, 0.2);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .submit-btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .submit-btn:hover {
+      background-color: #ff6347;
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .footer-link {
+      margin: 0 1rem;
+    }
+
+    .footer-link a {
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-link a:hover {
+      color: var(--accent);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .social-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      margin: 0 0.5rem;
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background-color: var(--accent);
+      transform: translateY(-5px);
+    }
+
+    .copyright {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .about-content {
+        flex-direction: column;
+      }
+
+      .contact-container {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-title {
+        font-size: 3rem;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: white;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: var(--transition);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-item {
+        margin: 1.5rem 0;
+      }
+
+      .nav-link {
+        color: var(--dark);
+        font-size: 1.2rem;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav id="navbar">
+    <a href="#" class="logo">Portfolio</a>
+    <ul class="nav-links">
+      <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+      <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header id="home">
+    <div class="particles" id="particles-js"></div>
+    <div class="header-content">
+      <h1 class="header-title">John Doe</h1>
+      <p class="header-subtitle">Web Developer & UI/UX Designer</p>
+      <a href="#contact" class="header-cta">Get In Touch</a>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-image">
+          <img src="https://via.placeholder.com/500x600" alt="John Doe">
+        </div>
+        <div class="about-text">
+          <h3>Hello, I'm John Doe</h3>
+          <p>I'm a passionate web developer and UI/UX designer with over 5 years of experience creating beautiful,
+            functional websites and applications. I specialize in creating responsive designs that provide an
+            exceptional user experience across all devices.</p>
+          <p>My approach combines creative design thinking with technical expertise to deliver solutions that not only
+            look great but also perform exceptionally well. I'm constantly learning and exploring new technologies to
+            stay at the forefront of web development.</p>
+          <div class="skills">
+            <span class="skill">HTML5</span>
+            <span class="skill">CSS3</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">React</span>
+            <span class="skill">Node.js</span>
+            <span class="skill">UI/UX Design</span>
+            <span class="skill">Responsive Design</span>
+            <span class="skill">MongoDB</span>
+          </div>
         </div>
       </div>
     </div>
-  </td>
-  <td class="content">en-us</td>
-  <td class="content">Rockwell Automation</td>
-  <td class="content">dtc@rockwellautomation.com</td>
-  <td class="content">Rockwell Automation</td>
-  <td class="content">dtc@rockwellautomation.com</td>
-  <td class="content min-75">
-    AP_SEA_Seedlist_2022_10
-  </td>
-  <td class="content">(UTC+08:00) Kuala Lumpur, Singapore</td>
-  <td class="content">PH,PK,MY,SG,MM</td>
-  <td class="social">
-    <div class="popup_main">
-      <button class="open_popup">
-        Connect with us.&nbsp;&nbsp;
-        <a href="https://www.facebook.com/ROKAutomationAPAC" target="_blank" style="outline:none;"><img
-            alt="social icon" title="social icon"
-            src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif"
-            width="18"></a>
-        <a href="https://www.instagram.com/rokautomation/?hl=en" target="_blank" style="outline:none;"><img
-            alt="social icon" title="social icon"
-            src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif"
-            width="18"></a>
-        <a href="http://www.linkedin.com/company/rockwell-automation" target="_blank" style="outline:none;"><img
-            alt="social icon" title="social icon"
-            src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif"
-            width="18"></a>
-        <a href="https://twitter.com/ROKAutoSEA" target="_blank" style="outline:none;"><img alt="social icon"
-            title="social icon"
-            src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png"
-            width="18"></a>
-      </button>
-      <div class="popup_body">
-        <div class="popup_back"></div>
-        <div class="popup_contain">
-          <div class="popup_close">x</div>
-          <textarea name id readonly cols="30" rows="1">
-<table style="width: 100%; text-align:right;">
-  <tr>
-    <td><p style="display:inline; font-size:11px; font-family:Arial, san-serif; text-align:right; font-weight:500">Connect with us. &nbsp;</p></td>
-      <td width="22"><a href="https://www.facebook.com/ROKAutomationAPAC" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif" width="18"></a></td>
-      <td width="22"><a href="https://www.instagram.com/rokautomation/?hl=en" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif" width="18"></a></td>
-      <td width="22"><a href="http://www.linkedin.com/company/rockwell-automation" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif" width="18"></a></td>
-      <td width="22"><a href="https://twitter.com/ROKAutoSEA" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png" width="18"></a></td>
-  </tr>
-</table></textarea>
-          <button type="button" class="btn-hide"></button>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects-section">
+    <div class="container">
+      <h2 class="section-title">My Projects</h2>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://via.placeholder.com/600x400" alt="Project 1">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">E-Commerce Website</h3>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">MongoDB</span>
+            </div>
+            <p class="project-description">A full-featured e-commerce platform with product management, shopping cart,
+              and payment integration.</p>
+            <div class="project-links">
+              <a href="#" class="project-link">View Demo</a>
+              <a href="#" class="project-link">Source Code</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://via.placeholder.com/600x400" alt="Project 2">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Task Management App</h3>
+            <div class="project-tags">
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Express</span>
+              <span class="project-tag">MySQL</span>
+            </div>
+            <p class="project-description">A productivity application that helps users organize tasks, set priorities,
+              and track progress.</p>
+            <div class="project-links">
+              <a href="#" class="project-link">View Demo</a>
+              <a href="#" class="project-link">Source Code</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://via.placeholder.com/600x400" alt="Project 3">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Portfolio Website</h3>
+            <div class="project-tags">
+              <span class="project-tag">HTML5</span>
+              <span class="project-tag">CSS3</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+            <p class="project-description">A responsive portfolio website with smooth animations and modern design
+              elements.</p>
+            <div class="project-links">
+              <a href="#" class="project-link">View Demo</a>
+              <a href="#" class="project-link">Source Code</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </td>
-</tr>
+  </section>
 
-            <tr>
-              <th><b>SP</b></th>
-              <td class="content">AP_EN_Responsive</td>
-              <td class="content">AP - AU - Responsive</td>
-              <td>
-                <div class="popup_main">
-                  <button class="open_popup">AU</button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table align="center" bgcolor="#ffffff" border="0" cellpadding="5" cellspacing="0">
-  <tbody>
-      <tr>
-          <td id="footeh"
-              style="font-family: Arial,Helvetica,sans-serif; font-size: 10px; line-height: 12px; color: #5e5e5e; text-align: left;">
-              Copyright &copy; 2024&nbsp;Rockwell Automation, Inc. All rights reserved.<br />
-              To view a complete list of Rockwell Automation trademarks please <b><a data-targettype="webpage"
-                      href="https://www.rockwellautomation.com/en-au/company/about-us/legal-notices/trademarks.html?elqTrack=false"
-                      style="color: #5e5e5e;
-                  font-weight: bold;" title="Trademarks">click here</a></b>.<br />
-              Trademarks not belonging to Rockwell Automation are property of their respective companies.<br />
-              <br />
-              Rockwell Automation Australia Ltd,<br />
-              248 Burwood Road, Hawthorn Victoria 3122, Australia<br />
-              Tel: +61 3 9757 1111
-          </td>
-      </tr>
-  </tbody>
-</table>
-                        </textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="content">en-au</td>
-              <td class="content">Rockwell Automation</td>
-              <td class="content">dtc@rockwellautomation.com</td>
-              <td class="content">Rockwell Automation</td>
-              <td class="content">dtc@rockwellautomation.com</td>
-              <td class="content min-75">AP_ANZ_Seedlist_2022_10</td>
-              <td class="content">(UTC+10:00) Canberra, Melbourne, Sydney</td>
-              <td class="content">AU,NZ</td>
-              <td class="social">
-                <div class="popup_main">
-                  <button class="open_popup">
-                    Connect with us.&nbsp;&nbsp;
-                    <a href="https://www.facebook.com/ROKAutomationAPAC"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif"
-                        width="18"></a>
-                    <a href="https://www.instagram.com/rokautomation/?hl=en"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif"
-                        width="18"></a>
-                    <a
-                      href="http://www.linkedin.com/company/rockwell-automation"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif"
-                        width="18"></a>
-                    <a href="https://twitter.com/ROKAutomationAU" target="_blank"
-                      style="outline:none;"><img alt="social icon"
-                        title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png"
-                        width="18"></a>
-                  </button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table style="width: 100%; text-align:right;">
-  <tr>
-    <td><p style="display:inline; font-size:11px; font-family:Arial, san-serif; text-align:right; font-weight:500">Connect with us. &nbsp;</p></td>
-      <td width="22"><a href="https://www.facebook.com/ROKAutomationAPAC" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif" width="18"></a></td>
-      <td width="22"><a href="https://www.instagram.com/rokautomation/?hl=en" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif" width="18"></a></td>
-      <td width="22"><a href="http://www.linkedin.com/company/rockwell-automation" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif" width="18"></a></td>
-      <td width="22"><a href="https://twitter.com/ROKAutomationAU" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png" width="18"></a></td>
-  </tr>
-</table></textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Let's Talk About Your Project</h3>
+          <p>I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.</p>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <p>johndoe@example.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div>
+              <p>+1 (123) 456-7890</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <p>San Francisco, CA</p>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" id="subject" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" class="form-control" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-            <tr>
-              <th><b>AU</b></th>
-              <td class="content">AP_EN_Responsive</td>
-              <td class="content">AP - AU - Responsive</td>
-              <td>
-                <div class="popup_main">
-                  <button class="open_popup">AU</button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table align="center" bgcolor="#ffffff" border="0" cellpadding="5" cellspacing="0">
-  <tbody>
-      <tr>
-          <td id="footeh"
-              style="font-family: Arial,Helvetica,sans-serif; font-size: 10px; line-height: 12px; color: #5e5e5e; text-align: left;">
-              Copyright &copy; 2024&nbsp;Rockwell Automation, Inc. All rights reserved.<br />
-              To view a complete list of Rockwell Automation trademarks please <b><a data-targettype="webpage"
-                      href="https://www.rockwellautomation.com/en-au/company/about-us/legal-notices/trademarks.html?elqTrack=false"
-                      style="color: #5e5e5e;
-                  font-weight: bold;" title="Trademarks">click here</a></b>.<br />
-              Trademarks not belonging to Rockwell Automation are property of their respective companies.<br />
-              <br />
-              Rockwell Automation Australia Ltd,<br />
-              248 Burwood Road, Hawthorn Victoria 3122, Australia<br />
-              Tel: +61 3 9757 1111
-          </td>
-      </tr>
-  </tbody>
-</table>
-                        </textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="content">en-au</td>
-              <td class="content">Rockwell Automation</td>
-              <td class="content">dtc@rockwellautomation.com</td>
-              <td class="content">Rockwell Automation</td>
-              <td class="content">dtc@rockwellautomation.com</td>
-              <td class="content min-75">AP_ANZ_Seedlist_2022_10 </td>
-              <td class="min-50">AEST: <span class="content">(UTC+10:00) Canberra, Melbourne, Sydney</span></td>
-              <td class="content">Australia</td>
-              <td class="social">
-                <div class="popup_main">
-                  <button class="open_popup">
-                    Connect with us.&nbsp;&nbsp;
-                    <a href="https://www.facebook.com/ROKAutomationAPAC"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif"
-                        width="18"></a>
-                    <a href="https://www.instagram.com/rokautomation/?hl=en"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif"
-                        width="18"></a>
-                    <a
-                      href="http://www.linkedin.com/company/rockwell-automation"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif"
-                        width="18"></a>
-                    <a href="https://twitter.com/ROKAutomationAU" target="_blank"
-                      style="outline:none;"><img alt="social icon"
-                        title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png"
-                        width="18"></a>
-                  </button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table style="width: 100%; text-align:right;">
-  <tr>
-    <td><p style="display:inline; font-size:11px; font-family:Arial, san-serif; text-align:right; font-weight:500">Connect with us. &nbsp;</p></td>
-      <td width="22"><a href="https://www.facebook.com/ROKAutomationAPAC" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif" width="18"></a></td>
-      <td width="22"><a href="https://www.instagram.com/rokautomation/?hl=en" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif" width="18"></a></td>
-      <td width="22"><a href="http://www.linkedin.com/company/rockwell-automation" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif" width="18"></a></td>
-      <td width="22"><a href="https://twitter.com/ROKAutomationAU" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png" width="18"></a></td>
-  </tr>
-</table></textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">JD</div>
+      <ul class="footer-links">
+        <li class="footer-link"><a href="#home">Home</a></li>
+        <li class="footer-link"><a href="#about">About</a></li>
+        <li class="footer-link"><a href="#projects">Projects</a></li>
+        <li class="footer-link"><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p class="copyright">© 2025 John Doe. All rights reserved. Last updated: August 20, 2025</p>
+    </div>
+  </footer>
 
-            <tr>
-              <th><b>NZ</b></th>
-              <td class="content">AP_EN_Responsive</td>
-              <td class="content">AP - NZ - Responsive</td>
-              <td>
-                <div class="popup_main">
-                  <button class="open_popup">NZ</button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table align="center" bgcolor="#ffffff" border="0" cellpadding="5" cellspacing="0">
-  <tbody>
-      <tr>
-          <td id="footeh"
-              style="font-family: Arial,Helvetica,sans-serif; font-size: 10px; line-height: 12px; color: #5e5e5e; text-align: left;">
-              Copyright &copy; 2024&nbsp;Rockwell Automation, Inc. All rights reserved.<br />
-              To view a complete list of Rockwell Automation trademarks please <b><a data-targettype="webpage"
-                      href="https://www.rockwellautomation.com/en-nz/company/about-us/legal-notices/trademarks.html?elqTrack=false"
-                      style="color: #5e5e5e;
-                  font-weight: bold;" title="Trademarks">click here</a></b>.<br />
-              Trademarks not belonging to Rockwell Automation are property of their respective companies.<br />
-              <br />
-              Rockwell Automation (N.Z.) Ltd,<br />
-              2B Pacific Rise, Mt Wellington, Auckland, New Zealand<br />
-              Tel: +64 9 276 3070 Fax: +64 9 276 5406
-          </td>
-      </tr>
-  </tbody>
-</table>
-                        </textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="content">en-nz</td>
-              <td class="content">Rockwell Automation</td>
-              <td class="content">dtc@rockwellautomation.com</td>
-              <td class="content">Rockwell Automation</td>
-              <td class="content">dtc@rockwellautomation.com</td>
-              <td class="content min-75">AP_ANZ_Seedlist_2022_10 </td>
-              <td class="content">(UTC+12:00) Auckland, Wellington</td>
-              <td class="content">New Zealand</td>
-              <td class="social">
-                <div class="popup_main">
-                  <button class="open_popup">
-                    Connect with us.&nbsp;&nbsp;
-                    <a href="https://www.facebook.com/ROKAutomationAPAC"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif"
-                        width="18"></a>
-                    <a href="https://www.instagram.com/rokautomation/?hl=en"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif"
-                        width="18"></a>
-                    <a
-                      href="http://www.linkedin.com/company/rockwell-automation"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif"
-                        width="18"></a>
-                    <a href="https://twitter.com/ROKAutomationNZ" target="_blank"
-                      style="outline:none;"><img alt="social icon"
-                        title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png"
-                        width="18"></a>
-                  </button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table style="width: 100%; text-align:right;">
-  <tr>
-    <td><p style="display:inline; font-size:11px; font-family:Arial, san-serif; text-align:right; font-weight:500">Connect with us. &nbsp;</p></td>
-      <td width="22"><a href="https://www.facebook.com/ROKAutomationAPAC" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif" width="18"></a></td>
-      <td width="22"><a href="https://www.instagram.com/rokautomation/?hl=en" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif" width="18"></a></td>
-      <td width="22"><a href="http://www.linkedin.com/company/rockwell-automation" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif" width="18"></a></td>
-      <td width="22"><a href="https://twitter.com/ROKAutomationNZ" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png" width="18"></a></td>
-  </tr>
-</table></textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    // Particles.js configuration
+    particlesJS('particles-js', {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 6,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 200,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 4
+          },
+          "remove": {
+            "particles_nb": 2
+          }
+        }
+      },
+      "retina_detect": true
+    });
 
-            <tr>
-              <th><b>IN</b></th>
-              <td class="content">AP_EN_Responsive</td>
-              <td class="content">AP - IN - Responsive</td>
-              <td>
-                <div class="popup_main">
-                  <button class="open_popup">IN</button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table align="center" bgcolor="#ffffff" border="0" cellpadding="5" cellspacing="0">
-  <tbody>
-      <tr>
-          <td id="footeh"
-              style="font-family: Arial,Helvetica,sans-serif; font-size: 10px; line-height: 16px; color: #5e5e5e; text-align: left;">
-              Copyright &copy; 2024 Rockwell Automation, Inc. All rights reserved.<br />
-              To view a complete list of Rockwell Automation trademarks please <b><a data-targettype="webpage"
-                      href="https://www.rockwellautomation.com/global/legal-notices/overview.page?elqTrack=false"
-                      style="color: #5e5e5e;
-                  font-weight: bold;" title="Trademarks">click here</a></b><br />
-              Trademarks not belonging to Rockwell Automation are property of their respective companies.<br />
-              Rockwell Automation India Pvt. Ltd, A-66, Sector-64, Noida 201301, Uttar Pradesh, India.<br />
-              Tel +91 120 467 1694, 95 Fax +91 120 421 7929, 31</td>
-      </tr>
-  </tbody>
-</table>
-                        </textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="content">en-in</td>
-              <td class="content">Rockwell Automation</td>
-              <td class="content">raindiamarketing@rockwellautomation.com</td>
-              <td class="content">Rockwell Automation</td>
-              <td class="content">raindiamarketing@rockwellautomation.com</td>
-              <td class="content min-75">AP_IN_Seedlist_2022_10 </td>
-              <td class="content">(UTC+05:30) Chennai, Kolkata, Mumbai, New
-                Delhi</td>
-              <td class="content">India</td>
-              <td class="social">
-                <div class="popup_main">
-                  <button class="open_popup">
-                    Connect with us.&nbsp;&nbsp;
-                    <a href="https://www.facebook.com/ROKAutomationAPAC"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif"
-                        width="18"></a>
-                    <a href="https://www.instagram.com/rokautomation/?hl=en"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif"
-                        width="18"></a>
-                    <a
-                      href="http://www.linkedin.com/company/rockwell-automation"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif"
-                        width="18"></a>
-                    <a href="https://twitter.com/ROKAutomationIN" target="_blank"
-                      style="outline:none;"><img alt="social icon"
-                        title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png"
-                        width="18"></a>
-                  </button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table style="width: 100%; text-align:right;">
-  <tr>
-    <td><p style="display:inline; font-size:11px; font-family:Arial, san-serif; text-align:right; font-weight:500">Connect with us. &nbsp;</p></td>
-      <td width="22"><a href="https://www.facebook.com/ROKAutomationAPAC" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif" width="18"></a></td>
-      <td width="22"><a href="https://www.instagram.com/rokautomation/?hl=en" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif" width="18"></a></td>
-      <td width="22"><a href="http://www.linkedin.com/company/rockwell-automation" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif" width="18"></a></td>
-      <td width="22"><a href="https://twitter.com/ROKAutomationIN" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png" width="18"></a></td>
-  </tr>
-</table></textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
 
-            <tr>
-              <th><b>KR</b></th>
-              <td class="content">KR Responsive</td>
-              <td class="content">AP - KR - Responsive</td>
-              <td>
-                <div class="popup_main">
-                  <button class="open_popup">KR</button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0">
-  <tbody>
-      <tr>
-          <td width="16">&nbsp;</th>
-          <td
-              style="font-size: 10px; font:Gulim; line-height: 12px; color: #5e5e5e; text-align: left; ; padding-top:10px; font-family:Malgun Gothic ">
-              <font face="Arial">Copyright&copy; 2024 Rockwell Automation, Inc. All rights
-                  reserved.</font><br />
-              <br />
-              명시된 제품과 솔루션의 명칭은 <font face="Arial">Rockwell Automation, Inc.</font> 의 상표
-              자산입니다.<br />
-              그 외의 모든 상표 및 등록 상표는 각 해당 기업의 자산입니다.<br />
-              <br />
-              캠페인에 대한 문의 및 개선사항은 <a href="mailto:korea_marketing@rockwellautomation.com">
-                  <font face="Arial">RA Korea Marketing</font>
-              </a> 으로 부탁드립니다<br />
-              <br />
-              로크웰 오토메이션 코리아(주), 서울특별시 강남구 논현로 <font face="Arial">430</font> (역삼동, 아세아타워)
-              <font face="Arial">6,7F</font> (우편번호: <font face="Arial">06223</font>)<br />
-              &nbsp;
-          </td>
-          <td width="16">&nbsp;</td>
-      </tr>
-  </tbody>
-</table>
-                        </textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="content">ko-kr</td>
-              <td class="content">로크웰오토메이션코리아</td>
-              <td class="content">dtc@rockwellautomation.com</td>
-              <td class="content">로크웰오토메이션코리아</td>
-              <td class="content">dtc@rockwellautomation.com</td>
-              <td class="content min-75">AP_KR_Seedlist_2022_10 </td>
-              <td class="content">(UTC+09:00) Seoul</td>
-              <td class="content">South Korea</td>
-              <td class="social">
-                <div class="popup_main">
-                  <button class="open_popup">
-                    소셜미디어 팔로우: &nbsp;
-                    <a href="https://www.facebook.com/ROKAutomation"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif"
-                        width="18"></a>
-                    <a href="https://www.instagram.com/rokautomation/?hl=en"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif"
-                        width="18"></a>
-                    <a
-                      href="http://www.linkedin.com/company/rockwell-automation"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif"
-                        width="18"></a>
-                    <a href="https://twitter.com/ROKAutomationKR" target="_blank"
-                      style="outline:none;"><img alt="social icon"
-                        title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png"
-                        width="18"></a>
-                  </button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table style="width: 100%; text-align:right;">
-  <tr>
-    <td><p style="display:inline; font-size:11px; font-family:Arial, san-serif; text-align:right; font-weight:500">소셜미디어 팔로우: &nbsp;</p></td>
-      <td width="22"><a href="https://www.facebook.com/ROKAutomation" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif" width="18"></a></td>
-      <td width="22"><a href="https://www.instagram.com/rokautomation/?hl=en" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif" width="18"></a></td>
-      <td width="22"><a href="http://www.linkedin.com/company/rockwell-automation" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif" width="18"></a></td>
-      <td width="22"><a href="https://twitter.com/ROKAutomationKR" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png" width="18"></a></td>
-  </tr>
-</table></textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
 
-            <tr>
-              <th><b>TW (Traditional Chinese - ZC)</b></th>
-              <td class="content">TW Responsive</td>
-              <td class="content">AP - TW - Responsive - Updated Jul 2019</td>
-              <td>
-                <div class="popup_main">
-                  <button class="open_popup">TW</button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table align="center" bgcolor="#ffffff" border="0" cellpadding="5" cellspacing="0">
-  <tbody>
-      <tr>
-          <td id="footeh"
-              style="font-family: Arial,Helvetica,sans-serif; font-size: 10px; line-height: 12px; color: #5e5e5e; text-align: left;">
-              <p>Copyright &copy; 2024&nbsp;Rockwell Automation, Inc. All rights reserved.<br />
-                  請<b><a data-targettype="webpage"
-                          href="https://www.rockwellautomation.com/global/legal-notices/overview.page?elqTrack=false"
-                          style="color: #5e5e5e;
-                  font-weight: bold;" title="Trademarks">按此</a></b>瀏覽完整洛克威爾自動化公司之註冊商標。<br />
-                  凡不屬於洛克威爾自動化之商標均為其所屬公司所有。<br />
-                  <br />
-                  台灣洛克威爾國際股份有限公司 Rockwell Automation Taiwan Co., Ltd.<br />
-                  台北市104建國北路二段120號14樓<br />
-                  Tel: +886-2-6618-8288<br />
-                  &nbsp;
-              </p>
-          </td>
-      </tr>
-  </tbody>
-</table>
-                        </textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="content">zh-tw</td>
-              <td class="content">Rockwell Automation</td>
-              <td class="content">dtc@rockwellautomation.com</td>
-              <td class="content">Rockwell Automation</td>
-              <td class="content">dtc@rockwellautomation.com</td>
-              <td class="content min-75">AP_TW_Seedlist_2022_10 </td>
-              <td class="content">(UTC+08:00) Taipei</td>
-              <td class="content">Taiwan, China</td>
-              <td class="social">
-                <div class="popup_main">
-                  <button class="open_popup">
-                    歡迎追蹤我們的帳號。&nbsp;
-                    <a href="https://www.facebook.com/ROKAutomationAPAC"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif"
-                        width="18"></a>
-                    <a href="https://www.instagram.com/rokautomation/?hl=en"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif"
-                        width="18"></a>
-                    <a
-                      href="http://www.linkedin.com/company/rockwell-automation"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif"
-                        width="18"></a>
-                    <a href="https://twitter.com/ROKAutomationTW" target="_blank"
-                      style="outline:none;"><img alt="social icon"
-                        title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png"
-                        width="18"></a>
-                  </button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table style="width: 100%; text-align:right; border:none !important">
-  <tr>
-    <td><p style="display:inline; font-size:11px; font-family:Arial, san-serif; text-align:right; font-weight:500">歡迎追蹤我們的帳號。&nbsp;</p></td>
-      <td width="22"><a href="https://www.facebook.com/ROKAutomationAPAC" target="_blank" style="outline:none;"><img src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif" width="18" height="17"></a></td>
-      <td width="22"><a href="https://www.instagram.com/rokautomation/?hl=en" target="_blank" style="outline:none;"><img src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif" width="18" height="17"></a></td>
-      <td width="22"><a href="http://www.linkedin.com/company/rockwell-automation" target="_blank" style="outline:none;"><img src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif" width="18" height="17"></a></td>
-      <td width="22"><a href="https://twitter.com/ROKAutomationTW" target="_blank" style="outline:none;"><img src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png" width="18" height="17"></a></td>
-  </tr>
-</table></textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
 
-            <tr>
-              <th><b>CN (Simplified Chinese - ZH)</b></th>
-              <td class="content">AP - CN - 2021</td>
-              <td class="content">AP - CN - Responsive</td>
-              <td>
-                <div class="popup_main">
-                  <button class="open_popup">CN</button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table align="center" bgcolor="#ffffff" border="0" cellpadding="5" cellspacing="0">
-  <tbody>
-      <tr>
-          <td id="footeh"
-              style="font-family: Arial,Helvetica,sans-serif; font-size: 10px; line-height: 12px; color: #5e5e5e; text-align: left;">
-              <p>版权所有&copy;2024罗克韦尔自动化（中国）有限公司。保留所有权利<br />
-                  要查看罗克韦尔自动化（中国）公司的商标的完整列表，请点击<b><a data-targettype="webpage"
-                          href="https://www.rockwellautomation.com/zh-cn/company/about-us/legal-notices/trademarks.html?elqTrack=false"
-                          style="color: #5e5e5e;
-                                                                                          font-weight: bold;"
-                          title="Trademarks">这里</a></b><br />
-                  不属于罗克韦尔自动化的商标是其各自公司的财产。<br />
-                  <br />
-                  上海市漕河泾开发区虹梅路1801号B区宏业大厦1楼，6-9楼，邮编200233
-              </p>
-          </td>
-      </tr>
-  </tbody>
-</table>
-                        </textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td><span class="content">.com.cn</span>/<span
-                  class="content">zh-cn</span></td>
-              <td class="content">罗克韦尔自动化</td>
-              <td class="content">dtc@rockwellautomation.com</td>
-              <td class="content">罗克韦尔自动化</td>
-              <td class="content">dtc@rockwellautomation.com</td>
-              <td class="content min-75">AP_CN_Seedlist_2022_10 </td>
-              <td class="content">(UTC+08:00) Beijing, Chongqing, Hong Kong,
-                Urumqi</td>
-              <td class="content">China</td>
-              <td>
-                <a href="https://secure.p01.eloqua.com/Main.aspx#emails&id=65969" target="_blank"
-                  style="text-decoration: underline;color: blue;">Click here for Reference</a>
-              </td>
-            </tr>
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
 
-            <tr>
-              <th><b>JP</b></th>
-              <td>
-                <span class="content">AP - Blank Header</span>
-                <div class="popup_main">
-                  <button class="open_popup">HTML</button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly>
-<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
-  <tbody>
-    <tr>
-      <th align="center" style="font-family:MS PGothic; font-size:11px; padding-bottom:10px; color:#6d6e71">メールの表示に問題がある場合は、<a href="https://app.response.rockwellautomation.com/e/es.aspx?s=~~eloqua..type--emailfield..syntax--siteid..innerText--siteid..encodeFor--url~~&e=~~eloqua..type--emailfield..syntax--elqemailsaveguid..innerText--elqemailsaveguid..encodeFor--url~~&elqTrackId=b57d96689eaf48969bae47a6eb748d3c" style="text-decoration:none;font-family:Gulim; font-size:11px;" target="_blank">こちら</a>をクリックして Web ブラウザで表示してください。</th>
-    </tr>
-  </tbody>
-</table>
-                        </textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <span class="content">AP - Blank Footer</span>
-                <div class="popup_main">
-                  <button class="open_popup">HTML</button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly>
-                              <table align="center" bgcolor="#D4D6D7" border="0" cellpadding="5" cellspacing="0">
-                                <tbody>
-                                  <tr>
-                                    <th id="footer" style="font-family: Arial,Helvetica,sans-serif; font-size: 10px; line-height: 12px; color: #5e5e5e; text-align: left;" bgcolor="#D4D6D7h>
-                                    <p>ロックウェルオートメーションジャパン株式会社<br />
-                                    〒104-0033東京都中央区新川1-3-17新川三幸ビルTEL: 03-3206-2784<br />
-                                    Copyright&copy;2024 Rockwell Automation, Inc. All rights reserved.</p>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
 
-                                    <p>ロックウェル・オートメーションについては、<b><a data-targettype="webpage" href="https://www.rockwellautomation.com/ja_JP/overview.page?elqTrackId=22f6e3340803479492bd9c44fd8dae99" style="color: #5e5e5e;
-                                                  font-weight: bold;" title="こちら">こちら</a></b>をご覧ください。<br />
-                                    本メールは、弊社担当者と名刺交換をさせていただいた皆様、<br />
-                                    弊社のイベントにお申込・ご参加頂いた皆様、メール配信をご希望いただいた皆様にお届けしています。<br />
-                                    今後の配信をご希望されない場合、または登録内容の変更を希望される場合は、<a data-targettype="webpage" href="https://map.rockwellautomation.com/subscribe?lang=ja&elqTrackId=8ff31a50441c461f994d916522111fa1" style="color: #5e5e5e; font-weight: bold;">こちら</a>からお手続きをお願いいたします。<br />
-                                    個人情報の取り扱いについては、<a data-targettype="webpage" href="https://www.rockwellautomation.com/ja-jp/company/about-us/legal-notices/privacy-and-cookiespolicy.html" style="color: #5e5e5e; font-weight: bold;">こちら</a>をご覧ください。<br />
-                                    商標のリストは、<a data-targettype="webpage" href="https://www.rockwellautomation.com/ja-jp/company/about-us/legal-notices/trademarks.html" style="color: #5e5e5e; font-weight: bold;">こちら</a>をご覧ください。 ロックウェル・オートメーションに帰属しない商標は、各企業に帰属します。</p>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-                <div class="popup_main">
-                  <button class="open_popup" style="width: 110px;">TEXT
-                    Footer</button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly>
-                            ----------------------------------------------------------------------------------------------------------------------------------------------
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
 
-                            ロックウェルオートメーションジャパン株式会社
-                            〒104-0033東京都中央区新川1-3-17新川三幸ビルTEL: 03-3206-2784
-                            Copyright©2024 Rockwell Automation, Inc. All rights reserved.
+        window.scrollTo({
+          top: targetElement.offsetTop - 70,
+          behavior: 'smooth'
+        });
+      });
+    });
 
-                            ロックウェル・オートメーションについては、こちらをご覧ください。
-                            https://www.rockwellautomation.com/ja-jp.html
+    // Reveal sections on scroll
+    const sections = document.querySelectorAll('section');
 
-                            本メールは、弊社担当者と名刺交換をさせていただいた皆様、
-                            弊社のイベントにお申込・ご参加頂いた皆様、メール配信をご希望いただいた皆様にお届けしています。
-                            今後の配信をご希望されない場合、または登録内容の変更を希望される場合は、こちらからお手続きをお願いいたします。 
-                            https://map.rockwellautomation.com/subscribe?lang=ja
+    const revealSection = () => {
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
 
-                            個人情報の取り扱いについては、こちらをご覧ください。
-                            https://www.rockwellautomation.com/ja-jp/company/about-us/legal-notices/privacy-and-cookiespolicy.html
+        if (sectionTop < windowHeight - 150) {
+          section.classList.add('visible');
+        }
+      });
+    };
 
-                            商標のリストは、こちらをご覧ください。 ロックウェル・オートメーションに帰属しない商標は、各企業に帰属します。
-                            https://www.rockwellautomation.com/ja-jp/company/about-us/legal-notices/trademarks.html
-                          </textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="popup_main">
-                  <button class="open_popup">JP</button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table align="center" bgcolor="#fff" border="0" cellpadding="5" cellspacing="0">
-  <tbody>
-    <tr>
-      <th id="footeh"
-        style="font-family: Arial,Helvetica,sans-serif; font-size: 10px; line-height: 12px; color: #5e5e5e; text-align: left;"
-        bgcolor="#fff">
-        <p>ロックウェルオートメーションジャパン株式会社<br />
-          〒104-0033東京都中央区新川1-3-17新川三幸ビルTEL:
-          03-3206-2784<br />
-          Copyright©2024 Rockwell Automation,
-          Inc. All rights reserved.</p>
-        <p>ロックウェル・オートメーションについては、<b><a data-targettype="webpage"
-              href="https://www.rockwellautomation.com/ja-jp.html?elqTrack=false"
-              style="color: #5e5e5e;font-weight: bold;"
-              title="こちら">こちら</a></b>をご覧ください。<br />
-          本メールは、弊社担当者と名刺交換をさせていただいた皆様、<br />
-          弊社のイベントにお申込・ご参加頂いた皆様、メール配信をご希望いただいた皆様にお届けしています。 <br>
-          個人情報の取り扱いについては、<a data-targettype="webpage"
-            href="https://www.rockwellautomation.com/ja-jp/company/about-us/legal-notices/privacy-and-cookiespolicy.html?elqTrack=false"
-            style="color: #5e5e5e; font-weight: bold;">こちら</a>をご覧ください。<br>
-          商標のリストは、<a data-targettype="webpage"
-            href="https://www.rockwellautomation.com/ja-jp/company/about-us/legal-notices/trademarks.html?elqTrack=false"
-            style="color: #5e5e5e; font-weight: bold;">こちら</a>をご覧ください。
-          ロックウェル・オートメーションに帰属しない商標は、各企業に帰属します。</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-                            </textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="content">ja-jp</td>
-              <td class="content">ロックウェル・オートメーション</td>
-              <td class="content">ContactJP@rockwellautomation.com</td>
-              <td class="content">ロックウェル・オートメーション</td>
-              <td class="content">ContactJP@rockwellautomation.com</td>
-              <td class="content min-75" colspan="30">AP_JP_Seedlist_2022_10 </td>
-              <td class="content">(UTC+09:00) Osaka, Sapporo, Tokyo</td>
-              <td class="content">Japan</td>
-              <td class="social">
-                <div class="popup_main">
-                  <button class="open_popup">
-                    Connect with us.&nbsp;&nbsp;
-                    <a href="https://www.facebook.com/ROKAutomation"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif"
-                        width="18"></a>
-                    <a href="https://www.instagram.com/rokautomation/?hl=en"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif"
-                        width="18"></a>
-                    <a
-                      href="http://www.linkedin.com/company/rockwell-automation"
-                      target="_blank" style="outline:none;"><img
-                        alt="social icon" title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif"
-                        width="18"></a>
-                    <a href="https://twitter.com/ROKAutomationJP" target="_blank"
-                      style="outline:none;"><img alt="social icon"
-                        title="social icon"
-                        src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png"
-                        width="18"></a>
-                  </button>
-                  <div class="popup_body">
-                    <div class="popup_back"></div>
-                    <div class="popup_contain">
-                      <div class="popup_close">x</div>
-                      <textarea name id readonly cols="30" rows="1">
-<table style="width: 100%; text-align:right;">
-  <tr>
-    <td><p style="display:inline; font-size:11px; font-family:Arial, san-serif; text-align:right; font-weight:500">Connect with us. &nbsp;</p></td>
-      <td width="22"><a href="https://www.facebook.com/ROKAutomation" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7B27ccb084-2741-43db-a0c4-5ae52f139ae5%7D_PlantPAx-eNews-04-2019_facebook.gif" width="18"></a></td>
-      <td width="22"><a href="https://www.instagram.com/rokautomation/?hl=en" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bd31f59da-8883-423b-80e6-43a6e9416299%7D_PlantPAx-eNews-04-2019_instagram.gif" width="18"></a></td>
-      <td width="22"><a href="http://www.linkedin.com/company/rockwell-automation" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Bae55b410-aa16-41ef-970e-1a8014708937%7D_PlantPAx-eNews-04-2019_linkedin.gif" width="18"></a></td>
-      <td width="22"><a href="https://twitter.com/ROKAutomationJP" target="_blank" style="outline:none;"><img alt="social icon" title="social icon" src="https://images.response.rockwellautomation.com/EloquaImages/clients/RockwellAutomationCorporate/%7Baded37d1-ffad-43a9-b8d9-0f335049b1e8%7D_X_Twitter_Logo.png" width="18"></a></td>
-  </tr>
-</table></textarea>
-                      <button type="button" class="btn-hide"></button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
+    window.addEventListener('scroll', revealSection);
+    window.addEventListener('load', revealSection);
 
-          </tbody>
-        </table>
+    // Form submission animation
+    const contactForm = document.querySelector('.contact-form');
 
-      </section>
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-      <dan-copied></dan-copied>
-    </body>
+      const submitBtn = contactForm.querySelector('.submit-btn');
+      submitBtn.innerHTML = 'Sending...';
 
-    <script src="js/all-js.js"></script>
+      // Simulate form submission
+      setTimeout(() => {
+        submitBtn.innerHTML = 'Message Sent!';
+        contactForm.reset();
 
-  </html>
+        setTimeout(() => {
+          submitBtn.innerHTML = 'Send Message';
+        }, 3000);
+      }, 2000);
+    });
+
+    // Project card hover effect
+    const projectCards = document.querySelectorAll('.project-card');
+
+    projectCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px)';
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0)';
+      });
+    });
+
+    // Current date in footer
+    const currentDate = new Date();
+    const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    document.querySelector('.copyright').innerHTML = `© ${currentDate.getFullYear()} John Doe. All rights reserved. Last updated: August 20, 2025`;
+  </script>
+</body>
+
+</html>
