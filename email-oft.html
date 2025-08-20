@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RW Helpline</title>
+
+    <link rel="stylesheet" href="css/all-css.css">
+
+  </head>
+  <body>
+    <section class="body">
+      <main-menu></main-menu>
+      <div class="dan-content">
+
+        <h2>
+          HTML File Creation
+        </h2>
+
+        <ol>
+          <li>
+            In Eloqua Copy the respective email and paste <b
+              class="content">_HTML</b> on
+            the end of the
+            name.
+          </li>
+          <li>Change the Email Group to <b>Events</b> and turn off <b>Enable
+              Eloqua Email Tracking</b>.</li>
+          <li>In <b>Email Style</b> change <b>Background Color to
+              white</b>.</li>
+          <li>Replace header to <b class="content">AP - Blank Header</b> with
+            <b>Background Color to white</b>.</li>
+          <li>Uncheck all the <b>Manage Links</b>. </li>
+          <li>Remove the entire line if it contains any <b>Field Merge</b>.</li>
+          <li>Generate html file with it's respective UTM Code
+            <a target="_blank"
+              href="https://ops.marketing.rockwellautomation.com/!portal/app/login.php?redirect=%2F_apps%2FEloquaEmailExtract%2F">
+              Link
+            </a>.
+          </li>
+          <li>
+            Remove the auto generated date added before the email name.
+          </li>
+        </ol>
+
+        <h2>
+          HTML Edits
+        </h2>
+
+        <ol start="9">
+          <li>Remove the empty table which used to contain Header.</li>
+          <li>Replace <b>width=”100%”</b> to <b>width=”600”</b>.</li>
+          <li>Add <b class="content">align="center"</b> on the first table tag
+            after the body tag.</li>
+          <li>Replace:
+            <b><xmp style="margin: 5px 0 -5px 0;"> <span><eloqua type="emailFooter"></eloqua></span>
+              </xmp></b>
+            &nbsp;&nbsp;with it's <a href="index.html"
+              target="_blank">respective email footer</a> source code and change
+            Background colour to <b>bgcolor="#ffffff"</b>. </li>
+          <li>Remove the entire line if it contains any <b>Field Merge</b> and
+            <b>Unsubscribe Link</b> in Footer.</li>
+          <li>Remove <b>&elqTrack=false</b> and Add the <b>UTM Contents</b> on
+            end of the links. <br><br>
+            <ul>
+              <li>
+                <p style="word-wrap: break-word;">
+                  https://<b>www.example.com?</b>&utm_medium=email&utm_content=<b>AP_ROKLive_2024_03_HTML</b>&utm_source=<b>AP_ROKLive_2024_03_HTML</b>&utm_campaign=<b>MultiInitiative_AP</b>
+                </p>
+              </li>
+              <li>
+                <b>Email Name : </b><input type="text" id="textone"
+                  style="width: 20%;" />
+                <b>UTM Code : </b><input type="text" id="textTWO"
+                  style="width: 20%;" />
+                <br>
+                <br>
+                <button onclick="testVariable()" style="margin-left: 0;" class="create-btn">Submit</button>
+              </li>
+              <li>
+                <div
+                  style="min-height: 15px; background-color: #dddddd;padding: 10px;width: min-content;">
+                  <b class="content"><span id="spanResult1">Created&nbsp;HTML&nbsp;UTM&nbsp;Content&nbsp;from&nbsp;Step14</b>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>No</b> need to track <b>Email</b> just Remove
+              <b>&elqTrack=false</b>.<br><br>
+              <ul>
+                <li>
+                  mailto:RAIndiamarketing@ra.rockwell.com<b><del>&elqTrack=false</del></b>
+                </li>
+              </ul>
+            </li>
+          </ol>
+
+          <h2>
+            Eloqua OFT
+          </h2>
+
+          <ol start="16">
+            <li>In Eloqua <b>=></b> Upload an Email <b>></b> Upload the edited
+              HTML file.</li>
+            <li>Next <b>=></b> Check image</li>
+            <li>Next <b>=></b> Make shore all links are Unchecked</li>
+            <li>Next <b>=></b>
+              <ul>
+                <li>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>:</b>
+                  Change <b>_HTML.html</b> to <b class="content">_OFT</b></li>
+                <li>Folder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>:</b>
+                  Direct to the folder path.</li>
+                <li>Email Group <b>:</b> <b>Events</b> (most of the time)</li>
+              </ul>
+            </li>
+            <li>
+              Settings: <br><br>
+              <ul>
+                <li>Email Header&nbsp;<b>:</b> <b class="content">AP - Blank
+                    Header</b></li>
+                <li>Email Footer&nbsp;&nbsp;<b>:</b> <b class="content">AP -
+                    Blank
+                    Footer</b></li>
+                <li>From Email&nbsp;&nbsp;&nbsp;&nbsp;<b>:</b> <b>SL, PW / From,
+                    Reply-to</b></li>
+                <li>Uncheck&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>:</b>
+                  <b>Enable email tracking</b></li>
+              </ul>
+            </li>
+            <li>Send test mail</li>
+          </ol>
+
+          <h2>
+            HTML Edits
+          </h2>
+
+          <ol start="22">
+            <li>Forward email <b>from outlook</b>.</li>
+            <li>Remove <b>*Test*</b> from Subjects <b>front and back</b>.</li>
+            <li>
+              Remove <b>Extra spaces</b> and the below content
+              <xmp style="margin: 0;">
+                From: Rockwell Automation <seamarcom@rockwellautomation.com>
+                  Sent: 06 February 2023 12:25 PM
+                  To: naveen.shanmugam@verticurl.com
+                  Subject: * TEST * Lưuễn ra vào ngày 4-5/5! * TEST *
+                  --------
+                </xmp>
+              </li>
+              <li>Replace the <b>UTM Contents</b> end of the links. <br><br>
+                <ul>
+                  <li>
+                    <p style="word-wrap: break-word;">
+                      https://<b>www.example.com?</b>&utm_medium=email&utm_content=<b>AP_ROKLive_2024_03_OFT</b>&utm_source=<b>AP_ROKLive_2024_03_OFT</b>&utm_campaign=<b>MultiInitiative_AP</b>
+                    </p>
+                  </li>
+                  <li>
+                    <div
+                      style="min-height: 15px; background-color: #dddddd;padding: 10px;width: min-content;">
+                      <b class="content"><span id="spanResult2">Created&nbsp;OFT&nbsp;UTM&nbsp;Contents&nbsp;from&nbsp;Step14</b>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Save As - Outlook Template <b>(*.oft)</b>
+                </li>
+              </ol>
+            </div>
+          </section>
+          <dan-copied></dan-copied>
+        </body>
+
+        <script src="js/all-js.js"></script>
+        <script>
+      function testVariable() {
+          var strText = document.getElementById("textone").value;
+          var strText1 = document.getElementById("textTWO").value;
+          var result1 = '&utm_medium=email&utm_content=' + strText + '_HTML&utm_source=' + strText + '_HTML&utm_campaign=' + strText1;
+          var result2 = '&utm_medium=email&utm_content=' + strText + '_OFT&utm_source=' + strText + '_OFT&utm_campaign=' + strText1;
+          document.getElementById('spanResult1').textContent = result1;
+          document.getElementById('spanResult2').textContent = result2;
+      }
+  </script>
+      </html>
