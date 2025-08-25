@@ -3,1339 +3,524 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Custom Cursor Hover Effects Showcase</title>
+<title>Enhanced Particle Background</title>
 <style>
-  :root {
-    --color-primary: #6C5CE7;
-    --color-primary-rgb: 108, 92, 231;
-    --color-secondary: #00D2D3;
-    --color-secondary-rgb: 0, 210, 211;
-    --color-accent: #FF7675;
-    --color-accent-rgb: 255, 118, 117;
-    --color-bg: #FFFFFF;
-    --color-surface: #F9F9F9;
-    --color-text-primary: #2D3436;
-    --color-text-secondary: #636E72;
-    --color-border: #DFE6E9;
-    --font-heading: 'Space Grotesk', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    --space-unit: 8px;
-    --space-xs: calc(var(--space-unit) * 1);
-    --space-sm: calc(var(--space-unit) * 2);
-    --space-md: calc(var(--space-unit) * 3);
-    --space-lg: calc(var(--space-unit) * 5);
-    --space-xl: calc(var(--space-unit) * 8);
-    --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  html[data-theme="dark"] {
-    --color-bg: #0F1119;
-    --color-surface: #1A1C2A;
-    --color-text-primary: #F5F6FA;
-    --color-text-secondary: #A4B0BE;
-    --color-border: #2F3542;
-  }
-
-  * {
+  body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: var(--font-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: var(--color-bg);
-    color: var(--color-text-primary);
-    line-height: 1.6;
-    padding: 20px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    cursor: none; /* Hide default cursor */
-  }
-
-  header {
-    text-align: center;
-    margin-bottom: 40px;
-    padding: 20px;
-  }
-
-  h1 {
-    font-family: var(--font-heading), sans-serif;
-    font-size: 3rem;
-    margin-bottom: 10px;
-  }
-
-  h2 {
-    font-family: var(--font-heading), sans-serif;
-    font-size: 2rem;
-    margin: 40px 0 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  h3 {
-    font-family: var(--font-heading), sans-serif;
-    font-size: 1.5rem;
-    margin: 20px 0 10px;
-  }
-
-  p {
-    margin-bottom: 20px;
-    max-width: 800px;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .section {
-    margin-bottom: 60px;
-    padding: 30px;
-    border-radius: 10px;
-    background-color: var(--color-surface);
-  }
-
-  .effect-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-  }
-
-  .effect-item {
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid var(--color-border);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 150px;
-    text-align: center;
-    transition: all 0.3s ease;
-    position: relative;
-  }
-
-  .effect-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  }
-
-  .effect-name {
-    position: absolute;
-    bottom: 10px;
-    font-size: 0.8rem;
-    color: var(--color-text-secondary);
-    opacity: 0.7;
-  }
-
-  /* Button styles */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    cursor: none;
-    text-decoration: none;
-  }
-
-  .btn-primary {
-    background-color: var(--color-primary);
-    color: white;
-  }
-
-  .btn-outline {
-    background-color: transparent;
-    color: var(--color-text-primary);
-    border: 1px solid var(--color-border);
-  }
-
-  .btn-accent {
-    background-color: var(--color-accent);
-    color: white;
-  }
-
-  .btn-secondary {
-    background-color: var(--color-secondary);
-    color: white;
-  }
-
-  /* Image styles */
-  .img-container {
-    width: 100%;
-    height: 150px;
     overflow: hidden;
-    border-radius: 8px;
+    background-color: #0F1119;
+    font-family: Arial, sans-serif;
   }
 
-  .img-container img {
+  .particle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+    z-index: -1;
   }
 
-  .img-container:hover img {
-    transform: scale(1.05);
+  .particle {
+    position: absolute;
+    will-change: transform;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
   }
 
-  /* Form elements */
-  .form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    background-color: var(--color-bg);
-    color: var(--color-text-primary);
-    font-family: var(--font-body);
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    margin-bottom: 15px;
-  }
-
-  .form-control:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
-  }
-
-  /* Social links */
-  .social-links {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-  }
-
-  .social-link {
-    width: 40px;
-    height: 40px;
+  .circle {
     border-radius: 50%;
-    background-color: var(--color-surface);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-text-primary);
-    transition: all 0.3s ease;
-    text-decoration: none;
   }
 
-  /* Skills */
-  .skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  .square {
+    border-radius: 4px;
   }
 
-  .skill-item {
-    padding: 5px 15px;
-    background-color: var(--color-bg);
-    border-radius: 30px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--color-text-primary);
-    transition: all 0.3s ease;
-    border: 1px solid var(--color-border);
-    cursor: none;
+  .triangle {
+    width: 0 !important;
+    height: 0 !important;
+    background-color: transparent !important;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 17px solid #6C5CE7;
   }
 
-  /* Theme toggle */
-  .theme-toggle {
+  .star {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+
+  .controls {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: none;
-    border: none;
-    cursor: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-text-primary);
-    transition: all 0.3s ease;
-    background-color: var(--color-surface);
-    z-index: 100;
-  }
-
-  /* Custom cursor */
-  .custom-cursor {
-    position: fixed;
-    width: 10px;
-    height: 30px;
+    background-color: rgba(26, 28, 42, 0.8);
+    padding: 15px;
     border-radius: 10px;
-    background-color: var(--color-accent);
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.5;
-    transition: width 0.3s, height 0.3s, opacity 0.3s, background-color 0.3s;
-    mix-blend-mode: difference;
-  }
-
-  .custom-cursor.active {
-    width: 50px;
-    height: 50px;
-    opacity: 0.2;
-  }
-
-  .custom-cursor-text {
-    position: absolute;
     color: white;
+    z-index: 100;
+    width: 250px;
+  }
+
+  .control-group {
+    margin-bottom: 15px;
+  }
+
+  .control-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  .control-input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+
+  .color-presets {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+  }
+
+  .color-preset {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+
+  .color-preset.active {
+    border-color: white;
+  }
+
+  .shape-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 5px;
+  }
+
+  .shape-option {
+    padding: 5px 10px;
+    background-color: rgba(108, 92, 231, 0.3);
+    border-radius: 15px;
+    cursor: pointer;
     font-size: 12px;
-    font-weight: 500;
-    white-space: nowrap;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s, transform 0.3s;
-    text-align: center;
   }
 
-  .custom-cursor.with-text .custom-cursor-text {
-    opacity: 1;
-    transform: translateY(0);
+  .shape-option.active {
+    background-color: rgba(108, 92, 231, 0.8);
   }
 
-  /* Mouse trail */
-  .mouse-trail {
+  .stats {
     position: fixed;
-    pointer-events: none;
-    z-index: 9998;
-  }
-
-  /* Animations */
-  @keyframes cursorPulse {
-    0% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.2); opacity: 0.7; }
-    100% { transform: scale(1); opacity: 0.5; }
-  }
-
-  .pulse-effect {
-    animation: cursorPulse 1.5s infinite ease-in-out;
-  }
-
-  @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  .rotate-effect {
-    animation: rotate 2s linear infinite;
-  }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-
-  .bounce-effect {
-    animation: bounce 1s infinite ease-in-out;
-  }
-
-  @keyframes glitch {
-    0% { transform: translate(0); }
-    20% { transform: translate(-5px, 5px); }
-    40% { transform: translate(-5px, -5px); }
-    60% { transform: translate(5px, 5px); }
-    80% { transform: translate(5px, -5px); }
-    100% { transform: translate(0); }
-  }
-
-  .glitch-effect {
-    animation: glitch 0.5s infinite;
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    margin-top: 60px;
-    padding: 20px;
-    border-top: 1px solid var(--color-border);
-    color: var(--color-text-secondary);
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
   }
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- Custom Cursor -->
-<div class="custom-cursor">
-  <div class="custom-cursor-text"></div>
+<div class="particle-container" id="particle-container"></div>
+
+<div class="controls" id="controls">
+  <h3>Particle Settings</h3>
+  
+  <div class="control-group">
+    <label class="control-label">Particle Count: <span id="count-value">60</span></label>
+    <input type="range" class="control-input" id="particle-count" min="20" max="200" value="60">
+  </div>
+  
+  <div class="control-group">
+    <label class="control-label">Size Range: <span id="size-value">3-12px</span></label>
+    <input type="range" class="control-input" id="min-size" min="1" max="10" value="3">
+    <input type="range" class="control-input" id="max-size" min="5" max="20" value="12">
+  </div>
+  
+  <div class="control-group">
+    <label class="control-label">Speed: <span id="speed-value">1</span></label>
+    <input type="range" class="control-input" id="speed" min="0.2" max="3" step="0.1" value="1">
+  </div>
+  
+  <div class="control-group">
+    <label class="control-label">Mouse Interaction: <span id="interaction-value">150px</span></label>
+    <input type="range" class="control-input" id="interaction-radius" min="50" max="300" value="150">
+  </div>
+  
+  <div class="control-group">
+    <label class="control-label">Color Scheme</label>
+    <div class="color-presets">
+      <div class="color-preset active" style="background: linear-gradient(45deg, #6C5CE7, #00D2D3, #FF7675);" data-colors="#6C5CE7,#00D2D3,#FF7675"></div>
+      <div class="color-preset" style="background: linear-gradient(45deg, #2ecc71, #1abc9c, #3498db);" data-colors="#2ecc71,#1abc9c,#3498db"></div>
+      <div class="color-preset" style="background: linear-gradient(45deg, #e74c3c, #e67e22, #f1c40f);" data-colors="#e74c3c,#e67e22,#f1c40f"></div>
+      <div class="color-preset" style="background: linear-gradient(45deg, #9b59b6, #8e44ad, #2980b9);" data-colors="#9b59b6,#8e44ad,#2980b9"></div>
+      <div class="color-preset" style="background: linear-gradient(45deg, #ecf0f1, #bdc3c7, #95a5a6);" data-colors="#ecf0f1,#bdc3c7,#95a5a6"></div>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <label class="control-label">Shapes</label>
+    <div class="shape-options">
+      <div class="shape-option active" data-shape="circle">Circles</div>
+      <div class="shape-option active" data-shape="square">Squares</div>
+      <div class="shape-option active" data-shape="triangle">Triangles</div>
+      <div class="shape-option active" data-shape="star">Stars</div>
+    </div>
+  </div>
 </div>
 
-<!-- Theme Toggle -->
-<button class="theme-toggle" id="theme-toggle">
-  <span class="theme-icon">🌙</span>
-</button>
-
-<div class="container">
-  <header>
-    <h1>Custom Cursor Hover Effects</h1>
-    <p>Explore different cursor hover effects for your portfolio. Move your cursor over the elements to see the effects in action.</p>
-  </header>
-
-  <!-- Button Effects -->
-  <section class="section">
-    <h2>Button Hover Effects</h2>
-    <p>Different cursor styles when hovering over buttons.</p>
-    
-    <div class="effect-grid">
-      <div class="effect-item">
-        <a href="#" class="btn btn-primary btn-glow">Primary Button</a>
-        <span class="effect-name">Glow Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <a href="#" class="btn btn-outline btn-expand">Outline Button</a>
-        <span class="effect-name">Expand Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <a href="#" class="btn btn-accent btn-pulse">Accent Button</a>
-        <span class="effect-name">Pulse Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <a href="#" class="btn btn-secondary btn-arrow">Secondary Button</a>
-        <span class="effect-name">Arrow Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <a href="#" class="btn btn-primary btn-circle">Circle Button</a>
-        <span class="effect-name">Circle Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <a href="#" class="btn btn-outline btn-dots">Dots Button</a>
-        <span class="effect-name">Dots Effect</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Image Effects -->
-  <section class="section">
-    <h2>Image Hover Effects</h2>
-    <p>Custom cursor styles when hovering over images.</p>
-    
-    <div class="effect-grid">
-      <div class="effect-item">
-        <div class="img-container img-zoom">
-          <img src="https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Project Image">
-        </div>
-        <span class="effect-name">Zoom Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <div class="img-container img-frame">
-          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Project Image">
-        </div>
-        <span class="effect-name">Frame Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <div class="img-container img-explore">
-          <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Project Image">
-        </div>
-        <span class="effect-name">Explore Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <div class="img-container img-circle">
-          <img src="https://images.unsplash.com/photo-1596003906949-67221c37965c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Profile Image">
-        </div>
-        <span class="effect-name">Circle Effect</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Text Effects -->
-  <section class="section">
-    <h2>Text Hover Effects</h2>
-    <p>Different cursor styles when hovering over text elements.</p>
-    
-    <div class="effect-grid">
-      <div class="effect-item">
-        <h3 class="heading-line">Heading with Line</h3>
-        <span class="effect-name">Line Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <h3 class="heading-sparkle">Sparkle Heading</h3>
-        <span class="effect-name">Sparkle Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <p class="text-highlight">This is a paragraph that demonstrates the highlight effect when you hover over it.</p>
-        <span class="effect-name">Highlight Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <p class="text-dot">This paragraph shows a dot cursor effect that follows your movement.</p>
-        <span class="effect-name">Dot Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <blockquote class="text-quote">"This is a testimonial quote that shows a special cursor effect."</blockquote>
-        <span class="effect-name">Quote Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <div class="stat-number">50+</div>
-        <span class="effect-name">Stat Effect</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Link Effects -->
-  <section class="section">
-    <h2>Link Hover Effects</h2>
-    <p>Custom cursor styles for different types of links.</p>
-    
-    <div class="effect-grid">
-      <div class="effect-item">
-        <a href="#" class="nav-link">Navigation Link</a>
-        <span class="effect-name">Arrow Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <div class="social-links">
-          <a href="#" class="social-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-            </svg>
-          </a>
-          <a href="#" class="social-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-              <rect x="2" y="9" width="4" height="12"></rect>
-              <circle cx="4" cy="4" r="2"></circle>
-            </svg>
-          </a>
-          <a href="#" class="social-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-            </svg>
-          </a>
-        </div>
-        <span class="effect-name">Connect Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <a href="#" class="footer-link">Footer Link</a>
-        <span class="effect-name">External Link Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <a href="#" class="logo-link">alex<span class="logo-dot"></span></a>
-        <span class="effect-name">Logo Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <a href="#" class="project-card-link">Project Card</a>
-        <span class="effect-name">Info Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <a href="#" class="back-to-top">Back to Top</a>
-        <span class="effect-name">Up Arrow Effect</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive Elements -->
-  <section class="section">
-    <h2>Interactive Elements</h2>
-    <p>Custom cursor styles for various interactive elements.</p>
-    
-    <div class="effect-grid">
-      <div class="effect-item">
-        <div class="skills-list">
-          <span class="skill-item">React</span>
-          <span class="skill-item">Vue.js</span>
-          <span class="skill-item">UI Design</span>
-        </div>
-        <span class="effect-name">Plus Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <button class="filter-btn">All Projects</button>
-        <span class="effect-name">Line Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <div class="timeline-item">Timeline Item</div>
-        <span class="effect-name">Border Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <button class="search-toggle">🔍</button>
-        <span class="effect-name">Search Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <button class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <span class="effect-name">Menu Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <div class="testimonial-dot"></div>
-        <span class="effect-name">Dot Effect</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Form Elements -->
-  <section class="section">
-    <h2>Form Elements</h2>
-    <p>Custom cursor styles for form inputs and controls.</p>
-    
-    <div class="effect-grid">
-      <div class="effect-item">
-        <input type="text" class="form-control" placeholder="Text Input">
-        <span class="effect-name">Input Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <textarea class="form-control" placeholder="Textarea"></textarea>
-        <span class="effect-name">Textarea Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <select class="form-control">
-          <option>Select Option</option>
-          <option>Option 1</option>
-          <option>Option 2</option>
-        </select>
-        <span class="effect-name">Select Effect</span>
-      </div>
-      
-      <div class="effect-item">
-        <label>
-          <input type="checkbox"> Checkbox
-        </label>
-        <span class="effect-name">Checkbox Effect</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Creative Effects -->
-  <section class="section">
-    <h2>Creative Cursor Effects</h2>
-    <p>Unique and creative cursor effects for special elements.</p>
-    
-    <div class="effect-grid">
-      <div class="effect-item creative-item-1">
-        <div class="creative-element">Pulse Animation</div>
-        <span class="effect-name">Pulse Animation</span>
-      </div>
-      
-      <div class="effect-item creative-item-2">
-        <div class="creative-element">Rotate Animation</div>
-        <span class="effect-name">Rotate Animation</span>
-      </div>
-      
-      <div class="effect-item creative-item-3">
-        <div class="creative-element">Bounce Animation</div>
-        <span class="effect-name">Bounce Animation</span>
-      </div>
-      
-      <div class="effect-item creative-item-4">
-        <div class="creative-element">Glitch Animation</div>
-        <span class="effect-name">Glitch Animation</span>
-      </div>
-      
-      <div class="effect-item creative-item-5">
-        <div class="creative-element">Magnetic Pull</div>
-        <span class="effect-name">Magnetic Pull</span>
-      </div>
-      
-      <div class="effect-item creative-item-6">
-        <div class="creative-element">Particle Burst</div>
-        <span class="effect-name">Particle Burst</span>
-      </div>
-    </div>
-  </section>
+<div class="stats" id="stats">
+  FPS: <span id="fps">60</span> | Particles: <span id="particle-count-display">60</span>
 </div>
-
-<footer>
-  <p>Custom Cursor Effects Showcase - Choose your favorite effects for your portfolio</p>
-</footer>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Custom cursor
-    const cursor = document.querySelector('.custom-cursor');
-    const cursorText = document.querySelector('.custom-cursor-text');
+    // Get DOM elements
+    const particleContainer = document.getElementById('particle-container');
+    const countValue = document.getElementById('count-value');
+    const sizeValue = document.getElementById('size-value');
+    const speedValue = document.getElementById('speed-value');
+    const interactionValue = document.getElementById('interaction-value');
+    const fpsDisplay = document.getElementById('fps');
+    const particleCountDisplay = document.getElementById('particle-count-display');
     
-    // Track mouse position
+    // Configuration object
+    const config = {
+      count: 60,
+      minSize: 3,
+      maxSize: 12,
+      speed: 1,
+      interactionRadius: 150,
+      colors: ['#6C5CE7', '#00D2D3', '#FF7675'],
+      shapes: ['circle', 'square', 'triangle', 'star'],
+      minOpacity: 0.05,
+      maxOpacity: 0.2
+    };
+    
+    // Particles array
+    let particles = [];
+    
+    // Mouse position
     let mouseX = 0;
     let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
+    let isMouseMoving = false;
+    let mouseMovingTimeout;
     
-    // Mouse movement with smooth follow
-    document.addEventListener('mousemove', function(e) {
+    // FPS tracking
+    let lastTimestamp = 0;
+    let fpsArray = [];
+    
+    // Create particles
+    function createParticles() {
+      // Clear existing particles
+      while (particleContainer.firstChild) {
+        particleContainer.removeChild(particleContainer.firstChild);
+      }
+      particles = [];
+      
+      // Create new particles
+      for (let i = 0; i < config.count; i++) {
+        createParticle();
+      }
+      
+      // Update display
+      particleCountDisplay.textContent = particles.length;
+    }
+    
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      
+      // Random shape
+      const shape = config.shapes[Math.floor(Math.random() * config.shapes.length)];
+      particle.classList.add(shape);
+      
+      // Random size
+      const size = Math.random() * (config.maxSize - config.minSize) + config.minSize;
+      
+      // Random position
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight;
+      
+      // Random opacity
+      const opacity = Math.random() * (config.maxOpacity - config.minOpacity) + config.minOpacity;
+      
+      // Random color
+      const color = config.colors[Math.floor(Math.random() * config.colors.length)];
+      
+      // Set styles
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${x}px`;
+      particle.style.top = `${y}px`;
+      particle.style.opacity = opacity.toString();
+      
+      if (shape === 'triangle') {
+        // For triangles, set the border sizes proportionally to the particle size
+        particle.style.borderLeftWidth = `${size/2}px`;
+        particle.style.borderRightWidth = `${size/2}px`;
+        particle.style.borderBottomWidth = `${size * 0.866}px`; // height of equilateral triangle
+        particle.style.borderBottomColor = color;
+      } else {
+        particle.style.backgroundColor = color;
+      }
+      
+      particleContainer.appendChild(particle);
+      
+      // Store particle properties
+      const particleObj = {
+        element: particle,
+        x: x,
+        y: y,
+        size: size,
+        speedX: (Math.random() * 2 - 1) * config.speed,
+        speedY: (Math.random() * 2 - 1) * config.speed,
+        opacity: opacity,
+        color: color,
+        shape: shape,
+        baseX: x,
+        baseY: y,
+        density: (Math.random() * 30) + 10,
+        angle: Math.random() * 360 // For rotation
+      };
+      
+      particles.push(particleObj);
+      return particleObj;
+    }
+    
+    // Animation loop
+    function animateParticles(timestamp) {
+      // Calculate FPS
+      if (lastTimestamp) {
+        const fps = 1000 / (timestamp - lastTimestamp);
+        fpsArray.push(fps);
+        if (fpsArray.length > 30) fpsArray.shift();
+        
+        const averageFps = Math.round(fpsArray.reduce((sum, value) => sum + value, 0) / fpsArray.length);
+        fpsDisplay.textContent = averageFps;
+      }
+      lastTimestamp = timestamp;
+      
+      particles.forEach(particle => {
+        // Update position
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+        
+        // Boundary check with bounce effect
+        if (particle.x > window.innerWidth || particle.x < 0) {
+          particle.speedX *= -1;
+        }
+        
+        if (particle.y > window.innerHeight || particle.y < 0) {
+          particle.speedY *= -1;
+        }
+        
+        // Mouse interaction
+        if (isMouseMoving) {
+          let dx = mouseX - particle.x;
+          let dy = mouseY - particle.y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < config.interactionRadius) {
+            // Calculate force direction
+            const forceDirectionX = dx / distance;
+            const forceDirectionY = dy / distance;
+            
+            // Calculate force strength
+            const force = (config.interactionRadius - distance) / config.interactionRadius;
+            
+            // Apply force with density factor
+            const directionX = forceDirectionX * force * particle.density * 0.2;
+            const directionY = forceDirectionY * force * particle.density * 0.2;
+            
+            // Move particle away from mouse
+            particle.x -= directionX;
+            particle.y -= directionY;
+          }
+        } else {
+          // Gradually return to base position when not affected by mouse
+          particle.x += (particle.baseX - particle.x) * 0.01;
+          particle.y += (particle.baseY - particle.y) * 0.01;
+        }
+        
+        // Rotate particles (especially for squares, triangles, and stars)
+        if (particle.shape !== 'circle') {
+          particle.angle += 0.2 * (particle.size / config.maxSize); // Larger particles rotate slower
+          const rotation = `rotate(${particle.angle}deg)`;
+          particle.element.style.transform = rotation;
+        }
+        
+        // Update particle position
+        particle.element.style.left = `${particle.x}px`;
+        particle.element.style.top = `${particle.y}px`;
+      });
+      
+      requestAnimationFrame(animateParticles);
+    }
+    
+    // Mouse interaction
+    document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      isMouseMoving = true;
+      
+      // Reset the timeout on each mouse move
+      clearTimeout(mouseMovingTimeout);
+      mouseMovingTimeout = setTimeout(() => {
+        isMouseMoving = false;
+      }, 2000); // Consider mouse stopped after 2 seconds of inactivity
     });
     
-    // Animate cursor with slight lag for smooth effect
-    function animateCursor() {
-      const speed = 0.2; // Adjust for faster/slower follow
-      
-      cursorX += (mouseX - cursorX) * speed;
-      cursorY += (mouseY - cursorY) * speed;
-      
-      cursor.style.left = cursorX + 'px';
-      cursor.style.top = cursorY + 'px';
-      
-      requestAnimationFrame(animateCursor);
-    }
-    
-    animateCursor();
-    
-    // Theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.querySelector('.theme-icon');
-    
-    // Check for saved theme preference or use system preference
-    const savedTheme = localStorage.getItem('theme');
-    
-    if (savedTheme) {
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-    } else {
-      const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.setAttribute('data-theme', prefersDarkMode ? 'dark' : 'light');
-      themeIcon.textContent = prefersDarkMode ? '☀️' : '🌙';
-    }
-    
-    themeToggle.addEventListener('click', function() {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-    });
-    
-    // Theme toggle hover effect
-    themeToggle.addEventListener('mouseenter', () => {
-      cursor.classList.add('with-text', 'theme-hover');
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      cursorText.textContent = currentTheme === 'light' ? '🌙' : '☀️';
-      cursor.style.backgroundColor = 'rgba(255, 118, 117, 0.2)';
-    });
-    
-    themeToggle.addEventListener('mouseleave', () => {
-      cursor.classList.remove('with-text', 'theme-hover');
-      cursorText.textContent = '';
-      cursor.style.backgroundColor = '';
-    });
-    
-    // Button hover effects
-    const buttons = document.querySelectorAll('.btn');
-    
-    buttons.forEach(button => {
-      button.addEventListener('mouseenter', () => {
-        cursor.classList.add('hover-link');
+    // Touch interaction
+    document.addEventListener('touchmove', (e) => {
+      if (e.touches[0]) {
+        mouseX = e.touches[0].clientX;
+        mouseY = e.touches[0].clientY;
+        isMouseMoving = true;
         
-        if (button.classList.contains('btn-glow')) {
-          cursor.classList.add('with-text');
-          cursorText.textContent = '✨';
-          cursor.style.mixBlendMode = 'overlay';
-          cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-        } 
-        else if (button.classList.contains('btn-expand')) {
-          cursor.style.width = '60px';
-          cursor.style.height = '60px';
-          cursor.style.borderRadius = '10px';
-          cursor.style.backgroundColor = 'rgba(108, 92, 231, 0.2)';
-        }
-        else if (button.classList.contains('btn-pulse')) {
-          cursor.classList.add('pulse-effect');
-          cursor.style.backgroundColor = 'rgba(255, 118, 117, 0.3)';
-        }
-        else if (button.classList.contains('btn-arrow')) {
-          cursor.classList.add('with-text');
-          cursorText.textContent = '→';
-          cursor.style.backgroundColor = 'rgba(0, 210, 211, 0.2)';
-        }
-        else if (button.classList.contains('btn-circle')) {
-          cursor.style.width = '50px';
-          cursor.style.height = '50px';
-          cursor.style.borderRadius = '50%';
-          cursor.style.border = '2px solid var(--color-primary)';
-          cursor.style.backgroundColor = 'transparent';
-        }
-        else if (button.classList.contains('btn-dots')) {
-          cursor.style.width = '5px';
-          cursor.style.height = '5px';
-          cursor.style.borderRadius = '50%';
-          cursor.style.boxShadow = '10px 10px 0 0 var(--color-accent), -10px -10px 0 0 var(--color-accent), 10px -10px 0 0 var(--color-accent), -10px 10px 0 0 var(--color-accent)';
-          cursor.style.backgroundColor = 'var(--color-accent)';
-        }
-      });
-      
-      button.addEventListener('mouseleave', () => {
-        cursor.classList.remove('hover-link', 'with-text', 'pulse-effect');
-        cursorText.textContent = '';
-        cursor.style.backgroundColor = '';
-        cursor.style.mixBlendMode = '';
-        cursor.style.borderRadius = '';
-        cursor.style.transform = '';
-        cursor.style.border = '';
-        cursor.style.width = '';
-        cursor.style.height = '';
-        cursor.style.boxShadow = '';
-      });
+        // Reset the timeout on each touch move
+        clearTimeout(mouseMovingTimeout);
+        mouseMovingTimeout = setTimeout(() => {
+          isMouseMoving = false;
+        }, 2000);
+      }
     });
     
-    // Image hover effects
-    const images = document.querySelectorAll('.img-container');
-    
-    images.forEach(image => {
-      image.addEventListener('mouseenter', () => {
-        cursor.classList.add('hover-image');
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      particles.forEach(particle => {
+        // Keep particles within the new window bounds
+        if (particle.x > window.innerWidth) {
+          particle.x = window.innerWidth * Math.random();
+          particle.baseX = particle.x;
+        }
         
-        if (image.classList.contains('img-zoom')) {
-          cursor.classList.add('with-text');
-          cursorText.textContent = '🔍';
-          cursor.style.border = '2px dashed white';
-          cursor.style.backgroundColor = 'transparent';
-        }
-        else if (image.classList.contains('img-frame')) {
-          cursor.style.width = '80px';
-          cursor.style.height = '80px';
-          cursor.style.borderRadius = '8px';
-          cursor.style.border = '2px solid var(--color-secondary)';
-          cursor.style.backgroundColor = 'transparent';
-        }
-        else if (image.classList.contains('img-explore')) {
-          cursor.classList.add('with-text');
-          cursorText.textContent = 'Explore';
-          cursor.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-          cursor.style.width = '80px';
-          cursor.style.height = '30px';
-          cursor.style.borderRadius = '15px';
-        }
-        else if (image.classList.contains('img-circle')) {
-          cursor.classList.add('with-text');
-          cursorText.textContent = 'That\'s me!';
-          cursor.style.border = '2px solid var(--color-accent)';
-          cursor.style.borderRadius = '50%';
-          cursor.style.width = '80px';
-          cursor.style.height = '80px';
+        if (particle.y > window.innerHeight) {
+          particle.y = window.innerHeight * Math.random();
+          particle.baseY = particle.y;
         }
       });
-      
-      image.addEventListener('mouseleave', () => {
-        cursor.classList.remove('hover-image', 'with-text');
-        cursorText.textContent = '';
-        cursor.style.border = '';
-        cursor.style.backgroundColor = '';
-        cursor.style.width = '';
-        cursor.style.height = '';
-        cursor.style.borderRadius = '';
-      });
     });
     
-    // Text hover effects
-    const headings = document.querySelectorAll('h3');
-    
-    headings.forEach(heading => {
-      heading.addEventListener('mouseenter', () => {
-        if (heading.classList.contains('heading-line')) {
-          cursor.classList.add('heading-hover');
-          cursor.style.height = '5px';
-          cursor.style.width = '40px';
-          cursor.style.borderRadius = '2px';
-          cursor.style.backgroundColor = 'var(--color-accent)';
+    // Control event listeners
+    document.getElementById('particle-count').addEventListener('input', function() {
+      config.count = parseInt(this.value);
+      countValue.textContent = config.count;
+      
+      // Update particle count
+      const currentCount = particles.length;
+      
+      if (currentCount < config.count) {
+        // Add more particles
+        for (let i = 0; i < config.count - currentCount; i++) {
+          createParticle();
         }
-        else if (heading.classList.contains('heading-sparkle')) {
-          cursor.classList.add('with-text', 'heading-hover');
-          cursorText.textContent = '✨';
-          cursor.style.mixBlendMode = 'overlay';
-        }
-      });
-      
-      heading.addEventListener('mouseleave', () => {
-        cursor.classList.remove('heading-hover', 'with-text');
-        cursorText.textContent = '';
-        cursor.style.width = '';
-        cursor.style.height = '';
-        cursor.style.borderRadius = '';
-        cursor.style.backgroundColor = '';
-        cursor.style.mixBlendMode = '';
-      });
-    });
-    
-    // Paragraph effects
-    const paragraphs = document.querySelectorAll('p');
-    
-    paragraphs.forEach(paragraph => {
-      paragraph.addEventListener('mouseenter', () => {
-        if (paragraph.classList.contains('text-highlight')) {
-          cursor.style.backgroundColor = 'rgba(255, 118, 117, 0.3)';
-          cursor.style.width = '20px';
-          cursor.style.height = '20px';
-          cursor.style.borderRadius = '50%';
-        }
-        else if (paragraph.classList.contains('text-dot')) {
-          cursor.style.width = '8px';
-          cursor.style.height = '8px';
-          cursor.style.borderRadius = '50%';
-          cursor.style.backgroundColor = 'var(--color-primary)';
-        }
-      });
-      
-      paragraph.addEventListener('mouseleave', () => {
-        cursor.style.width = '';
-        cursor.style.height = '';
-        cursor.style.borderRadius = '';
-        cursor.style.backgroundColor = '';
-      });
-    });
-    
-    // Quote effect
-    const quotes = document.querySelectorAll('.text-quote');
-    
-    quotes.forEach(quote => {
-      quote.addEventListener('mouseenter', () => {
-        cursor.classList.add('with-text');
-        cursorText.textContent = '"';
-        cursor.style.fontFamily = 'Georgia, serif';
-        cursor.style.fontSize = '24px';
-        cursor.style.color = 'var(--color-accent)';
-      });
-      
-      quote.addEventListener('mouseleave', () => {
-        cursor.classList.remove('with-text');
-        cursorText.textContent = '';
-        cursor.style.fontFamily = '';
-        cursor.style.fontSize = '';
-        cursor.style.color = '';
-      });
-    });
-    
-    // Stat number effect
-    const stats = document.querySelectorAll('.stat-number');
-    
-    stats.forEach(stat => {
-      stat.addEventListener('mouseenter', () => {
-        cursor.classList.add('stat-hover');
-        cursor.style.width = '30px';
-        cursor.style.height = '30px';
-        cursor.style.borderRadius = '5px';
-        cursor.style.backgroundColor = 'rgba(108, 92, 231, 0.2)';
-        cursor.style.transform = 'translate(-50%, -50%) rotate(45deg)';
-      });
-      
-      stat.addEventListener('mouseleave', () => {
-        cursor.classList.remove('stat-hover');
-        cursor.style.width = '';
-        cursor.style.height = '';
-        cursor.style.borderRadius = '';
-        cursor.style.backgroundColor = '';
-        cursor.style.transform = 'translate(-50%, -50%)';
-      });
-    });
-    
-    // Link effects
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    navLinks.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        cursor.classList.add('with-text', 'nav-hover');
-        cursorText.textContent = '→';
-        cursor.style.width = '40px';
-        cursor.style.height = '40px';
-        cursor.style.borderRadius = '5px';
-      });
-      
-      link.addEventListener('mouseleave', () => {
-        cursor.classList.remove('with-text', 'nav-hover');
-        cursorText.textContent = '';
-        cursor.style.width = '';
-        cursor.style.height = '';
-        cursor.style.borderRadius = '';
-      });
-    });
-    
-    // Social link effects
-    const socialLinks = document.querySelectorAll('.social-link');
-    
-    socialLinks.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        cursor.classList.add('with-text', 'pulse-effect');
-        cursorText.textContent = 'Connect';
-        cursor.style.backgroundColor = 'rgba(255, 118, 117, 0.3)';
-      });
-      
-      link.addEventListener('mouseleave', () => {
-        cursor.classList.remove('with-text', 'pulse-effect');
-        cursorText.textContent = '';
-        cursor.style.backgroundColor = '';
-      });
-    });
-    
-    // Footer link effects
-    const footerLinks = document.querySelectorAll('.footer-link');
-    
-    footerLinks.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        cursor.classList.add('with-text', 'footer-hover');
-        cursorText.textContent = '↗';
-        cursor.style.backgroundColor = 'rgba(108, 92, 231, 0.2)';
-      });
-      
-      link.addEventListener('mouseleave', () => {
-        cursor.classList.remove('with-text', 'footer-hover');
-        cursorText.textContent = '';
-        cursor.style.backgroundColor = '';
-      });
-    });
-    
-    // Logo link effects
-    const logoLinks = document.querySelectorAll('.logo-link');
-    
-    logoLinks.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        cursor.classList.add('with-text', 'logo-hover');
-        cursorText.textContent = 'Home';
-        cursor.style.backgroundColor = 'rgba(0, 210, 211, 0.2)';
-        cursor.style.borderRadius = '50%';
-      });
-      
-      link.addEventListener('mouseleave', () => {
-        cursor.classList.remove('with-text', 'logo-hover');
-        cursorText.textContent = '';
-        cursor.style.backgroundColor = '';
-        cursor.style.borderRadius = '';
-      });
-    });
-    
-    // Project card link effects
-    const projectLinks = document.querySelectorAll('.project-card-link');
-    
-    projectLinks.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        cursor.classList.add('with-text');
-        cursorText.textContent = 'ℹ️';
-        cursor.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-        cursor.style.borderRadius = '8px';
-      });
-      
-      link.addEventListener('mouseleave', () => {
-        cursor.classList.remove('with-text');
-        cursorText.textContent = '';
-        cursor.style.backgroundColor = '';
-        cursor.style.borderRadius = '';
-      });
-    });
-    
-    // Back to top effects
-    const backToTopLinks = document.querySelectorAll('.back-to-top');
-    
-    backToTopLinks.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        cursor.classList.add('with-text', 'top-hover');
-        cursorText.textContent = '↑';
-        cursor.style.backgroundColor = 'rgba(108, 92, 231, 0.3)';
-        cursor.style.borderRadius = '50%';
-      });
-      
-      link.addEventListener('mouseleave', () => {
-        cursor.classList.remove('with-text', 'top-hover');
-        cursorText.textContent = '';
-        cursor.style.backgroundColor = '';
-        cursor.style.borderRadius = '';
-      });
-    });
-    
-    // Skill item effects
-    const skillItems = document.querySelectorAll('.skill-item');
-    
-    skillItems.forEach(item => {
-      item.addEventListener('mouseenter', () => {
-        cursor.classList.add('with-text', 'skill-hover');
-        cursorText.textContent = '+';
-        cursor.style.borderRadius = '30px';
-        cursor.style.border = '2px dashed var(--color-accent)';
-        cursor.style.backgroundColor = 'transparent';
-      });
-      
-      item.addEventListener('mouseleave', () => {
-        cursor.classList.remove('with-text', 'skill-hover');
-        cursorText.textContent = '';
-        cursor.style.border = '';
-        cursor.style.backgroundColor = '';
-        cursor.style.borderRadius = '';
-      });
-    });
-    
-    // Filter button effects
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    
-    filterButtons.forEach(button => {
-      button.addEventListener('mouseenter', () => {
-        cursor.classList.add('filter-hover');
-        cursor.style.height = '5px';
-        cursor.style.width = '30px';
-        cursor.style.borderRadius = '2px';
-        cursor.style.backgroundColor = 'var(--color-accent)';
-      });
-      
-      button.addEventListener('mouseleave', () => {
-        cursor.classList.remove('filter-hover');
-        cursor.style.height = '';
-        cursor.style.width = '';
-        cursor.style.borderRadius = '';
-        cursor.style.backgroundColor = '';
-      });
-    });
-    
-    // Timeline item effects
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    
-    timelineItems.forEach(item => {
-      item.addEventListener('mouseenter', () => {
-        cursor.classList.add('timeline-hover');
-        cursor.style.width = '60px';
-        cursor.style.height = '60px';
-        cursor.style.borderRadius = '8px';
-        cursor.style.border = '2px solid var(--color-primary)';
-        cursor.style.backgroundColor = 'rgba(108, 92, 231, 0.1)';
-      });
-      
-      item.addEventListener('mouseleave', () => {
-        cursor.classList.remove('timeline-hover');
-        cursor.style.width = '';
-        cursor.style.height = '';
-        cursor.style.borderRadius = '';
-        cursor.style.border = '';
-        cursor.style.backgroundColor = '';
-      });
-    });
-    
-    // Search toggle effects
-    const searchToggles = document.querySelectorAll('.search-toggle');
-    
-    searchToggles.forEach(toggle => {
-      toggle.addEventListener('mouseenter', () => {
-        cursor.classList.add('with-text', 'search-hover');
-        cursorText.textContent = '🔍';
-        cursor.style.backgroundColor = 'rgba(0, 210, 211, 0.2)';
-      });
-      
-      toggle.addEventListener('mouseleave', () => {
-        cursor.classList.remove('with-text', 'search-hover');
-        cursorText.textContent = '';
-        cursor.style.backgroundColor = '';
-      });
-    });
-    
-    // Hamburger menu effects
-    const hamburgers = document.querySelectorAll('.hamburger');
-    
-    hamburgers.forEach(hamburger => {
-      hamburger.addEventListener('mouseenter', () => {
-        cursor.classList.add('menu-hover');
-        cursor.style.width = '40px';
-        cursor.style.height = '40px';
-        cursor.style.borderRadius = '5px';
-        cursor.style.backgroundColor = 'rgba(255, 118, 117, 0.2)';
-      });
-      
-      hamburger.addEventListener('mouseleave', () => {
-        cursor.classList.remove('menu-hover');
-        cursor.style.width = '';
-        cursor.style.height = '';
-        cursor.style.borderRadius = '';
-        cursor.style.backgroundColor = '';
-      });
-    });
-    
-    // Testimonial dot effects
-    const testimonialDots = document.querySelectorAll('.testimonial-dot');
-    
-    testimonialDots.forEach(dot => {
-      dot.addEventListener('mouseenter', () => {
-        cursor.classList.add('testimonial-hover');
-        cursor.style.borderRadius = '50%';
-        cursor.style.border = '2px solid var(--color-secondary)';
-        cursor.style.backgroundColor = 'rgba(0, 210, 211, 0.15)';
-      });
-      
-      dot.addEventListener('mouseleave', () => {
-        cursor.classList.remove('testimonial-hover');
-        cursor.style.borderRadius = '';
-        cursor.style.border = '';
-        cursor.style.backgroundColor = '';
-      });
-    });
-    
-    // Form input effects
-    const formInputs = document.querySelectorAll('.form-control');
-    
-    formInputs.forEach(input => {
-      input.addEventListener('mouseenter', () => {
-        cursor.classList.add('form-hover');
-        cursor.style.width = '15px';
-        cursor.style.height = '15px';
-        cursor.style.borderRadius = '50%';
-        cursor.style.backgroundColor = 'var(--color-secondary)';
-        cursor.style.opacity = '0.5';
-      });
-      
-      input.addEventListener('focus', () => {
-        cursor.classList.add('form-focus');
-        cursor.style.width = '5px';
-        cursor.style.height = '25px';
-        cursor.style.borderRadius = '2px';
-        cursor.style.backgroundColor = 'var(--color-accent)';
-        cursor.style.opacity = '0.7';
-      });
-      
-      input.addEventListener('mouseleave', () => {
-        if (!input.matches(':focus')) {
-          cursor.classList.remove('form-hover');
-          cursor.style.width = '';
-          cursor.style.height = '';
-          cursor.style.borderRadius = '';
-          cursor.style.backgroundColor = '';
-          cursor.style.opacity = '';
-        }
-      });
-      
-      input.addEventListener('blur', () => {
-        cursor.classList.remove('form-focus');
-        cursor.style.width = '';
-        cursor.style.height = '';
-        cursor.style.borderRadius = '';
-        cursor.style.backgroundColor = '';
-        cursor.style.opacity = '';
-      });
-    });
-    
-    // Creative effects
-    const creativeItems = document.querySelectorAll('.creative-item-1, .creative-item-2, .creative-item-3, .creative-item-4, .creative-item-5, .creative-item-6');
-    
-    creativeItems.forEach((item, index) => {
-      item.addEventListener('mouseenter', () => {
-        if (item.classList.contains('creative-item-1')) {
-          cursor.classList.add('pulse-effect');
-          cursor.style.backgroundColor = 'rgba(108, 92, 231, 0.3)';
-          cursor.style.width = '50px';
-          cursor.style.height = '50px';
-          cursor.style.borderRadius = '50%';
-        }
-        else if (item.classList.contains('creative-item-2')) {
-          cursor.classList.add('rotate-effect');
-          cursor.style.backgroundColor = 'rgba(0, 210, 211, 0.3)';
-          cursor.style.width = '40px';
-          cursor.style.height = '40px';
-          cursor.style.borderRadius = '5px';
-        }
-        else if (item.classList.contains('creative-item-3')) {
-          cursor.classList.add('bounce-effect');
-          cursor.style.backgroundColor = 'rgba(255, 118, 117, 0.3)';
-          cursor.style.width = '30px';
-          cursor.style.height = '30px';
-          cursor.style.borderRadius = '50%';
-        }
-        else if (item.classList.contains('creative-item-4')) {
-          cursor.classList.add('glitch-effect');
-          cursor.style.backgroundColor = 'rgba(108, 92, 231, 0.3)';
-          cursor.style.width = '40px';
-          cursor.style.height = '40px';
-          cursor.style.borderRadius = '3px';
-        }
-        else if (item.classList.contains('creative-item-5')) {
-          // Magnetic effect
-          item.addEventListener('mousemove', (e) => {
-            const rect = item.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            
-            const distanceX = e.clientX - centerX;
-            const distanceY = e.clientY - centerY;
-            
-            cursor.style.transform = `translate(calc(-50% + ${distanceX / 5}px), calc(-50% + ${distanceY / 5}px))`;
-          });
-          
-          cursor.style.backgroundColor = 'rgba(0, 210, 211, 0.2)';
-          cursor.style.width = '60px';
-          cursor.style.height = '60px';
-          cursor.style.borderRadius = '50%';
-        }
-        else if (item.classList.contains('creative-item-6')) {
-          // Particle burst effect
-          cursor.classList.add('with-text');
-          cursorText.textContent = '✨';
-          cursor.style.backgroundColor = 'transparent';
-          
-          // Create particles
-          for (let i = 0; i < 5; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'cursor-particle';
-            particle.style.cssText = `
-              position: absolute;
-              width: 8px;
-              height: 8px;
-              background-color: var(--color-accent);
-              border-radius: 50%;
-              pointer-events: none;
-              opacity: 0.8;
-              z-index: 9997;
-              animation: particleAnimation 1s forwards;
-            `;
-            document.body.appendChild(particle);
-            
-            // Random position around cursor
-            const angle = Math.random() * Math.PI * 2;
-            const distance = Math.random() * 50 + 20;
-            const x = cursorX + Math.cos(angle) * distance;
-            const y = cursorY + Math.sin(angle) * distance;
-            
-            particle.style.left = x + 'px';
-            particle.style.top = y + 'px';
-            
-            // Remove particle after animation
-            setTimeout(() => {
-              particle.remove();
-            }, 1000);
+      } else if (currentCount > config.count) {
+        // Remove excess particles
+        for (let i = 0; i < currentCount - config.count; i++) {
+          const particle = particles.pop();
+          if (particle && particle.element) {
+            particle.element.remove();
           }
         }
-      });
+      }
       
-      item.addEventListener('mouseleave', () => {
-        cursor.classList.remove('pulse-effect', 'rotate-effect', 'bounce-effect', 'glitch-effect', 'with-text');
-        cursorText.textContent = '';
-        cursor.style.backgroundColor = '';
-        cursor.style.width = '';
-        cursor.style.height = '';
-        cursor.style.borderRadius = '';
-        cursor.style.transform = 'translate(-50%, -50%)';
+      particleCountDisplay.textContent = particles.length;
+    });
+    
+    document.getElementById('min-size').addEventListener('input', function() {
+      config.minSize = parseInt(this.value);
+      updateSizeDisplay();
+    });
+    
+    document.getElementById('max-size').addEventListener('input', function() {
+      config.maxSize = parseInt(this.value);
+      updateSizeDisplay();
+    });
+    
+    function updateSizeDisplay() {
+      sizeValue.textContent = `${config.minSize}-${config.maxSize}px`;
+    }
+    
+    document.getElementById('speed').addEventListener('input', function() {
+      config.speed = parseFloat(this.value);
+      speedValue.textContent = config.speed;
+      
+      // Update particle speeds
+      particles.forEach(particle => {
+        particle.speedX = (Math.random() * 2 - 1) * config.speed;
+        particle.speedY = (Math.random() * 2 - 1) * config.speed;
       });
     });
     
-    // Add particle animation
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes particleAnimation {
-        0% { transform: scale(0); opacity: 1; }
-        100% { transform: scale(2); opacity: 0; }
-      }
-    `;
-    document.head.appendChild(style);
+    document.getElementById('interaction-radius').addEventListener('input', function() {
+      config.interactionRadius = parseInt(this.value);
+      interactionValue.textContent = `${config.interactionRadius}px`;
+    });
+    
+    // Color preset selection
+    document.querySelectorAll('.color-preset').forEach(preset => {
+      preset.addEventListener('click', function() {
+        // Update active state
+        document.querySelectorAll('.color-preset').forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Update colors
+        const colors = this.getAttribute('data-colors').split(',');
+        config.colors = colors;
+        
+        // Update existing particles
+        particles.forEach(particle => {
+          const newColor = config.colors[Math.floor(Math.random() * config.colors.length)];
+          particle.color = newColor;
+          
+          if (particle.shape === 'triangle') {
+            particle.element.style.borderBottomColor = newColor;
+          } else {
+            particle.element.style.backgroundColor = newColor;
+          }
+        });
+      });
+    });
+    
+    // Shape selection
+    document.querySelectorAll('.shape-option').forEach(option => {
+      option.addEventListener('click', function() {
+        // Toggle active state
+        this.classList.toggle('active');
+        
+        // Update shapes array
+        const shape = this.getAttribute('data-shape');
+        if (this.classList.contains('active')) {
+          // Add shape if not already in array
+          if (!config.shapes.includes(shape)) {
+            config.shapes.push(shape);
+          }
+        } else {
+          // Remove shape from array
+          const index = config.shapes.indexOf(shape);
+          if (index > -1) {
+            config.shapes.splice(index, 1);
+          }
+        }
+        
+        // Ensure at least one shape is selected
+        if (config.shapes.length === 0) {
+          config.shapes = ['circle'];
+          document.querySelector('.shape-option[data-shape="circle"]').classList.add('active');
+        }
+      });
+    });
+    
+    // Initialize
+    createParticles();
+    requestAnimationFrame(animateParticles);
   });
 </script>
 </body>
