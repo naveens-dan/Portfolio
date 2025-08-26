@@ -1,526 +1,1443 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Enhanced Particle Background</title>
+<title>Creative Personal Details Options</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #0F1119;
-    font-family: Arial, sans-serif;
+  /* Core Variables */
+  :root {
+    /* Primary palette */
+    --color-primary: #6C5CE7;
+    --color-primary-rgb: 108, 92, 231;
+    --color-secondary: #00D2D3;
+    --color-secondary-rgb: 0, 210, 211;
+    --color-accent: #FF7675;
+    --color-accent-rgb: 255, 118, 117;
+
+    /* Neutrals */
+    --color-bg: #FFFFFF;
+    --color-surface: #efefef;
+    --color-text-primary: #2D3436;
+    --color-text-secondary: #636E72;
+    --color-border: #DFE6E9;
+
+    /* Typography */
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Spacing */
+    --space-unit: 8px;
+    --space-xs: calc(var(--space-unit) * 1);
+    --space-sm: calc(var(--space-unit) * 2);
+    --space-md: calc(var(--space-unit) * 3);
+    --space-lg: calc(var(--space-unit) * 5);
+    --space-xl: calc(var(--space-unit) * 8);
+    --space-xxl: calc(var(--space-unit) * 13);
+
+    /* Transitions */
+    --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-medium: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  .particle-container {
+  /* Dark mode */
+  html[data-theme="dark"] {
+    --color-bg: #0F1119;
+    --color-surface: #1A1C2A;
+    --color-text-primary: #F5F6FA;
+    --color-text-secondary: #A4B0BE;
+    --color-border: #2F3542;
+  }
+
+  /* Base styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 62.5%;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg);
+    padding: 2rem;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-size: 3.2rem;
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    margin-bottom: var(--space-md);
+    color: var(--color-text-secondary);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+  }
+
+  .option-container {
+    margin-bottom: 8rem;
+    padding: 3rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+  }
+
+  .section-header {
+    margin-bottom: var(--space-xl);
+  }
+
+  .section-title-container {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .section-number {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+
+  .section-title {
+    position: relative;
+  }
+
+  .section-subtitle {
+    font-size: 1.8rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+  }
+
+  /* Theme toggle for demo */
+  .theme-toggle-container {
     position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+
+  .theme-toggle {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-family: var(--font-body);
+    font-size: 1.4rem;
+    color: var(--color-text-primary);
+    cursor: pointer;
+  }
+
+  /* Personal Details Option 1 - Interactive Terminal */
+  .personal-details-terminal {
+    position: relative;
+    background-color: #1E1E1E;
+    border-radius: 8px;
+    padding: var(--space-lg);
+    color: #F8F8F8;
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }
+
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid #444;
+  }
+
+  .terminal-buttons {
+    display: flex;
+    gap: 8px;
+    margin-right: var(--space-md);
+  }
+
+  .terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .terminal-button.red {
+    background-color: #FF5F56;
+  }
+
+  .terminal-button.yellow {
+    background-color: #FFBD2E;
+  }
+
+  .terminal-button.green {
+    background-color: #27C93F;
+  }
+
+  .terminal-title {
+    color: #ABABAB;
+    font-size: 1.4rem;
+  }
+
+  .terminal-content {
+    height: 500px;
+    overflow-y: auto;
+    padding-right: var(--space-md);
+  }
+
+  .terminal-line {
+    margin-bottom: var(--space-sm);
+    display: flex;
+  }
+
+  .terminal-prompt {
+    color: #6C5CE7;
+    margin-right: var(--space-sm);
+    flex-shrink: 0;
+  }
+
+  .terminal-command {
+    color: #00D2D3;
+    margin-right: var(--space-sm);
+    flex-shrink: 0;
+  }
+
+  .terminal-output {
+    color: #F8F8F8;
+    padding-left: var(--space-md);
+  }
+
+  .terminal-highlight {
+    color: #FF7675;
+    font-weight: bold;
+  }
+
+  .terminal-section {
+    margin-bottom: var(--space-lg);
+    border-bottom: 1px dashed #444;
+    padding-bottom: var(--space-md);
+  }
+
+  .terminal-section:last-child {
+    border-bottom: none;
+  }
+
+  .terminal-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background-color: #F8F8F8;
+    animation: blink 1s infinite;
+    vertical-align: middle;
+    margin-left: 2px;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .terminal-input-line {
+    display: flex;
+    align-items: center;
+  }
+
+  .terminal-input {
+    background: transparent;
+    border: none;
+    color: #F8F8F8;
+    font-family: 'Courier New', monospace;
+    font-size: 1.6rem;
+    outline: none;
+    flex-grow: 1;
+  }
+
+  /* Personal Details Option 2 - Interactive Card Deck */
+  .personal-details-cards {
+    position: relative;
+    padding: var(--space-xl) 0;
+  }
+
+  .card-deck {
+    position: relative;
+    height: 500px;
+    perspective: 1000px;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+
+  .info-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .info-card::before {
+    content: '';
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
+    z-index: 1;
   }
 
-  .particle {
-    position: absolute;
-    will-change: transform;
-    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
-  }
-
-  .circle {
-    border-radius: 50%;
-  }
-
-  .square {
-    border-radius: 4px;
-  }
-
-  .triangle {
-    width: 0 !important;
-    height: 0 !important;
-    background-color: transparent !important;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 17px solid #6C5CE7;
-  }
-
-  .star {
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-  }
-
-  .controls {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: rgba(26, 28, 42, 0.8);
-    padding: 15px;
-    border-radius: 10px;
+  .card-content {
+    position: relative;
+    z-index: 2;
+    padding: var(--space-xl);
     color: white;
-    z-index: 100;
-    width: 250px;
-  }
-
-  .control-group {
-    margin-bottom: 15px;
-  }
-
-  .control-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-
-  .control-input {
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 5px;
-  }
-
-  .color-presets {
+    height: 100%;
     display: flex;
-    gap: 5px;
-    margin-top: 5px;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 
-  .color-preset {
-    width: 20px;
-    height: 20px;
+  .card-title {
+    font-size: 3.2rem;
+    margin-bottom: var(--space-md);
+    color: white;
+  }
+
+  .card-description {
+    font-size: 1.8rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .card-nav {
+    position: absolute;
+    bottom: var(--space-lg);
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    z-index: 10;
+  }
+
+  .card-nav-dot {
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
-    border: 2px solid transparent;
+    transition: all var(--transition-fast);
   }
 
-  .color-preset.active {
-    border-color: white;
+  .card-nav-dot.active {
+    background-color: white;
+    transform: scale(1.3);
   }
 
-  .shape-options {
+  .card-nav-dot:hover {
+    background-color: white;
+  }
+
+  .card-arrows {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+    transform: translateY(-50%);
+  }
+
+  .card-arrow {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    color: white;
+    font-size: 2.4rem;
+  }
+
+  .card-arrow:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .card-arrow.prev {
+    margin-left: var(--space-md);
+  }
+
+  .card-arrow.next {
+    margin-right: var(--space-md);
+  }
+
+  /* Personal Details Option 3 - Interactive Infographic */
+  .personal-details-infographic {
+    position: relative;
+    padding: var(--space-xl) 0;
+  }
+
+  .infographic-container {
+    position: relative;
+    height: 600px;
+    background-color: var(--color-surface);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .infographic-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  .infographic-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    padding: var(--space-lg);
+    gap: var(--space-md);
+  }
+
+  .info-block {
+    background-color: rgba(var(--color-primary-rgb), 0.1);
+    border-radius: 12px;
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .info-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background-color: rgba(var(--color-primary-rgb), 0.2);
+  }
+
+  .info-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background-color: var(--color-primary);
+    transition: height var(--transition-medium);
+  }
+
+  .info-block:hover::before {
+    height: 100%;
+  }
+
+  .info-block-title {
+    font-size: 1.8rem;
+    margin-bottom: var(--space-xs);
+    color: var(--color-primary);
+  }
+
+  .info-block-content {
+    color: var(--color-text-secondary);
+  }
+
+  .info-block-icon {
+    position: absolute;
+    bottom: var(--space-sm);
+    right: var(--space-sm);
+    font-size: 3rem;
+    opacity: 0.2;
+    color: var(--color-primary);
+  }
+
+  .info-block.large {
+    grid-column: span 4;
+    grid-row: span 4;
+  }
+
+  .info-block.medium {
+    grid-column: span 3;
+    grid-row: span 3;
+  }
+
+  .info-block.small {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .info-block.primary {
+    background-color: rgba(var(--color-primary-rgb), 0.1);
+  }
+
+  .info-block.primary:hover {
+    background-color: rgba(var(--color-primary-rgb), 0.2);
+  }
+
+  .info-block.primary::before {
+    background-color: var(--color-primary);
+  }
+
+  .info-block.primary .info-block-title {
+    color: var(--color-primary);
+  }
+
+  .info-block.primary .info-block-icon {
+    color: var(--color-primary);
+  }
+
+  .info-block.secondary {
+    background-color: rgba(var(--color-secondary-rgb), 0.1);
+  }
+
+  .info-block.secondary:hover {
+    background-color: rgba(var(--color-secondary-rgb), 0.2);
+  }
+
+  .info-block.secondary::before {
+    background-color: var(--color-secondary);
+  }
+
+  .info-block.secondary .info-block-title {
+    color: var(--color-secondary);
+  }
+
+  .info-block.secondary .info-block-icon {
+    color: var(--color-secondary);
+  }
+
+  .info-block.accent {
+    background-color: rgba(var(--color-accent-rgb), 0.1);
+  }
+
+  .info-block.accent:hover {
+    background-color: rgba(var(--color-accent-rgb), 0.2);
+  }
+
+  .info-block.accent::before {
+    background-color: var(--color-accent);
+  }
+
+  .info-block.accent .info-block-title {
+    color: var(--color-accent);
+  }
+
+  .info-block.accent .info-block-icon {
+    color: var(--color-accent);
+  }
+
+  .language-progress {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-xs);
+  }
+
+  .language-name {
+    margin-right: var(--space-sm);
+    min-width: 80px;
+  }
+
+  .language-bar {
+    flex-grow: 1;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .language-level {
+    height: 100%;
+    background-color: var(--color-secondary);
+    border-radius: 3px;
+  }
+
+  .hobby-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
-    margin-top: 5px;
+    gap: var(--space-xs);
   }
 
-  .shape-option {
-    padding: 5px 10px;
-    background-color: rgba(108, 92, 231, 0.3);
-    border-radius: 15px;
+  .hobby-tag {
+    padding: 4px 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    font-size: 1.2rem;
+    transition: all var(--transition-fast);
+  }
+
+  .hobby-tag:hover {
+    background-color: var(--color-accent);
+    transform: translateY(-3px);
+  }
+
+  /* Personal Details Option 4 - 3D Cube */
+  .personal-details-cube {
+    position: relative;
+    padding: var(--space-xl) 0;
+    height: 600px;
+  }
+
+  .scene {
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cube {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(-15deg) rotateY(15deg);
+    transition: transform 1s;
+  }
+
+  .cube-face {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border: 1px solid rgba(var(--color-primary-rgb), 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-lg);
+    background-color: rgba(var(--color-primary-rgb), 0.05);
+    backface-visibility: hidden;
+    overflow: auto;
+  }
+
+  .cube-face-front {
+    transform: translateZ(200px);
+    background-color: rgba(var(--color-primary-rgb), 0.05);
+  }
+
+  .cube-face-back {
+    transform: rotateY(180deg) translateZ(200px);
+    background-color: rgba(var(--color-secondary-rgb), 0.05);
+  }
+
+  .cube-face-right {
+    transform: rotateY(90deg) translateZ(200px);
+    background-color: rgba(var(--color-accent-rgb), 0.05);
+  }
+
+  .cube-face-left {
+    transform: rotateY(-90deg) translateZ(200px);
+    background-color: rgba(var(--color-primary-rgb), 0.05);
+  }
+
+  .cube-face-top {
+    transform: rotateX(90deg) translateZ(200px);
+    background-color: rgba(var(--color-secondary-rgb), 0.05);
+  }
+
+  .cube-face-bottom {
+    transform: rotateX(-90deg) translateZ(200px);
+    background-color: rgba(var(--color-accent-rgb), 0.05);
+  }
+
+  .cube-nav {
+    position: absolute;
+    bottom: var(--space-lg);
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    z-index: 10;
+  }
+
+  .cube-nav-btn {
+    padding: var(--space-sm) var(--space-md);
+    background-color: rgba(var(--color-primary-rgb), 0.1);
+    border: none;
+    border-radius: 30px;
+    color: var(--color-text-primary);
     cursor: pointer;
-    font-size: 12px;
+    transition: all var(--transition-fast);
+    font-family: var(--font-body);
+    font-size: 1.4rem;
   }
 
-  .shape-option.active {
-    background-color: rgba(108, 92, 231, 0.8);
-  }
-
-  .stats {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
+  .cube-nav-btn:hover {
+    background-color: var(--color-primary);
     color: white;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 12px;
+  }
+
+  .cube-nav-btn.active {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .cube-face-title {
+    font-size: 2.4rem;
+    margin-bottom: var(--space-lg);
+    color: var(--color-primary);
+    text-align: center;
+  }
+
+  .cube-face-content {
+    width: 100%;
+  }
+
+  .cube-list {
+    list-style: none;
+    width: 100%;
+  }
+
+  .cube-list-item {
+    display: flex;
+    margin-bottom: var(--space-md);
+    align-items: flex-start;
+  }
+
+  .cube-list-icon {
+    margin-right: var(--space-sm);
+    font-size: 2rem;
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  .cube-list-content {
+    flex-grow: 1;
+  }
+
+  .cube-list-label {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--color-text-primary);
+  }
+
+  .cube-list-value {
+    color: var(--color-text-secondary);
+  }
+
+  .cube-objective {
+    font-style: italic;
+    line-height: 1.8;
+    text-align: center;
+    color: var(--color-text-secondary);
+    padding: 0 var(--space-lg);
+  }
+
+  .cube-languages {
+    width: 100%;
+  }
+
+  .cube-language {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-md);
+  }
+
+  .cube-language-flag {
+    font-size: 2.4rem;
+    margin-right: var(--space-sm);
+  }
+
+  .cube-language-info {
+    flex-grow: 1;
+  }
+
+  .cube-language-name {
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .cube-language-level {
+    font-size: 1.4rem;
+    color: var(--color-text-secondary);
+  }
+
+  .cube-hobbies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    justify-content: center;
+  }
+
+  .cube-hobby {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .cube-hobby-icon {
+    font-size: 2.4rem;
+    color: var(--color-accent);
+  }
+
+  .cube-hobby-name {
+    font-size: 1.4rem;
+    color: var(--color-text-secondary);
   }
 </style>
 </head>
 <body>
-<div class="particle-container" id="particle-container"></div>
-
-<div class="controls" id="controls">
-  <h3>Particle Settings</h3>
-  
-  <div class="control-group">
-    <label class="control-label">Particle Count: <span id="count-value">60</span></label>
-    <input type="range" class="control-input" id="particle-count" min="20" max="200" value="60">
-  </div>
-  
-  <div class="control-group">
-    <label class="control-label">Size Range: <span id="size-value">3-12px</span></label>
-    <input type="range" class="control-input" id="min-size" min="1" max="10" value="3">
-    <input type="range" class="control-input" id="max-size" min="5" max="20" value="12">
-  </div>
-  
-  <div class="control-group">
-    <label class="control-label">Speed: <span id="speed-value">1</span></label>
-    <input type="range" class="control-input" id="speed" min="0.2" max="3" step="0.1" value="1">
-  </div>
-  
-  <div class="control-group">
-    <label class="control-label">Mouse Interaction: <span id="interaction-value">150px</span></label>
-    <input type="range" class="control-input" id="interaction-radius" min="50" max="300" value="150">
-  </div>
-  
-  <div class="control-group">
-    <label class="control-label">Color Scheme</label>
-    <div class="color-presets">
-      <div class="color-preset active" style="background: linear-gradient(45deg, #6C5CE7, #00D2D3, #FF7675);" data-colors="#6C5CE7,#00D2D3,#FF7675"></div>
-      <div class="color-preset" style="background: linear-gradient(45deg, #2ecc71, #1abc9c, #3498db);" data-colors="#2ecc71,#1abc9c,#3498db"></div>
-      <div class="color-preset" style="background: linear-gradient(45deg, #e74c3c, #e67e22, #f1c40f);" data-colors="#e74c3c,#e67e22,#f1c40f"></div>
-      <div class="color-preset" style="background: linear-gradient(45deg, #9b59b6, #8e44ad, #2980b9);" data-colors="#9b59b6,#8e44ad,#2980b9"></div>
-      <div class="color-preset" style="background: linear-gradient(45deg, #ecf0f1, #bdc3c7, #95a5a6);" data-colors="#ecf0f1,#bdc3c7,#95a5a6"></div>
-    </div>
-  </div>
-  
-  <div class="control-group">
-    <label class="control-label">Shapes</label>
-    <div class="shape-options">
-      <div class="shape-option active" data-shape="circle">Circles</div>
-      <div class="shape-option active" data-shape="square">Squares</div>
-      <div class="shape-option active" data-shape="triangle">Triangles</div>
-      <div class="shape-option active" data-shape="star">Stars</div>
-    </div>
-  </div>
+<!-- Theme Toggle for Demo -->
+<div class="theme-toggle-container">
+  <button class="theme-toggle" id="theme-toggle">Toggle Theme</button>
 </div>
 
-<div class="stats" id="stats">
-  FPS: <span id="fps">60</span> | Particles: <span id="particle-count-display">60</span>
+<h1>Creative Personal Details Design Options</h1>
+
+<!-- Personal Details Option 1 - Interactive Terminal -->
+<div class="option-container">
+  <h2>Personal Details - Option 1: Interactive Terminal</h2>
+  
+  <section class="personal-details-terminal">
+    <div class="terminal-header">
+      <div class="terminal-buttons">
+        <div class="terminal-button red"></div>
+        <div class="terminal-button yellow"></div>
+        <div class="terminal-button green"></div>
+      </div>
+      <div class="terminal-title">naveen@portfolio ~ personal-details</div>
+    </div>
+    
+    <div class="terminal-content">
+      <!-- Personal Info Section -->
+      <div class="terminal-section">
+        <div class="terminal-line">
+          <span class="terminal-prompt">naveen@portfolio:~$</span>
+          <span class="terminal-command">get-personal-info</span>
+        </div>
+        
+        <div class="terminal-line">
+          <span class="terminal-output">
+            {<br>
+            &nbsp;&nbsp;"name": "<span class="terminal-highlight">Naveen S</span>",<br>
+            &nbsp;&nbsp;"dob": "<span class="terminal-highlight">09 June 1998</span>",<br>
+            &nbsp;&nbsp;"father": "<span class="terminal-highlight">Shanmugam N</span>",<br>
+            &nbsp;&nbsp;"address": "<span class="terminal-highlight">30, Lakshmipuram South, Jawahar Bazaar, Karur, Tamil Nadu 639001</span>",<br>
+            &nbsp;&nbsp;"marital_status": "<span class="terminal-highlight">Married</span>",<br>
+            &nbsp;&nbsp;"nationality": "<span class="terminal-highlight">Indian</span>"<br>
+            }
+          </span>
+        </div>
+      </div>
+      
+      <!-- Languages Section -->
+      <div class="terminal-section">
+        <div class="terminal-line">
+          <span class="terminal-prompt">naveen@portfolio:~$</span>
+          <span class="terminal-command">list-languages</span>
+        </div>
+        
+        <div class="terminal-line">
+          <span class="terminal-output">
+            LANGUAGE&nbsp;&nbsp;&nbsp;&nbsp;PROFICIENCY&nbsp;&nbsp;&nbsp;&nbsp;SKILLS<br>
+            -----------------------------------------<br>
+            <span class="terminal-highlight">Tamil</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Native&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Speaking, Reading, Writing<br>
+            <span class="terminal-highlight">English</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fluent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Speaking, Reading, Writing<br>
+            <span class="terminal-highlight">Hindi</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Basic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Speaking
+          </span>
+        </div>
+      </div>
+      
+      <!-- Hobbies Section -->
+      <div class="terminal-section">
+        <div class="terminal-line">
+          <span class="terminal-prompt">naveen@portfolio:~$</span>
+          <span class="terminal-command">show-hobbies</span>
+        </div>
+        
+        <div class="terminal-line">
+          <span class="terminal-output">
+            [<span class="terminal-highlight">'Audio Books'</span>, <span class="terminal-highlight">'Listening Music'</span>, <span class="terminal-highlight">'YouTube'</span>, <span class="terminal-highlight">'Watch Anime'</span>, <span class="terminal-highlight">'Chess'</span>]
+          </span>
+        </div>
+      </div>
+      
+      <!-- Career Objective Section -->
+      <div class="terminal-section">
+        <div class="terminal-line">
+          <span class="terminal-prompt">naveen@portfolio:~$</span>
+          <span class="terminal-command">cat career-objective.txt</span>
+        </div>
+        
+        <div class="terminal-line">
+          <span class="terminal-output">
+            "<span class="terminal-highlight">To work in an organization which provides a chance for my ability to prove myself best and like to make every opportunity successful and make contribution in each and every success.</span>"
+          </span>
+        </div>
+      </div>
+      
+      <!-- Interactive Input -->
+      <div class="terminal-input-line">
+        <span class="terminal-prompt">naveen@portfolio:~$</span>
+        <input type="text" class="terminal-input" placeholder="Type a command...">
+        <span class="terminal-cursor"></span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Personal Details Option 2 - Interactive Card Deck -->
+<div class="option-container">
+  <h2>Personal Details - Option 2: Interactive Card Deck</h2>
+  
+  <section class="personal-details-cards">
+    <div class="card-deck">
+      <!-- Card 1: Personal Info -->
+      <div class="info-card" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); z-index: 5; transform: translateZ(0px) translateX(0) scale(1);">
+        <div class="card-content">
+          <h3 class="card-title">Personal Info</h3>
+          <div class="card-description">
+            <p><strong>Date of Birth:</strong> 09 June 1998</p>
+            <p><strong>Father's Name:</strong> Shanmugam N</p>
+            <p><strong>Address:</strong> 30, Lakshmipuram South, Jawahar Bazaar, Karur, Tamil Nadu 639001</p>
+            <p><strong>Marital Status:</strong> Married</p>
+            <p><strong>Nationality:</strong> Indian</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Card 2: Languages -->
+      <div class="info-card" style="background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); z-index: 4; transform: translateZ(-100px) translateX(0) scale(0.95) rotateY(-10deg);">
+        <div class="card-content">
+          <h3 class="card-title">Languages</h3>
+          <div class="card-description">
+            <div class="language-progress">
+              <span class="language-name">🇮🇳 Tamil</span>
+              <div class="language-bar">
+                <div class="language-level" style="width: 100%"></div>
+              </div>
+            </div>
+            <div class="language-progress">
+              <span class="language-name">🇬🇧 English</span>
+              <div class="language-bar">
+                <div class="language-level" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="language-progress">
+              <span class="language-name">🇮🇳 Hindi</span>
+              <div class="language-bar">
+                <div class="language-level" style="width: 40%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Card 3: Hobbies -->
+      <div class="info-card" style="background-image: url('https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); z-index: 3; transform: translateZ(-200px) translateX(0) scale(0.9) rotateY(-20deg);">
+        <div class="card-content">
+          <h3 class="card-title">Hobbies</h3>
+          <div class="card-description">
+            <div class="hobby-tags">
+              <span class="hobby-tag">Audio Books</span>
+              <span class="hobby-tag">Listening Music</span>
+              <span class="hobby-tag">YouTube</span>
+              <span class="hobby-tag">Watch Anime</span>
+              <span class="hobby-tag">Chess</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Card 4: Career Objective -->
+      <div class="info-card" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); z-index: 2; transform: translateZ(-300px) translateX(0) scale(0.85) rotateY(-30deg);">
+        <div class="card-content">
+          <h3 class="card-title">Career Objective</h3>
+          <div class="card-description">
+            <p>"To work in an organization which provides a chance for my ability to prove myself best and like to make every opportunity successful and make contribution in each and every success."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card-nav">
+      <div class="card-nav-dot active" data-index="0"></div>
+      <div class="card-nav-dot" data-index="1"></div>
+      <div class="card-nav-dot" data-index="2"></div>
+      <div class="card-nav-dot" data-index="3"></div>
+    </div>
+    
+    <div class="card-arrows">
+      <div class="card-arrow prev">←</div>
+      <div class="card-arrow next">→</div>
+    </div>
+  </section>
+</div>
+
+<!-- Personal Details Option 3 - Interactive Infographic -->
+<div class="option-container">
+  <h2>Personal Details - Option 3: Interactive Infographic</h2>
+  
+  <section class="personal-details-infographic">
+    <div class="infographic-container">
+      <div class="infographic-bg">
+        <!-- SVG background pattern could go here -->
+      </div>
+      
+      <div class="infographic-grid">
+        <!-- Personal Info Block -->
+        <div class="info-block large primary" style="grid-column: 1 / span 4; grid-row: 1 / span 4;">
+          <h3 class="info-block-title">Personal Information</h3>
+          <div class="info-block-content">
+            <p><strong>Date of Birth:</strong> 09 June 1998</p>
+            <p><strong>Father's Name:</strong> Shanmugam N</p>
+            <p><strong>Address:</strong> 30, Lakshmipuram South, Jawahar Bazaar, Karur</p>
+            <p><strong>Marital Status:</strong> Married</p>
+            <p><strong>Nationality:</strong> Indian</p>
+          </div>
+          <div class="info-block-icon">👤</div>
+        </div>
+        
+        <!-- Languages Block -->
+        <div class="info-block medium secondary" style="grid-column: 5 / span 3; grid-row: 1 / span 3;">
+          <h3 class="info-block-title">Languages</h3>
+          <div class="info-block-content">
+            <div class="language-progress">
+              <span class="language-name">Tamil</span>
+              <div class="language-bar">
+                <div class="language-level" style="width: 100%"></div>
+              </div>
+            </div>
+            <div class="language-progress">
+              <span class="language-name">English</span>
+              <div class="language-bar">
+                <div class="language-level" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="language-progress">
+              <span class="language-name">Hindi</span>
+              <div class="language-bar">
+                <div class="language-level" style="width: 40%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="info-block-icon">🗣️</div>
+        </div>
+        
+        <!-- Hobbies Block -->
+        <div class="info-block medium accent" style="grid-column: 8 / span 3; grid-row: 1 / span 3;">
+          <h3 class="info-block-title">Hobbies</h3>
+          <div class="info-block-content">
+            <div class="hobby-tags">
+              <span class="hobby-tag">Audio Books</span>
+              <span class="hobby-tag">Listening Music</span>
+              <span class="hobby-tag">YouTube</span>
+              <span class="hobby-tag">Watch Anime</span>
+              <span class="hobby-tag">Chess</span>
+            </div>
+          </div>
+          <div class="info-block-icon">🎮</div>
+        </div>
+        
+        <!-- Career Objective Block -->
+        <div class="info-block large primary" style="grid-column: 5 / span 6; grid-row: 4 / span 4;">
+          <h3 class="info-block-title">Career Objective</h3>
+          <div class="info-block-content">
+            <p style="font-style: italic; line-height: 1.8;">"To work in an organization which provides a chance for my ability to prove myself best and like to make every opportunity successful and make contribution in each and every success."</p>
+          </div>
+          <div class="info-block-icon">🎯</div>
+        </div>
+        
+        <!-- Education Block -->
+        <div class="info-block medium secondary" style="grid-column: 1 / span 4; grid-row: 5 / span 3;">
+          <h3 class="info-block-title">Education</h3>
+          <div class="info-block-content">
+            <p><strong>BSc Mathematics</strong><br>Jairams Arts and Science College, Karur<br>2015 - 2018</p>
+            <p><strong>Higher Secondary</strong><br>Vivekanada Hr. Sec. School, Karur<br>2013 - 2015</p>
+          </div>
+          <div class="info-block-icon">🎓</div>
+        </div>
+        
+        <!-- Contact Block -->
+        <div class="info-block small accent" style="grid-column: 11 / span 2; grid-row: 1 / span 2;">
+          <h3 class="info-block-title">Contact</h3>
+          <div class="info-block-content">
+            <p>naveenbsc1@gmail.com<br>+91 97877 52302</p>
+          </div>
+          <div class="info-block-icon">📱</div>
+        </div>
+        
+        <!-- Location Block -->
+        <div class="info-block small secondary" style="grid-column: 11 / span 2; grid-row: 3 / span 2;">
+          <h3 class="info-block-title">Location</h3>
+          <div class="info-block-content">
+            <p>Tamil Nadu, India</p>
+          </div>
+          <div class="info-block-icon">📍</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Personal Details Option 4 - 3D Cube -->
+<div class="option-container">
+  <h2>Personal Details - Option 4: 3D Cube</h2>
+  
+  <section class="personal-details-cube">
+    <div class="scene">
+      <div class="cube" id="cube">
+        <!-- Front Face - Personal Info -->
+        <div class="cube-face cube-face-front">
+          <h3 class="cube-face-title">Personal Information</h3>
+          <div class="cube-face-content">
+            <ul class="cube-list">
+              <li class="cube-list-item">
+                <div class="cube-list-icon">📅</div>
+                <div class="cube-list-content">
+                  <div class="cube-list-label">Date of Birth</div>
+                  <div class="cube-list-value">09 June 1998</div>
+                </div>
+              </li>
+              <li class="cube-list-item">
+                <div class="cube-list-icon">👨‍👨‍👦</div>
+                <div class="cube-list-content">
+                  <div class="cube-list-label">Father's Name</div>
+                  <div class="cube-list-value">Shanmugam N</div>
+                </div>
+              </li>
+              <li class="cube-list-item">
+                <div class="cube-list-icon">🏠</div>
+                <div class="cube-list-content">
+                  <div class="cube-list-label">Address</div>
+                  <div class="cube-list-value">30, Lakshmipuram South, Jawahar Bazaar, Karur, Tamil Nadu 639001</div>
+                </div>
+              </li>
+              <li class="cube-list-item">
+                <div class="cube-list-icon">💍</div>
+                <div class="cube-list-content">
+                  <div class="cube-list-label">Marital Status</div>
+                  <div class="cube-list-value">Married</div>
+                </div>
+              </li>
+              <li class="cube-list-item">
+                <div class="cube-list-icon">🌐</div>
+                <div class="cube-list-content">
+                  <div class="cube-list-label">Nationality</div>
+                  <div class="cube-list-value">Indian</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Back Face - Career Objective -->
+        <div class="cube-face cube-face-back">
+          <h3 class="cube-face-title">Career Objective</h3>
+          <div class="cube-face-content">
+            <p class="cube-objective">"To work in an organization which provides a chance for my ability to prove myself best and like to make every opportunity successful and make contribution in each and every success."</p>
+          </div>
+        </div>
+        
+        <!-- Right Face - Languages -->
+        <div class="cube-face cube-face-right">
+          <h3 class="cube-face-title">Languages</h3>
+          <div class="cube-face-content">
+            <div class="cube-languages">
+              <div class="cube-language">
+                <div class="cube-language-flag">🇮🇳</div>
+                <div class="cube-language-info">
+                  <div class="cube-language-name">Tamil</div>
+                  <div class="cube-language-level">Native - Speaking, Reading, Writing</div>
+                </div>
+              </div>
+              <div class="cube-language">
+                <div class="cube-language-flag">🇬🇧</div>
+                <div class="cube-language-info">
+                  <div class="cube-language-name">English</div>
+                  <div class="cube-language-level">Fluent - Speaking, Reading, Writing</div>
+                </div>
+              </div>
+              <div class="cube-language">
+                <div class="cube-language-flag">🇮🇳</div>
+                <div class="cube-language-info">
+                  <div class="cube-language-name">Hindi</div>
+                  <div class="cube-language-level">Basic - Speaking</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Left Face - Hobbies -->
+        <div class="cube-face cube-face-left">
+          <h3 class="cube-face-title">Hobbies</h3>
+          <div class="cube-face-content">
+            <div class="cube-hobbies">
+              <div class="cube-hobby">
+                <div class="cube-hobby-icon">🎧</div>
+                <div class="cube-hobby-name">Audio Books</div>
+              </div>
+              <div class="cube-hobby">
+                <div class="cube-hobby-icon">🎵</div>
+                <div class="cube-hobby-name">Music</div>
+              </div>
+              <div class="cube-hobby">
+                <div class="cube-hobby-icon">📺</div>
+                <div class="cube-hobby-name">YouTube</div>
+              </div>
+              <div class="cube-hobby">
+                <div class="cube-hobby-icon">🎬</div>
+                <div class="cube-hobby-name">Anime</div>
+              </div>
+              <div class="cube-hobby">
+                <div class="cube-hobby-icon">♟️</div>
+                <div class="cube-hobby-name">Chess</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Top Face - Education -->
+        <div class="cube-face cube-face-top">
+          <h3 class="cube-face-title">Education</h3>
+          <div class="cube-face-content">
+            <ul class="cube-list">
+              <li class="cube-list-item">
+                <div class="cube-list-icon">🎓</div>
+                <div class="cube-list-content">
+                  <div class="cube-list-label">BSc Mathematics (2015-2018)</div>
+                  <div class="cube-list-value">Jairams Arts and Science College, Karur</div>
+                </div>
+              </li>
+              <li class="cube-list-item">
+                <div class="cube-list-icon">🏫</div>
+                <div class="cube-list-content">
+                  <div class="cube-list-label">Higher Secondary (2013-2015)</div>
+                  <div class="cube-list-value">Vivekanada Hr. Sec. School, Karur</div>
+                </div>
+              </li>
+              <li class="cube-list-item">
+                <div class="cube-list-icon">📚</div>
+                <div class="cube-list-content">
+                  <div class="cube-list-label">SSLC (2013)</div>
+                  <div class="cube-list-value">MPL Kumaran School, Karur</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Bottom Face - Contact -->
+        <div class="cube-face cube-face-bottom">
+          <h3 class="cube-face-title">Contact</h3>
+          <div class="cube-face-content">
+            <ul class="cube-list">
+              <li class="cube-list-item">
+                <div class="cube-list-icon">📧</div>
+                <div class="cube-list-content">
+                  <div class="cube-list-label">Email</div>
+                  <div class="cube-list-value">naveenbsc1@gmail.com</div>
+                </div>
+              </li>
+              <li class="cube-list-item">
+                <div class="cube-list-icon">📱</div>
+                <div class="cube-list-content">
+                  <div class="cube-list-label">Phone</div>
+                  <div class="cube-list-value">+91 97877 52302</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="cube-nav">
+      <button class="cube-nav-btn active" data-face="front">Personal</button>
+      <button class="cube-nav-btn" data-face="right">Languages</button>
+      <button class="cube-nav-btn" data-face="back">Objective</button>
+      <button class="cube-nav-btn" data-face="left">Hobbies</button>
+      <button class="cube-nav-btn" data-face="top">Education</button>
+      <button class="cube-nav-btn" data-face="bottom">Contact</button>
+    </div>
+  </section>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Get DOM elements
-    const particleContainer = document.getElementById('particle-container');
-    const countValue = document.getElementById('count-value');
-    const sizeValue = document.getElementById('size-value');
-    const speedValue = document.getElementById('speed-value');
-    const interactionValue = document.getElementById('interaction-value');
-    const fpsDisplay = document.getElementById('fps');
-    const particleCountDisplay = document.getElementById('particle-count-display');
-    
-    // Configuration object
-    const config = {
-      count: 60,
-      minSize: 3,
-      maxSize: 12,
-      speed: 1,
-      interactionRadius: 150,
-      colors: ['#6C5CE7', '#00D2D3', '#FF7675'],
-      shapes: ['circle', 'square', 'triangle', 'star'],
-      minOpacity: 0.05,
-      maxOpacity: 0.2
-    };
-    
-    // Particles array
-    let particles = [];
-    
-    // Mouse position
-    let mouseX = 0;
-    let mouseY = 0;
-    let isMouseMoving = false;
-    let mouseMovingTimeout;
-    
-    // FPS tracking
-    let lastTimestamp = 0;
-    let fpsArray = [];
-    
-    // Create particles
-    function createParticles() {
-      // Clear existing particles
-      while (particleContainer.firstChild) {
-        particleContainer.removeChild(particleContainer.firstChild);
-      }
-      particles = [];
+  // Theme toggle functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle.addEventListener('click', function() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newTheme);
+  });
+  
+  // Terminal functionality
+  const terminalInput = document.querySelector('.terminal-input');
+  terminalInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      const command = this.value.trim().toLowerCase();
+      this.value = '';
       
-      // Create new particles
-      for (let i = 0; i < config.count; i++) {
-        createParticle();
-      }
-      
-      // Update display
-      particleCountDisplay.textContent = particles.length;
+      // You could add actual command processing here
+      console.log('Command entered:', command);
     }
+  });
+  
+  // Card Deck functionality
+  const cards = document.querySelectorAll('.info-card');
+  const cardDots = document.querySelectorAll('.card-nav-dot');
+  const prevBtn = document.querySelector('.card-arrow.prev');
+  const nextBtn = document.querySelector('.card-arrow.next');
+  let currentCardIndex = 0;
+  
+  function updateCards(newIndex) {
+    currentCardIndex = newIndex;
     
-    function createParticle() {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
+    cards.forEach((card, index) => {
+      let zIndex = 5 - Math.abs(index - currentCardIndex);
+      let scale = 1 - (Math.abs(index - currentCardIndex) * 0.05);
+      let translateZ = -100 * Math.abs(index - currentCardIndex);
+      let rotateY = -10 * Math.abs(index - currentCardIndex);
       
-      // Random shape
-      const shape = config.shapes[Math.floor(Math.random() * config.shapes.length)];
-      particle.classList.add(shape);
-      
-      // Random size
-      const size = Math.random() * (config.maxSize - config.minSize) + config.minSize;
-      
-      // Random position
-      const x = Math.random() * window.innerWidth;
-      const y = Math.random() * window.innerHeight;
-      
-      // Random opacity
-      const opacity = Math.random() * (config.maxOpacity - config.minOpacity) + config.minOpacity;
-      
-      // Random color
-      const color = config.colors[Math.floor(Math.random() * config.colors.length)];
-      
-      // Set styles
-      particle.style.width = `${size}px`;
-      particle.style.height = `${size}px`;
-      particle.style.left = `${x}px`;
-      particle.style.top = `${y}px`;
-      particle.style.opacity = opacity.toString();
-      
-      if (shape === 'triangle') {
-        // For triangles, set the border sizes proportionally to the particle size
-        particle.style.borderLeftWidth = `${size/2}px`;
-        particle.style.borderRightWidth = `${size/2}px`;
-        particle.style.borderBottomWidth = `${size * 0.866}px`; // height of equilateral triangle
-        particle.style.borderBottomColor = color;
+      card.style.zIndex = zIndex;
+      card.style.transform = `translateZ(${translateZ}px) translateX(0) scale(${scale}) rotateY(${rotateY}deg)`;
+    });
+    
+    cardDots.forEach((dot, index) => {
+      if (index === currentCardIndex) {
+        dot.classList.add('active');
       } else {
-        particle.style.backgroundColor = color;
-      }
-      
-      particleContainer.appendChild(particle);
-      
-      // Store particle properties
-      const particleObj = {
-        element: particle,
-        x: x,
-        y: y,
-        size: size,
-        speedX: (Math.random() * 2 - 1) * config.speed,
-        speedY: (Math.random() * 2 - 1) * config.speed,
-        opacity: opacity,
-        color: color,
-        shape: shape,
-        baseX: x,
-        baseY: y,
-        density: (Math.random() * 30) + 10,
-        angle: Math.random() * 360 // For rotation
-      };
-      
-      particles.push(particleObj);
-      return particleObj;
-    }
-    
-    // Animation loop
-    function animateParticles(timestamp) {
-      // Calculate FPS
-      if (lastTimestamp) {
-        const fps = 1000 / (timestamp - lastTimestamp);
-        fpsArray.push(fps);
-        if (fpsArray.length > 30) fpsArray.shift();
-        
-        const averageFps = Math.round(fpsArray.reduce((sum, value) => sum + value, 0) / fpsArray.length);
-        fpsDisplay.textContent = averageFps;
-      }
-      lastTimestamp = timestamp;
-      
-      particles.forEach(particle => {
-        // Update position
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
-        
-        // Boundary check with bounce effect
-        if (particle.x > window.innerWidth || particle.x < 0) {
-          particle.speedX *= -1;
-        }
-        
-        if (particle.y > window.innerHeight || particle.y < 0) {
-          particle.speedY *= -1;
-        }
-        
-        // Mouse interaction
-        if (isMouseMoving) {
-          let dx = mouseX - particle.x;
-          let dy = mouseY - particle.y;
-          let distance = Math.sqrt(dx * dx + dy * dy);
-          
-          if (distance < config.interactionRadius) {
-            // Calculate force direction
-            const forceDirectionX = dx / distance;
-            const forceDirectionY = dy / distance;
-            
-            // Calculate force strength
-            const force = (config.interactionRadius - distance) / config.interactionRadius;
-            
-            // Apply force with density factor
-            const directionX = forceDirectionX * force * particle.density * 0.2;
-            const directionY = forceDirectionY * force * particle.density * 0.2;
-            
-            // Move particle away from mouse
-            particle.x -= directionX;
-            particle.y -= directionY;
-          }
-        } else {
-          // Gradually return to base position when not affected by mouse
-          particle.x += (particle.baseX - particle.x) * 0.01;
-          particle.y += (particle.baseY - particle.y) * 0.01;
-        }
-        
-        // Rotate particles (especially for squares, triangles, and stars)
-        if (particle.shape !== 'circle') {
-          particle.angle += 0.2 * (particle.size / config.maxSize); // Larger particles rotate slower
-          const rotation = `rotate(${particle.angle}deg)`;
-          particle.element.style.transform = rotation;
-        }
-        
-        // Update particle position
-        particle.element.style.left = `${particle.x}px`;
-        particle.element.style.top = `${particle.y}px`;
-      });
-      
-      requestAnimationFrame(animateParticles);
-    }
-    
-    // Mouse interaction
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      isMouseMoving = true;
-      
-      // Reset the timeout on each mouse move
-      clearTimeout(mouseMovingTimeout);
-      mouseMovingTimeout = setTimeout(() => {
-        isMouseMoving = false;
-      }, 2000); // Consider mouse stopped after 2 seconds of inactivity
-    });
-    
-    // Touch interaction
-    document.addEventListener('touchmove', (e) => {
-      if (e.touches[0]) {
-        mouseX = e.touches[0].clientX;
-        mouseY = e.touches[0].clientY;
-        isMouseMoving = true;
-        
-        // Reset the timeout on each touch move
-        clearTimeout(mouseMovingTimeout);
-        mouseMovingTimeout = setTimeout(() => {
-          isMouseMoving = false;
-        }, 2000);
+        dot.classList.remove('active');
       }
     });
-    
-    // Handle window resize
-    window.addEventListener('resize', () => {
-      particles.forEach(particle => {
-        // Keep particles within the new window bounds
-        if (particle.x > window.innerWidth) {
-          particle.x = window.innerWidth * Math.random();
-          particle.baseX = particle.x;
-        }
-        
-        if (particle.y > window.innerHeight) {
-          particle.y = window.innerHeight * Math.random();
-          particle.baseY = particle.y;
-        }
-      });
+  }
+  
+  prevBtn.addEventListener('click', () => {
+    let newIndex = currentCardIndex - 1;
+    if (newIndex < 0) newIndex = cards.length - 1;
+    updateCards(newIndex);
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    let newIndex = currentCardIndex + 1;
+    if (newIndex >= cards.length) newIndex = 0;
+    updateCards(newIndex);
+  });
+  
+  cardDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      updateCards(index);
     });
-    
-    // Control event listeners
-    document.getElementById('particle-count').addEventListener('input', function() {
-      config.count = parseInt(this.value);
-      countValue.textContent = config.count;
+  });
+  
+  // 3D Cube functionality
+  const cube = document.getElementById('cube');
+  const cubeNavBtns = document.querySelectorAll('.cube-nav-btn');
+  
+  cubeNavBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      cubeNavBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
       
-      // Update particle count
-      const currentCount = particles.length;
+      const face = btn.getAttribute('data-face');
+      let rotateX = 0;
+      let rotateY = 0;
       
-      if (currentCount < config.count) {
-        // Add more particles
-        for (let i = 0; i < config.count - currentCount; i++) {
-          createParticle();
-        }
-      } else if (currentCount > config.count) {
-        // Remove excess particles
-        for (let i = 0; i < currentCount - config.count; i++) {
-          const particle = particles.pop();
-          if (particle && particle.element) {
-            particle.element.remove();
-          }
-        }
+      switch (face) {
+        case 'front':
+          rotateX = -15;
+          rotateY = 15;
+          break;
+        case 'back':
+          rotateX = -15;
+          rotateY = 195;
+          break;
+        case 'right':
+          rotateX = -15;
+          rotateY = 105;
+          break;
+        case 'left':
+          rotateX = -15;
+          rotateY = -75;
+          break;
+        case 'top':
+          rotateX = 75;
+          rotateY = 15;
+          break;
+        case 'bottom':
+          rotateX = -105;
+          rotateY = 15;
+          break;
       }
       
-      particleCountDisplay.textContent = particles.length;
+      cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
+  });
+  
+  // Optional: Add mouse drag rotation to cube
+  let isDragging = false;
+  let previousMousePosition = { x: 0, y: 0 };
+  let cubeRotation = { x: -15, y: 15 };
+  
+  document.querySelector('.scene').addEventListener('mousedown', (e) => {
+    isDragging = true;
+    previousMousePosition = { x: e.clientX, y: e.clientY };
+  });
+  
+  document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
     
-    document.getElementById('min-size').addEventListener('input', function() {
-      config.minSize = parseInt(this.value);
-      updateSizeDisplay();
-    });
+    const deltaX = e.clientX - previousMousePosition.x;
+    const deltaY = e.clientY - previousMousePosition.y;
     
-    document.getElementById('max-size').addEventListener('input', function() {
-      config.maxSize = parseInt(this.value);
-      updateSizeDisplay();
-    });
+    cubeRotation.y += deltaX * 0.5;
+    cubeRotation.x -= deltaY * 0.5;
     
-    function updateSizeDisplay() {
-      sizeValue.textContent = `${config.minSize}-${config.maxSize}px`;
-    }
+    cube.style.transform = `rotateX(${cubeRotation.x}deg) rotateY(${cubeRotation.y}deg)`;
     
-    document.getElementById('speed').addEventListener('input', function() {
-      config.speed = parseFloat(this.value);
-      speedValue.textContent = config.speed;
-      
-      // Update particle speeds
-      particles.forEach(particle => {
-        particle.speedX = (Math.random() * 2 - 1) * config.speed;
-        particle.speedY = (Math.random() * 2 - 1) * config.speed;
-      });
-    });
-    
-    document.getElementById('interaction-radius').addEventListener('input', function() {
-      config.interactionRadius = parseInt(this.value);
-      interactionValue.textContent = `${config.interactionRadius}px`;
-    });
-    
-    // Color preset selection
-    document.querySelectorAll('.color-preset').forEach(preset => {
-      preset.addEventListener('click', function() {
-        // Update active state
-        document.querySelectorAll('.color-preset').forEach(p => p.classList.remove('active'));
-        this.classList.add('active');
-        
-        // Update colors
-        const colors = this.getAttribute('data-colors').split(',');
-        config.colors = colors;
-        
-        // Update existing particles
-        particles.forEach(particle => {
-          const newColor = config.colors[Math.floor(Math.random() * config.colors.length)];
-          particle.color = newColor;
-          
-          if (particle.shape === 'triangle') {
-            particle.element.style.borderBottomColor = newColor;
-          } else {
-            particle.element.style.backgroundColor = newColor;
-          }
-        });
-      });
-    });
-    
-    // Shape selection
-    document.querySelectorAll('.shape-option').forEach(option => {
-      option.addEventListener('click', function() {
-        // Toggle active state
-        this.classList.toggle('active');
-        
-        // Update shapes array
-        const shape = this.getAttribute('data-shape');
-        if (this.classList.contains('active')) {
-          // Add shape if not already in array
-          if (!config.shapes.includes(shape)) {
-            config.shapes.push(shape);
-          }
-        } else {
-          // Remove shape from array
-          const index = config.shapes.indexOf(shape);
-          if (index > -1) {
-            config.shapes.splice(index, 1);
-          }
-        }
-        
-        // Ensure at least one shape is selected
-        if (config.shapes.length === 0) {
-          config.shapes = ['circle'];
-          document.querySelector('.shape-option[data-shape="circle"]').classList.add('active');
-        }
-      });
-    });
-    
-    // Initialize
-    createParticles();
-    requestAnimationFrame(animateParticles);
+    previousMousePosition = { x: e.clientX, y: e.clientY };
+  });
+  
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
   });
 </script>
 </body>

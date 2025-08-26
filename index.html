@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Naveen S - Full-Stack Developer & UI/UX Designer: specializing in front-end development, web design, and marketing technology. Based in Tamil Nadu, India.">
+    content="Naveen S - Front-End Developer & UI/UX Designer: specializing in front-end development, web design, and marketing technology.">
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <title>Naveen S | Full-Stack Developer & UI/UX Designer</title>
+  <title>Naveen S | Front-End Developer & UI/UX Designer</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap"
     rel="stylesheet">
@@ -1215,15 +1215,18 @@
       text-align: center;
     }
 
+    .skills-categories .ml40 {
+      margin-left: 35px;
+    }
+
     .skills-categories {
       display: grid;
       grid-template-columns: 1fr;
-      gap: var(--space-lg);
     }
 
     @media (min-width: 768px) {
       .skills-categories {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(1, 3fr 2fr);
       }
     }
 
@@ -1265,11 +1268,16 @@
       z-index: -1;
     }
 
+    .skills-category .skill-item {
+      padding: var(--space-xs) var(--space-sm);
+    }
+
     .skills-list {
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-sm);
       column-gap: 5px;
+      row-gap: 5px;
     }
 
     .skill-item {
@@ -1501,158 +1509,298 @@
       margin-top: var(--space-xl);
     }
 
-    /* Certifications Section */
-    .certifications {
+    /* Personal Details Section - 3D Cube */
+    .personal-details-cube {
       position: relative;
+      padding: var(--space-xl) 0;
+      height: 700px;
     }
 
-    .certifications-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: var(--space-lg);
+    .scene {
+      width: 100%;
+      height: 100%;
+      perspective: 1000px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .certification-card {
-      background-color: var(--color-bg);
-      border-radius: 16px;
-      padding: var(--space-lg);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      transition: all var(--transition-medium);
-      border: 1px solid var(--color-border);
+    .cube {
+      width: 400px;
+      height: 400px;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateX(-15deg) rotateY(15deg);
+      transition: transform 1s;
+    }
+
+    .cube-face {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border: 1px solid rgba(var(--color-primary-rgb), 0.3);
       display: flex;
       flex-direction: column;
-      gap: var(--space-sm);
+      justify-content: center;
+      align-items: center;
+      padding: var(--space-lg);
+      background-color: rgba(var(--color-primary-rgb), 0.15);
+      backface-visibility: hidden;
+      overflow: auto;
     }
 
-    .certification-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-      border-color: var(--color-primary);
+    .cube-face-front {
+      transform: translateZ(200px);
+      background-color: rgba(30, 0, 255, 0.15);
     }
 
-    .certification-icon {
-      font-size: 3rem;
-      margin-bottom: var(--space-sm);
-      color: var(--color-primary);
+    .cube-face-back {
+      transform: rotateY(180deg) translateZ(200px);
+      background-color: rgba(255, 238, 0, 0.15);
     }
 
-    .certification-card h3 {
-      font-size: 1.8rem;
-      margin-bottom: var(--space-xs);
+    .cube-face-right {
+      transform: rotateY(90deg) translateZ(200px);
+      background-color: rgba(255, 0, 0, 0.15);
     }
 
-    .certification-card p {
-      font-size: 1.4rem;
-      color: var(--color-text-secondary);
-      margin-bottom: var(--space-xs);
+    .cube-face-left {
+      transform: rotateY(-90deg) translateZ(200px);
+      background-color: rgba(0, 255, 106, 0.15);
     }
 
-    /* Personal Details Section */
-    .personal-details {
-      position: relative;
+    .cube-face-top {
+      transform: rotateX(90deg) translateZ(200px);
+      background-color: rgba(0, 153, 255, 0.15);
     }
 
-    .details-grid {
-      display: grid;
-      grid-template-columns: 1fr;
+    .cube-face-bottom {
+      transform: rotateX(-90deg) translateZ(200px);
+      background-color: rgba(183, 0, 255, 0.15);
+    }
+
+    .cube-face-content.language {
+      text-align: center;
+    }
+
+    .cube-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       gap: var(--space-xl);
     }
 
-    @media (min-width: 768px) {
-      .details-grid {
-        grid-template-columns: 1fr 1fr;
+    .cube-nav {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      z-index: 10;
+    }
+
+    .cube-nav-btn {
+      padding: var(--space-md) var(--space-lg);
+      background-color: rgba(var(--color-primary-rgb), 0.1);
+      border: none;
+      border-radius: 8px;
+      color: var(--color-text-primary);
+      transition: all var(--transition-fast);
+      font-family: var(--font-body);
+      font-size: 1.6rem;
+      text-align: left;
+      position: relative;
+    }
+
+    .cube-nav-btn:hover {
+      background-color: var(--color-primary);
+      color: white;
+      transform: translateX(5px);
+    }
+
+    .cube-nav-btn.active {
+      background-color: var(--color-primary);
+      color: white;
+    }
+
+    .cube-nav {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      z-index: 10;
+    }
+
+    .cube-nav-btn {
+      padding: var(--space-md) var(--space-lg);
+      background-color: rgba(var(--color-primary-rgb), 0.1);
+      border: none;
+      border-radius: 8px;
+      color: var(--color-text-primary);
+      transition: all var(--transition-fast);
+      font-family: var(--font-body);
+      font-size: 1.6rem;
+      text-align: left;
+      position: relative;
+    }
+
+    .cube-nav-btn:hover {
+      background-color: var(--color-primary);
+      color: white;
+      transform: translateX(5px);
+    }
+
+    .cube-nav-btn.active {
+      background-color: var(--color-primary);
+      color: white;
+    }
+
+    .cube-nav-btn.active::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -10px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid var(--color-primary);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .cube-container {
+        flex-direction: column;
+      }
+
+      .cube-nav-container {
+        width: 100%;
+        padding-right: 0;
+        padding-bottom: var(--space-lg);
+      }
+
+      .scene {
+        width: 100%;
+      }
+
+      .cube-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .cube-nav-btn.active::after {
+        display: none;
+      }
+
+      .cube-nav-btn:hover {
+        transform: translateY(-5px);
       }
     }
 
-    .details-card {
-      background-color: var(--color-surface);
-      border-radius: 16px;
-      padding: var(--space-lg);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    .cube-face-title {
+      font-size: 2.4rem;
+      margin-bottom: var(--space-lg);
+      color: var(--color-primary);
+      text-align: center;
     }
 
-    .details-list {
+    .cube-face-content {
+      width: 100%;
+    }
+
+    .cube-list {
       list-style: none;
+      width: 100%;
     }
 
-    .details-item {
+    .cube-list-item {
       display: flex;
       margin-bottom: var(--space-md);
       align-items: flex-start;
     }
 
-    .details-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: rgba(var(--color-primary-rgb), 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
+    .cube-list-icon {
+      margin-right: var(--space-sm);
+      font-size: 2rem;
       color: var(--color-primary);
-      margin-right: var(--space-md);
       flex-shrink: 0;
     }
 
-    .details-content {
+    .cube-list-content {
       flex-grow: 1;
     }
 
-    .details-label {
+    .cube-list-label {
       font-weight: 600;
       margin-bottom: 4px;
       color: var(--color-text-primary);
     }
 
-    .details-value {
+    .cube-list-value {
+      color: var(--color-text-secondary);
+      font-size: 12px;
+    }
+
+    .cube-objective {
+      font-style: italic;
+      line-height: 1.8;
+      text-align: center;
+      color: var(--color-text-secondary);
+      padding: 0;
+    }
+
+    .cube-languages {
+      width: 100%;
+    }
+
+    .cube-language {
+      display: flex;
+      align-items: center;
+      margin-bottom: var(--space-md);
+    }
+
+    .cube-language-flag {
+      font-size: 2.4rem;
+      margin-right: var(--space-sm);
+    }
+
+    .cube-language-info {
+      flex-grow: 1;
+    }
+
+    .cube-language-name {
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+
+    .cube-language-level {
+      font-size: 1.4rem;
       color: var(--color-text-secondary);
     }
 
-    .languages-list {
+    .cube-hobbies {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-md);
+      gap: var(--space-sm);
+      justify-content: center;
     }
 
-    .language-item {
+    .cube-hobby {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: var(--space-xs);
     }
 
-    .language-name {
-      font-weight: 600;
-      color: var(--color-text-primary);
+    .cube-hobby-icon {
+      font-size: 2.4rem;
+      color: var(--color-accent);
     }
 
-    .language-level {
+    .cube-hobby-name {
       font-size: 1.4rem;
       color: var(--color-text-secondary);
-    }
-
-    .language-flag {
-      font-size: 2.4rem;
-      margin-bottom: var(--space-xs);
-    }
-
-    .objective-card {
-      background-color: var(--color-surface);
-      border-radius: 16px;
-      padding: var(--space-lg);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      border-left: 4px solid var(--color-primary);
-    }
-
-    .objective-card h3 {
-      margin-bottom: var(--space-md);
-      color: var(--color-primary);
-    }
-
-    .objective-card p {
-      font-style: italic;
-      line-height: 1.8;
     }
 
     /* Project Gallery Section */
@@ -1819,10 +1967,8 @@
       resize: vertical;
     }
 
-    /* Footer */
+    /* Footer - Classic Three Column */
     .footer {
-      background-color: var(--color-surface);
-      padding: var(--space-xl) 0;
       position: relative;
       overflow: hidden;
     }
@@ -1831,12 +1977,6 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--space-xl);
-    }
-
-    @media (min-width: 768px) {
-      .footer-container {
-        grid-template-columns: 2fr 1fr 1fr;
-      }
     }
 
     .footer-logo {
@@ -1848,7 +1988,15 @@
       display: flex;
       align-items: center;
       gap: var(--space-xs);
-      width: fit-content;
+      text-decoration: none;
+    }
+
+    .footer-logo .logo-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: var(--color-accent);
+      border-radius: 50%;
     }
 
     .footer-text {
@@ -1924,7 +2072,7 @@
 
     .copyright {
       text-align: center;
-      padding-top: var(--space-lg);
+      padding: var(--space-lg) 0;
       border-top: 1px solid var(--color-border);
       margin-top: var(--space-lg);
       color: var(--color-text-secondary);
@@ -2150,6 +2298,9 @@
       color: var(--color-text-primary);
       font-weight: 600;
       transition: all var(--transition-medium);
+    }
+
+    .about-text .resume-download {
       margin-top: var(--space-lg);
       width: 100%;
     }
@@ -2185,11 +2336,14 @@
       padding: 18px 15px;
     }
 
+    .project-logo.cd img {
+      height: 40px;
+    }
+
     span.skill-logo {
       display: flex;
       flex-wrap: wrap;
       align-content: center;
-      justify-content: center;
       align-items: center;
       row-gap: 10px;
     }
@@ -2212,6 +2366,128 @@
       border-right: 5px solid #6c5ce780;
       padding: 5px;
       margin-right: 15px;
+    }
+
+    .certification-icon {
+      font-size: 50px;
+      width: 45px;
+    }
+
+    .certification-card {
+      margin-top: -5px;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      margin-left: 30px;
+    }
+
+    .certification-card h4 {
+      margin-bottom: 5px;
+    }
+
+    .certification-card p {
+      margin-left: 25px;
+      margin-bottom: 0px;
+    }
+
+    .skills-summary img {
+      height: 45px;
+      width: auto;
+    }
+
+    /* Responsive adjustments for 3D cube */
+    @media (max-width: 768px) {
+      .cube {
+        width: 300px;
+        height: 300px;
+      }
+
+      .cube-face {
+        width: 300px;
+        height: 300px;
+      }
+
+      .cube-face-front {
+        transform: translateZ(150px);
+      }
+
+      .cube-face-back {
+        transform: rotateY(180deg) translateZ(150px);
+      }
+
+      .cube-face-right {
+        transform: rotateY(90deg) translateZ(150px);
+      }
+
+      .cube-face-left {
+        transform: rotateY(-90deg) translateZ(150px);
+      }
+
+      .cube-face-top {
+        transform: rotateX(90deg) translateZ(150px);
+      }
+
+      .cube-face-bottom {
+        transform: rotateX(-90deg) translateZ(150px);
+      }
+
+      .cube-nav {
+        padding: 0 var(--space-md);
+      }
+
+      .cube-nav-btn {
+        font-size: 1.2rem;
+        padding: var(--space-xs) var(--space-sm);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cube {
+        width: 250px;
+        height: 250px;
+      }
+
+      .cube-face {
+        width: 250px;
+        height: 250px;
+        padding: var(--space-md);
+      }
+
+      .cube-face-front {
+        transform: translateZ(125px);
+      }
+
+      .cube-face-back {
+        transform: rotateY(180deg) translateZ(125px);
+      }
+
+      .cube-face-right {
+        transform: rotateY(90deg) translateZ(125px);
+      }
+
+      .cube-face-left {
+        transform: rotateY(-90deg) translateZ(125px);
+      }
+
+      .cube-face-top {
+        transform: rotateX(90deg) translateZ(125px);
+      }
+
+      .cube-face-bottom {
+        transform: rotateX(-90deg) translateZ(125px);
+      }
+
+      .cube-face-title {
+        font-size: 2rem;
+      }
+
+      .cube-list-icon {
+        font-size: 1.6rem;
+      }
+
+      .cube-hobby-icon {
+        font-size: 2rem;
+      }
     }
   </style>
 
@@ -2242,12 +2518,11 @@
       </a>
       <ul class="nav-links">
         <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#project-gallery" class="nav-link">Projects</a></li>
-        <li><a href="#certifications" class="nav-link">Certifications</a></li>
         <li><a href="#personal" class="nav-link">Personal</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#footer" class="nav-link">Contact</a></li>
       </ul>
       <div class="nav-controls">
         <!-- Search Button with Emoji -->
@@ -2292,12 +2567,11 @@
   <div class="mobile-menu" id="mobile-menu">
     <ul class="mobile-nav-links">
       <li class="mobile-nav-link"><a href="#home">Home</a></li>
+      <li class="mobile-nav-link"><a href="#projects">Projects</a></li>
       <li class="mobile-nav-link"><a href="#about">About</a></li>
       <li class="mobile-nav-link"><a href="#skills">Skills</a></li>
-      <li class="mobile-nav-link"><a href="#project-gallery">Projects</a></li>
-      <li class="mobile-nav-link"><a href="#certifications">Certifications</a></li>
       <li class="mobile-nav-link"><a href="#personal">Personal</a></li>
-      <li class="mobile-nav-link"><a href="#contact">Contact</a></li>
+      <li class="mobile-nav-link"><a href="#footer">Contact</a></li>
     </ul>
   </div>
 
@@ -2305,12 +2579,20 @@
   <section class="hero" id="home">
     <div class="container hero-content">
       <div class="hero-greeting">Hello, I'm Naveen S</div>
-      <h1 class="hero-title"> <span class="highlight">Full-Stack</span> Developer & UI/UX Designer</h1>
+      <h1 class="hero-title"> <span class="highlight">Front-End</span> Developer & UI/UX Designer</h1>
       <p class="hero-subtitle">I craft visually stunning digital experiences with a focus on performance optimization
         and seamless user interactions.</p>
       <div class="hero-cta">
-        <a href="#project-gallery" class="btn btn-primary">View My Work</a>
-        <a href="#contact" class="btn btn-outline">Let's Talk</a>
+        <a href="#footer" class="btn btn-outline">Let's Talk</a>
+        <a href="#" class="resume-download">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download Resume
+        </a>
       </div>
     </div>
 
@@ -2339,8 +2621,8 @@
 
       <div class="projects-filter">
         <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="Front-End">Front-End</button>
         <button class="filter-btn" data-filter="Full-Stack">Full-Stack</button>
+        <button class="filter-btn" data-filter="Front-End">Front-End</button>
         <button class="filter-btn" data-filter="App-Design">App Design</button>
       </div>
 
@@ -2585,10 +2867,6 @@
         </div>
 
       </div>
-
-      <div class="projects-cta">
-        <a href="#project-gallery" class="btn btn-primary">View All Projects</a>
-      </div>
     </div>
   </section>
 
@@ -2613,7 +2891,7 @@
 
         <div class="about-text fade-in">
           <h3>My Story</h3>
-          <p>I'm a Full-Stack Developer and UI/UX Designer with over 6 years of experience in creating digital
+          <p>I'm a Front-End Developer and UI/UX Designer with over 6 years of experience in creating digital
             experiences that combine aesthetic appeal with technical functionality. My journey began with web design
             fundamentals and has evolved to include expertise in front-end frameworks, marketing technology, and team
             coordination.</p>
@@ -2708,9 +2986,13 @@
                     <img src="img/RockwellAutomation.png" class="img" alt="Rockwell Automation"
                       title="Rockwell Automation">
                   </a>
-                  <img src="img/JanssenPharmaceutica.png" class="img" alt="Janssen Pharmaceutica"
-                    title="Janssen Pharmaceutica">
-                  <img src="img/Intel.png" class="img" alt="Intel" title="Intel">
+                  <a href="https://www.jnj.com/" target="_blank">
+                    <img src="img/JanssenPharmaceutica.png" class="img" alt="Janssen Pharmaceutica"
+                      title="Janssen Pharmaceutica">
+                  </a>
+                  <a href="https://www.intel.com/content/www/us/en/homepage.html" target="_blank">
+                    <img src="img/Intel.png" class="img" alt="Intel" title="Intel">
+                  </a>
                 </div>
               </div>
             </div>
@@ -2724,7 +3006,7 @@
 
             <div class="timeline-details">
               <div class="timeline-skills">
-                <div class="timeline-date">Dec 2020 - Sep 2021</div>
+                <div class="timeline-date">8 Months: Jan 2020 - Aug 2021</div>
                 <h3 class="timeline-title">Full-Stack Developer and UI/UX Designer</h3>
                 <h4 class="timeline-company">Mobility Intelligence Softwares</h4>
                 <h5>Key Skills</h5>
@@ -2759,9 +3041,13 @@
                 </ul>
                 <h5>My Projects</h5>
                 <div class="project-logo mi">
-                  <img src="img/Mobility_Intelligence_Softwares.png" class="img" alt="Mobility_Intelligence_Softwares"
-                    title="Mobility_Intelligence_Softwares">
-                  <img src="img/tagyourtaxi.png" class="img" alt="TagYourTaxi" title="TagYourTaxi">
+                  <a href="https://misoftwares.com/" target="_blank">
+                    <img src="img/Mobility_Intelligence_Softwares.png" class="img" alt="Mobility_Intelligence_Softwares"
+                      title="Mobility_Intelligence_Softwares">
+                  </a>
+                  <a href="https://tagyourtaxi.com/" target="_blank">
+                    <img src="img/tagyourtaxi.png" class="img" alt="TagYourTaxi" title="TagYourTaxi">
+                  </a>
                 </div>
               </div>
             </div>
@@ -2775,49 +3061,89 @@
 
             <div class="timeline-details">
               <div class="timeline-skills">
-                <div class="timeline-date">Mar 2019 - Dec 2020</div>
+                <div class="timeline-date">2 Years: Mar 2019 - Dec 2020</div>
                 <h3 class="timeline-title">Front-End Developer</h3>
                 <h4 class="timeline-company">Cloud Dreams</h4>
-                <h5>Skills & Technologies</h5>
+                <h5>Key Skills</h5>
                 <div class="skills-list">
-                  <span class="skill-item">File format utilization</span>
                   <span class="skill-item">PSD/XD to HTML conversion</span>
-                  <span class="skill-item">CSS & JS Libraries</span>
                   <span class="skill-item">Page Animations</span>
+                  <span class="skill-item">File Format Utilization</span>
                   <span class="skill-item">FTP</span>
+                  <span class="skill-item">CSS & JS Libraries</span>
                 </div>
                 <h5>Key Technologies</h5>
                 <div class="skills-list logos">
                   <span class="skill-logo">
-                    <img src="img/wordpress.png" class="img" alt="Wordpress" title="Wordpress">
-                    <img src="img/vscode.png" class="img" alt="VSCode" title="VSCode">
-                    <img src="img/jQuery.png" class="img" alt="jQuery" title="jQuery">
+                    <img src="img/google_analytics.png" class="img" alt="Google analytics" title="Google analytics">
                     <img src="img/xd.png" class="img" alt="XD" title="XD">
                     <img src="img/ps.png" class="img" alt="Photoshop" title="Photoshop">
                     <img src="img/php.png" class="img" alt="php" title="php">
                     <img src="img/Bootstrap.png" class="img" alt="Bootstrap" title="Bootstrap">
                     <img src="img/scss.png" class="img" alt="scss" title="scss">
-                    <img src="img/font_awesome.png" class="img" alt="Font Awesome" title="Font Awesome">
+                    <img src="img/wordpress.png" class="img" alt="Wordpress" title="Wordpress">
+                    <img src="img/jQuery.png" class="img" alt="jQuery" title="jQuery">
+                    <img src="img/gtmetrix.png" class="img" alt="GTmetrix" title="GTmetrix">
                     <img src="img/etc.png" class="img" alt="etc..." title="etc...">
                   </span>
                 </div>
               </div>
 
               <div class="timeline-projects">
-                <h5>Key Projects</h5>
+                <h5>Key Contributions</h5>
                 <ul>
                   <li>Developed the official clouddreams.in company website.</li>
                   <li>Developed 100+ websites independently and collaborated on 40+ websites with the team.</li>
-                  <li>Enhanced user engagement by implementing advanced animations like  Scroll-triggered effects, Hover-triggered effects, and Smooth page transitions.</li>
-                  <li>Optimized file image formats for better performance.</li>
+                  <li>Implemented advanced animations like Scroll-triggered effects, Hover-triggered effects, and Smooth
+                    page transitions.</li>
+                  <li>Optimized files and image formats for better performance.</li>
                 </ul>
-                <h5>My Projects</h5>
-                <div class="project-logo mi">
-                  <img src="img/Mobility_Intelligence_Softwares.png" class="img" alt="Mobility_Intelligence_Softwares"
-                    title="Mobility_Intelligence_Softwares">
-                  <img src="img/tagyourtaxi.png" class="img" alt="TagYourTaxi" title="TagYourTaxi">
+                <h5>Key Projects</h5>
+                <div class="project-logo cd">
+                  <a href="https://www.clouddreams.in/" target="_blank">
+                    <img src="img/clouddreams.png" class="img" alt="clouddreams" title="clouddreams">
+                  </a>
+                  <a href="https://codissia.com/" target="_blank">
+                    <img src="img/codissia.png" class="img" alt="Codissia" title="Codissia">
+                  </a>
+                  <a href="https://kundanpipes.com/" target="_blank">
+                    <img src="img/kundanpipes.png" class="img" alt="Kundan Pipes" title="Kundan Pipes">
+                  </a>
+                  <a href="https://www.toxiven.com/" target="_blank">
+                    <img src="img/toxiven.png" class="img" alt="Toxiven" title="Toxiven">
+                  </a>
+                  <a href="https://www.high5prints.in/" target="_blank">
+                    <img src="img/high5prints.png" class="img" alt="High 5 Prints" title="High 5 Prints">
+                  </a>
+                  <a href="https://subratex.com/" target="_blank">
+                    <img src="img/subratex.png" class="img" alt="Subra Tex" title="Subra Tex">
+                  </a>
+                  <a href="https://www.tanelect.com/" target="_blank">
+                    <img src="img/tanelect.png" class="img" alt="TAN Elect" title="TAN Elect">
+                  </a>
+                  <a href="https://www.primyfilmy.com/" target="_blank">
+                    <img src="img/primyfilmy.png" class="img" alt="Primy Filmy" title="Primy Filmy">
+                  </a>
+                  <a href="https://www.kongunadusurveyor.in/" target="_blank">
+                    <img src="img/kongunadusurveyor.png" class="img" alt="Kongunadu Surveyor"
+                      title="Kongunadu Surveyor">
+                  </a>
+                  <a href="https://caenterprises.co.in/" target="_blank">
+                    <img src="img/caenterprises.png" class="img" alt="CA Enterprises" title="CA Enterprises">
+                  </a>
+                  <a href="https://malamurthycatering.com/" target="_blank">
+                    <img src="img/malamurthycatering.png" class="img" alt="Malamurthy Catering"
+                      title="Malamurthy Catering">
+                  </a>
+                  <a href="https://www.multisystemtechnologies.com/" target="_blank">
+                    <img src="img/multisystemtechnologies.png" class="img" alt="Multi-System Technologies"
+                      title="Multi-System Technologies">
+                  </a>
+                  <a href="https://thealchemysourcing.com/" target="_blank">
+                    <img src="img/thealchemysourcing.png" class="img" alt="The alchemy sourcing"
+                      title="The alchemy sourcing">
+                  </a>
                 </div>
-              </div>
               </div>
             </div>
           </div>
@@ -2827,30 +3153,35 @@
         <div class="timeline-item">
           <div class="timeline-marker"></div>
           <div class="timeline-content">
-
             <div class="timeline-details">
               <div class="timeline-skills">
-                <div class="timeline-date">Dec 2018 - Jan 2019</div>
+                <div class="timeline-date">3 Months: 2018 - Feb 2019</div>
                 <h3 class="timeline-title">Web Design Trainee</h3>
                 <h4 class="timeline-company">Infoem Solutions</h4>
-                <h5>Skills & Technologies</h5>
-                <div class="skills-list">
-                  <span class="skill-item">HTML</span>
-                  <span class="skill-item">CSS</span>
-                  <span class="skill-item">Bootstrap</span>
-                  <span class="skill-item">JavaScript</span>
-                  <span class="skill-item">jQuery</span>
-                  <span class="skill-item">PHP</span>
-                  <span class="skill-item">MySQL</span>
+                <h5>Basic Skills & Technologies</h5>
+                <div class="skills-list logos">
+                  <span class="skill-logo">
+                    <img src="img/vscode.png" class="img" alt="VSCode" title="VSCode">
+                    <img src="img/hcj.png" class="img" alt="HTML/CSS/JS" title="HTML/CSS/JS">
+                    <img src="img/jQuery.png" class="img" alt="jQuery" title="jQuery">
+                    <img src="img/xampp.png" class="img" alt="xampp" title="xampp">
+                    <img src="img/php.png" class="img" alt="php" title="php">
+                    <img src="img/mysql.png" class="img" alt="MySql" title="MySql">
+                    <img src="img/Bootstrap_old.png" class="img" alt="Bootstrap" title="Bootstrap">
+                    <img src="img/svg.png" class="img" alt="SVG" title="SVG">
+                  </span>
                 </div>
               </div>
 
               <div class="timeline-projects">
                 <h5>Training Focus</h5>
                 <ul>
-                  <li>Completed on-the-job training in web design and web applications</li>
-                  <li>Learned fundamentals of front-end and back-end development</li>
-                  <li>Gained experience with development tools and environments</li>
+                  <li>Successfully completed on-the-job training in web design and web application development, working
+                    on real-world projects under professional guidance.</li>
+                  <li>Acquired a solid understanding of front-end development (HTML, CSS, JavaScript) and back-end
+                    development (server-side scripting, databases, and APIs).</li>
+                  <li>Gained hands-on experience with development tools (such as VS Code, XAMPP) and environments for
+                    building, testing, and deploying web applications.</li>
                 </ul>
               </div>
             </div>
@@ -2861,10 +3192,63 @@
         <div class="timeline-item">
           <div class="timeline-marker education-marker"></div>
           <div class="timeline-content">
-            <div class="timeline-date">2015 - 2018</div>
-            <h3 class="timeline-title">Bachelor of Science</h3>
-            <h4 class="timeline-company">Mathematics</h4>
-            <h4 class="timeline-institution">Jairams Arts and Science College, Karur</h4>
+
+            <div class="timeline-details">
+              <div class="timeline-skills">
+                <div class="timeline-date">3 Years: 2015 - 2018</div>
+                <h3 class="timeline-title">Bachelor of Science (Mathematics)</h3>
+                <h4 class="timeline-institution">Jairams Arts and Science College, Karur</h4>
+                <h5>Part-time Jobs Experiences</h5>
+                <div class="skills-list" style="margin-bottom: var(--space-sm);">
+                  <span class="skill-item">OS Change/Maintenance</span>
+                  <span class="skill-item">Driver Pack</span>
+                  <span class="skill-item">Paper Presentation</span>
+                  <span class="skill-item">PowerPoint Create</span>
+                  <span class="skill-item">Photo Editing</span>
+                </div>
+                <div class="skills-list logos">
+                  <span class="skill-logo">
+                    <img src="img/ubuntu.png" class="img" alt="Ubuntu" title="Ubuntu">
+                    <img src="img/tally.png" class="img" alt="Tally" title="Tally">
+                    <img src="img/wxp.png" class="img" alt="Word Excel and Powerpoint"
+                      title="Word Excel and Powerpoint">
+                    <img src="img/coreldraw.png" class="img" alt="CorelDraw" title="CorelDraw">
+                  </span>
+                </div>
+              </div>
+
+              <div class="timeline-projects">
+                <h5>Certifications & Honors</h5>
+                <div class="certification-card">
+                  <div class="certification-icon">💻</div>
+                  <div class="certification-text">
+                    <h4>Web Designing and Maintenance <small>(On Job Training)</small></h4>
+                    <p>Infoem Solutions Pvt Ltd, Namakkal</p>
+                  </div>
+                </div>
+                <div class="certification-card">
+                  <div class="certification-icon">🧮</div>
+                  <div class="certification-text">
+                    <h4>Applications of Mathematics <small>(National level workshop)</small></h4>
+                    <p>Annai Women's College, Karur</p>
+                  </div>
+                </div>
+                <div class="certification-card">
+                  <div class="certification-icon">📊</div>
+                  <div class="certification-text">
+                    <h4>Graph Theory and its Applications <small>(Workshop)</small></h4>
+                    <p>Jairams College, Karur</p>
+                  </div>
+                </div>
+                <div class="certification-card">
+                  <div class="certification-icon">📚</div>
+                  <div class="certification-text">
+                    <h4>Reading, Note Taking and Memory Skills</h4>
+                    <p>Chettinad College, Karur</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -2872,9 +3256,25 @@
         <div class="timeline-item">
           <div class="timeline-marker education-marker"></div>
           <div class="timeline-content">
-            <div class="timeline-date">2014 - 2015</div>
-            <h3 class="timeline-title">Higher Secondary Certificate (HSC)</h3>
-            <h4 class="timeline-institution">Vivekanada Hr. Sec. School, Karur</h4>
+
+            <div class="timeline-details">
+              <div class="timeline-skills">
+                <div class="timeline-date">2 Years: 2013 - 2015</div>
+                <h3 class="timeline-title">Higher Secondary Certificate (HSC)</h3>
+                <h4 class="timeline-institution">Vivekanada Hr. Sec. School, Karur</h4>
+              </div>
+
+              <div class="timeline-projects">
+                <h5>Certifications & Honors</h5>
+                <div class="certification-card">
+                  <div class="certification-icon">🏔️</div>
+                  <div class="certification-text">
+                    <h4>Hill Climbing Training Camp <small>(TN Govt. Training Camp)</small></h4>
+                    <p>Department of Forestry and School Education, Karur</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -2882,57 +3282,103 @@
         <div class="timeline-item">
           <div class="timeline-marker education-marker"></div>
           <div class="timeline-content">
-            <div class="timeline-date">2012 - 2013</div>
-            <h3 class="timeline-title">Secondary School Leaving Certificate (SSLC)</h3>
-            <h4 class="timeline-institution">MPL Kumaran School, Karur</h4>
+
+            <div class="timeline-details">
+              <div class="timeline-skills">
+                <div class="timeline-date">2013</div>
+                <h3 class="timeline-title">Secondary School Leaving Certificate (SSLC)</h3>
+                <h4 class="timeline-institution">MPL Kumaran School, Karur</h4>
+              </div>
+
+              <div class="timeline-projects">
+                <h5>Certifications & Honors</h5>
+                <div class="certification-card">
+                  <div class="certification-icon">🔬</div>
+                  <div class="certification-text">
+                    <h4>19th National Children's Science Congress-2011 <br>
+                      <small>A Programme of NCSTC, DST, Govt. of India, New Delhi</small>
+                    </h4>
+                    <p>Bannari Amman Institute of Technology, Erode</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Skills Summary Section -->
       <div class="skills-summary fade-in">
-        <h3 class="skills-summary-title">Skills Overview</h3>
+        <h3 class="skills-summary-title">Journey Overview</h3>
 
         <div class="skills-categories">
           <div class="skills-category">
-            <h4 class="skills-category-title">Design</h4>
-            <div class="skills-list">
-              <span class="skill-item">UI/UX Design</span>
-              <span class="skill-item">Figma</span>
-              <span class="skill-item">Adobe XD</span>
-              <span class="skill-item">Adobe Photoshop</span>
-              <span class="skill-item">SVG Animation</span>
-              <span class="skill-item">Motion Path</span>
-              <span class="skill-item">Responsive Design</span>
-              <span class="skill-item">App Design</span>
-            </div>
-          </div>
-
-          <div class="skills-category">
-            <h4 class="skills-category-title">Development</h4>
-            <div class="skills-list">
-              <span class="skill-item">HTML5/CSS3</span>
-              <span class="skill-item">JavaScript</span>
-              <span class="skill-item">React JS</span>
-              <span class="skill-item">SCSS</span>
-              <span class="skill-item">PHP</span>
-              <span class="skill-item">Laravel</span>
-              <span class="skill-item">MySQL</span>
-              <span class="skill-item">WordPress</span>
-            </div>
-          </div>
-
-          <div class="skills-category">
             <h4 class="skills-category-title">Tools & Technologies</h4>
             <div class="skills-list">
-              <span class="skill-item">Git & GitHub</span>
-              <span class="skill-item">VS Code</span>
-              <span class="skill-item">GSAP</span>
-              <span class="skill-item">Oracle Eloqua</span>
-              <span class="skill-item">Salesforce</span>
-              <span class="skill-item">Zoho CRM</span>
-              <span class="skill-item">UIPath Studio</span>
+              <span class="project-logo">
+                <img src="img/figma.png" class="img" alt="Figma" title="Figma">
+                <img src="img/ps.png" class="img" alt="Photoshop" title="Photoshop">
+                <img src="img/xd.png" class="img" alt="XD" title="XD">
+                <img src="img/svg.png" class="img" alt="SVG" title="SVG">
+                <img src="img/coreldraw.png" class="img" alt="CorelDraw" title="CorelDraw">
+                <img src="img/npm.png" class="img" alt="npm" title="npm">
+                <img src="img/wpp_open.png" class="img" alt="WPP Open" title="WPP Open">
+                <img src="img/React.png" class="img" alt="React" title="React">
+                <img src="img/laravel.webp" class="img" alt="Laravel" title="Laravel">
+                <img src="img/larago.png" class="img" alt="Larago" title="Larago">
+                <img src="img/git.png" class="img" alt="git" title="git">
+                <img src="img/Bootstrap.png" class="img" alt="Bootstrap" title="Bootstrap">
+                <img src="img/google_analytics.png" class="img" alt="Google analytics" title="Google analytics">
+                <img src="img/wordpress.png" class="img" alt="Wordpress" title="Wordpress">
+                <img src="img/scss.png" class="img" alt="scss" title="scss">
+                <img src="img/jQuery.png" class="img" alt="jQuery" title="jQuery">
+                <img src="img/gtmetrix.png" class="img" alt="GTmetrix" title="GTmetrix">
+                <img src="img/php.png" class="img" alt="php" title="php">
+                <img src="img/xampp.png" class="img" alt="xampp" title="xampp">
+                <img src="img/vscode.png" class="img" alt="VSCode" title="VSCode">
+                <img src="img/hcj.png" class="img" alt="HTML/CSS/JS" title="HTML/CSS/JS">
+                <img src="img/jQuery.png" class="img" alt="jQuery" title="jQuery">
+                <img src="img/mysql.png" class="img" alt="MySql" title="MySql">
+                <img src="img/tally.png" class="img" alt="Tally" title="Tally">
+                <img src="img/Bootstrap_old.png" class="img" alt="Bootstrap" title="Bootstrap">
+                <img src="img/ubuntu.png" class="img" alt="Ubuntu" title="Ubuntu">
+                <img src="img/wxp.png" class="img" alt="Word Excel and Powerpoint" title="Word Excel and Powerpoint">
+                <img src="img/zoho_crm.png" class="img" alt="ZOHO CRM" title="ZOHO CRM">
+                <img src="img/certain.png" class="img" alt="Certain" title="Certain">
+                <img src="img/stripe.png" class="img" alt="stripe" title="stripe">
+                <img src="img/oracle_eloqua.png" class="img" alt="Eloqua" title="Eloqua">
+                <img src="img/sfmc.png" class="img" alt="Salesforce Marketing Cloud" title="Salesforce Marketing Cloud">
+                <img src="img/uipath.png" class="img" alt="UIPath" title="UIPath">
+                <img src="img/etc.png" class="img" alt="etc..." title="etc...">
+              </span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4 class="skills-category-title">Skills</h4>
+            <div class="skills-list ml40">
+              <span class="skill-item">Tools Automation</span>
+              <span class="skill-item">Team Management</span>
+              <span class="skill-item">FTP</span>
+              <span class="skill-item">AI Integration</span>
+              <span class="skill-item">API Integration</span>
+              <span class="skill-item">App Design</span>
               <span class="skill-item">CI/CD Pipeline</span>
+              <span class="skill-item">CMS System</span>
+              <span class="skill-item">UI/UX Design</span>
+              <span class="skill-item">HTML conversion</span>
+              <span class="skill-item">Motion Path</span>
+              <span class="skill-item">Photo Editing</span>
+              <span class="skill-item">Driver Pack</span>
+              <span class="skill-item">Page Animations</span>
+              <span class="skill-item">SVG Animation</span>
+              <span class="skill-item">File Format Utilization</span>
+              <span class="skill-item">CSS & JS Libraries</span>
+              <span class="skill-item">Responsive Design</span>
+              <span class="skill-item">OS Change/Maintenance</span>
+              <span class="skill-item">Paper Presentation</span>
+              <span class="skill-item">PowerPoint Create</span>
+
             </div>
           </div>
         </div>
@@ -2940,530 +3386,193 @@
     </div>
   </section>
 
-  <!-- Project Gallery Section -->
-  <section class="project-gallery color-surface" id="project-gallery">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-title-container">
-          <span class="section-number">04</span>
-          <h2 class="section-title">Project Gallery</h2>
-        </div>
-        <p class="section-subtitle">A comprehensive list of all the websites I've developed throughout my career.</p>
-      </div>
-
-      <div class="gallery-container fade-in">
-        <!-- Gallery items - Row 1 -->
-        <div class="gallery-item">
-          <a href="https://dobbsschool.com" target="_blank">
-            <h4>Dobbs School</h4>
-            <p>Educational institution website</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://thealchemysourcing.com" target="_blank">
-            <h4>The Alchemy Sourcing</h4>
-            <p>Business sourcing platform</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://f5carwash.com" target="_blank">
-            <h4>F5 Car Wash</h4>
-            <p>Service business website</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://5kfoodcare.com" target="_blank">
-            <h4>5K Food Care</h4>
-            <p>Food service company</p>
-          </a>
-        </div>
-
-        <!-- Gallery items - Row 2 -->
-        <div class="gallery-item">
-          <a href="https://thebelgianstreet.com" target="_blank">
-            <h4>The Belgian Street</h4>
-            <p>Restaurant website</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://inbloomz.com" target="_blank">
-            <h4>Inbloomz</h4>
-            <p>Floral business website</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://qt5glenys.com" target="_blank">
-            <h4>QT5 Glenys</h4>
-            <p>Corporate website</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://toxiven.com" target="_blank">
-            <h4>Toxiven</h4>
-            <p>Healthcare company website</p>
-          </a>
-        </div>
-
-        <!-- Gallery items - Row 3 -->
-        <div class="gallery-item">
-          <a href="https://sarpakavu.com" target="_blank">
-            <h4>Sarpakavu</h4>
-            <p>Cultural organization website</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://caenterprises.co.in" target="_blank">
-            <h4>CA Enterprises</h4>
-            <p>Business services website</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://shanmughamassociates.com" target="_blank">
-            <h4>Shanmugham Associates</h4>
-            <p>Professional services firm</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://kundanpipes.com" target="_blank">
-            <h4>Kundan Pipes</h4>
-            <p>Manufacturing company</p>
-          </a>
-        </div>
-
-        <!-- Gallery items - Row 4 -->
-        <div class="gallery-item">
-          <a href="https://galaxyvalley.in" target="_blank">
-            <h4>Galaxy Valley</h4>
-            <p>Real estate development</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://firstbreathclinic.com" target="_blank">
-            <h4>First Breath Clinic</h4>
-            <p>Healthcare provider website</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://nothingiswaste.org" target="_blank">
-            <h4>Nothing Is Waste</h4>
-            <p>Environmental organization</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://kongunadusurveyor.in" target="_blank">
-            <h4>Kongunadu Surveyor</h4>
-            <p>Professional services website</p>
-          </a>
-        </div>
-
-        <!-- Gallery items - Row 5 -->
-        <div class="gallery-item">
-          <a href="https://ixploretech.com" target="_blank">
-            <h4>iXplore Tech</h4>
-            <p>Technology company website</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://shaktiifdiamonds.com" target="_blank">
-            <h4>Shaktiif Diamonds</h4>
-            <p>Jewelry business website</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://malamurthycatering.com" target="_blank">
-            <h4>Malamurthy Catering</h4>
-            <p>Food service business</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://multisystemtechnologies.com" target="_blank">
-            <h4>Multisystem Technologies</h4>
-            <p>Tech solutions provider</p>
-          </a>
-        </div>
-
-        <!-- Gallery items - Row 6 -->
-        <div class="gallery-item">
-          <a href="https://holidaytravels.in" target="_blank">
-            <h4>Holiday Travels</h4>
-            <p>Travel agency website</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://signaturemoments.com" target="_blank">
-            <h4>Signature Moments</h4>
-            <p>Event planning company</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://primyfilmy.com" target="_blank">
-            <h4>Primy Filmy</h4>
-            <p>Entertainment website</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://chennaibroadband.in" target="_blank">
-            <h4>Chennai Broadband</h4>
-            <p>Internet service provider</p>
-          </a>
-        </div>
-
-        <!-- Gallery items - Row 7 -->
-        <div class="gallery-item">
-          <a href="https://futuremedias.com" target="_blank">
-            <h4>Future Medias</h4>
-            <p>Media company website</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://high5prints.in" target="_blank">
-            <h4>High5 Prints</h4>
-            <p>Printing services business</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://subratex.com" target="_blank">
-            <h4>Subratex</h4>
-            <p>Textile company website</p>
-          </a>
-        </div>
-        <div class="gallery-item">
-          <a href="https://tanelect.com" target="_blank">
-            <h4>Tanelect</h4>
-            <p>Electrical company website</p>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Certifications Section -->
-  <section class="certifications" id="certifications">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-title-container">
-          <span class="section-number">05</span>
-          <h2 class="section-title">Certifications & Honors</h2>
-        </div>
-        <p class="section-subtitle">Professional development and recognition throughout my career.</p>
-      </div>
-
-      <div class="certifications-grid fade-in">
-        <!-- Certification 1 -->
-        <div class="certification-card">
-          <div class="certification-icon">🏆</div>
-          <h3>Web Designing and Maintenance</h3>
-          <p>Infoem Solutions Pvt Ltd, Namakkal</p>
-        </div>
-
-        <!-- Certification 2 -->
-        <div class="certification-card">
-          <div class="certification-icon">🔬</div>
-          <h3>19th National Children's Science Congress-2011</h3>
-          <p>A Programme of NCSTC, DST, Govt. of India, New Delhi</p>
-          <p>Bannari Amman Institute of Technology, Erode</p>
-        </div>
-
-        <!-- Certification 3 -->
-        <div class="certification-card">
-          <div class="certification-icon">📚</div>
-          <h3>Reading, Note Taking and Memory Skills</h3>
-          <p>Chettinad College, Karur</p>
-        </div>
-
-        <!-- Certification 4 -->
-        <div class="certification-card">
-          <div class="certification-icon">🧮</div>
-          <h3>Applications of Mathematics</h3>
-          <p>National level workshop</p>
-          <p>Annai Women's College, Karur</p>
-        </div>
-
-        <!-- Certification 5 -->
-        <div class="certification-card">
-          <div class="certification-icon">📊</div>
-          <h3>Graph Theory and its Applications</h3>
-          <p>Workshop</p>
-          <p>Jairams College, Karur</p>
-        </div>
-
-        <!-- Certification 6 -->
-        <div class="certification-card">
-          <div class="certification-icon">🏔️</div>
-          <h3>Hill Climbing Training Camp</h3>
-          <p>TN Govt. Training Camp</p>
-          <p>Department of Forestry and School Education, Karur</p>
-        </div>
-
-        <!-- Certification 7 -->
-        <div class="certification-card">
-          <div class="certification-icon">🎨</div>
-          <h3>Child Art Competition</h3>
-          <p>Government Museum, Karur</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Personal Details Section -->
-  <section class="personal-details color-surface" id="personal">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-title-container">
-          <span class="section-number">06</span>
-          <h2 class="section-title">Personal Details</h2>
-        </div>
-        <p class="section-subtitle">More about me beyond my professional experience.</p>
-      </div>
-
-      <div class="details-grid fade-in">
-        <div class="details-card">
-          <h3>Personal Information</h3>
-          <ul class="details-list">
-            <li class="details-item">
-              <div class="details-icon">📅</div>
-              <div class="details-content">
-                <div class="details-label">Date of Birth</div>
-                <div class="details-value">09 June 1998</div>
-              </div>
-            </li>
-            <li class="details-item">
-              <div class="details-icon">👨‍👨‍👦</div>
-              <div class="details-content">
-                <div class="details-label">Father's Name</div>
-                <div class="details-value">Shanmugam N</div>
-              </div>
-            </li>
-            <li class="details-item">
-              <div class="details-icon">🏠</div>
-              <div class="details-content">
-                <div class="details-label">Address</div>
-                <div class="details-value">30, Lakshmipuram South, Jawahar Bazaar, Karur, Tamil Nadu 639001</div>
-              </div>
-            </li>
-            <li class="details-item">
-              <div class="details-icon">💍</div>
-              <div class="details-content">
-                <div class="details-label">Marital Status</div>
-                <div class="details-value">Single</div>
-              </div>
-            </li>
-            <li class="details-item">
-              <div class="details-icon">🌐</div>
-              <div class="details-content">
-                <div class="details-label">Nationality</div>
-                <div class="details-value">Indian</div>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="details-card">
-          <h3>Languages & Hobbies</h3>
-          <h4>Languages Known</h4>
-          <div class="languages-list">
-            <div class="language-item">
-              <div class="language-flag">🇮🇳</div>
-              <div class="language-name">Tamil</div>
-              <div class="language-level">Speaking, Reading, Writing</div>
-            </div>
-            <div class="language-item">
-              <div class="language-flag">🇬🇧</div>
-              <div class="language-name">English</div>
-              <div class="language-level">Speaking, Reading, Writing</div>
-            </div>
-            <div class="language-item">
-              <div class="language-flag">🇮🇳</div>
-              <div class="language-name">Hindi</div>
-              <div class="language-level">Speaking</div>
-            </div>
-          </div>
-
-          <h4 style="margin-top: 30px;">Hobbies</h4>
-          <div class="skills-list" style="margin-top: 15px;">
-            <span class="skill-item">Audio Books</span>
-            <span class="skill-item">Listening Music</span>
-            <span class="skill-item">YouTube</span>
-            <span class="skill-item">Watch Anime</span>
-            <span class="skill-item">Chess</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="objective-card fade-in" style="margin-top: 40px;">
-        <h3>Career Objective</h3>
-        <p>"To work in an organization which provides a chance for my ability to prove myself best and like to make
-          every opportunity successful and make contribution in each and every success."</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-title-container">
-          <span class="section-number">07</span>
-          <h2 class="section-title">Get In Touch</h2>
-        </div>
-        <p class="section-subtitle">Have a project in mind or want to discuss potential collaboration? I'd love to hear
-          from you.</p>
-      </div>
-
-      <div class="contact-container">
-        <div class="contact-info fade-in">
-          <h3>Let's create something amazing together</h3>
-          <p class="contact-text">I'm currently available for freelance work and full-time opportunities. If you have a
-            project that needs creative and technical expertise, feel free to reach out using the contact information
-            below or the form.</p>
-
-          <div class="contact-links">
-            <a href="mailto:naveenbsc1@gmail.com" class="contact-link">
-              <div class="contact-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-              </div>
-              <div>
-                <strong>Email</strong>
-                <p>naveenbsc1@gmail.com</p>
-              </div>
-            </a>
-
-            <a href="tel:+919787752302" class="contact-link">
-              <div class="contact-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path
-                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                  </path>
-                </svg>
-              </div>
-              <div>
-                <strong>Phone</strong>
-                <p>+91 97877 52302</p>
-              </div>
-            </a>
-
-            <a href="#" class="contact-link">
-              <div class="contact-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-              </div>
-              <div>
-                <strong>Location</strong>
-                <p>Karur, Tamil Nadu, India</p>
-              </div>
-            </a>
-
-            <a href="https://danui.in" target="_blank" class="contact-link">
-              <div class="contact-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                </svg>
-              </div>
-              <div>
-                <strong>Portfolio</strong>
-                <p>www.danui.in</p>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <form class="contact-form fade-in">
-          <div class="form-group">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" id="name" class="form-control" required>
-          </div>
-
-          <div class="form-group">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" id="email" class="form-control" required>
-          </div>
-
-          <div class="form-group">
-            <label for="subject" class="form-label">Subject</label>
-            <input type="text" id="subject" class="form-control" required>
-          </div>
-
-          <div class="form-group">
-            <label for="message" class="form-label">Message</label>
-            <textarea id="message" class="form-control" required></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
+  <!-- Footer - Classic Three Column -->
+  <footer class="footer" id="footer">
     <div class="container footer-container">
-      <div class="footer-info">
-        <a href="#" class="footer-logo">
-          Naveen S<span class="logo-dot"></span>
-        </a>
-        <p class="footer-text">Full-Stack Developer and UI/UX Designer specializing in creating optimized, user-friendly
-          digital experiences.</p>
-        <div class="social-links">
-          <a href="#" class="social-link" aria-label="GitHub">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-              </path>
-            </svg>
-          </a>
-          <a href="#" class="social-link" aria-label="LinkedIn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-              <rect x="2" y="9" width="4" height="12"></rect>
-              <circle cx="4" cy="4" r="2"></circle>
-            </svg>
-          </a>
-          <a href="#" class="social-link" aria-label="Twitter">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
-              </path>
-            </svg>
-          </a>
+      <!-- Personal Details Section - 3D Cube -->
+      <section class="personal-details-cube" id="personal">
+        <div class="container">
+          <div class="cube-container">
+            <!-- Left side: Navigation -->
+            <div class="cube-nav-container">
+              <div class="cube-nav">
+                <button class="cube-nav-btn active" data-face="front">Personal</button>
+                <button class="cube-nav-btn" data-face="left">Languages</button>
+                <button class="cube-nav-btn" data-face="back">Objective</button>
+                <button class="cube-nav-btn" data-face="right">Hobbies</button>
+                <button class="cube-nav-btn" data-face="bottom">Education</button>
+                <button class="cube-nav-btn" data-face="top">Contact</button>
+              </div>
+            </div>
+
+            <!-- Right side: Cube -->
+            <div class="scene">
+              <div class="cube" id="cube">
+                <!-- Front Face - Personal Info -->
+                <div class="cube-face cube-face-front">
+                  <h3 class="cube-face-title">Personal Information</h3>
+                  <div class="cube-face-content">
+                    <ul class="cube-list">
+                      <li class="cube-list-item">
+                        <div class="cube-list-icon">💍</div>
+                        <div class="cube-list-content">
+                          <div class="cube-list-label">Marital Status</div>
+                          <div class="cube-list-value">Married</div>
+                        </div>
+                      </li>
+                      <li class="cube-list-item">
+                        <div class="cube-list-icon">📆</div>
+                        <div class="cube-list-content">
+                          <div class="cube-list-label">Date of Birth</div>
+                          <div class="cube-list-value">09 June 1998</div>
+                        </div>
+                      </li>
+                      <li class="cube-list-item">
+                        <div class="cube-list-icon">🌏</div>
+                        <div class="cube-list-content">
+                          <div class="cube-list-label">Nationality</div>
+                          <div class="cube-list-value">Indian</div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Back Face - Career Objective -->
+                <div class="cube-face cube-face-back">
+                  <h3 class="cube-face-title">Career Objective</h3>
+                  <div class="cube-face-content">
+                    <p class="cube-objective">Passionate front-end developer seeking challenging projects that require
+                      continuous learning and adaptation to new technologies, with the goal of creating innovative,
+                      accessible, and performance-optimized digital experiences.</p>
+                  </div>
+                </div>
+
+                <!-- Right Face - Languages -->
+                <div class="cube-face cube-face-right">
+                  <h3 class="cube-face-title">Languages</h3>
+                  <div class="cube-face-content language">
+                    <div class="cube-languages">
+                      <div class="cube-language">
+                        <div class="cube-language-info">
+                          <div class="cube-language-name">Tamil <small>(Native)</small></div>
+                          <div class="cube-language-level">Speaking, Reading, Writing</div>
+                        </div>
+                      </div>
+                      <div class="cube-language">
+                        <div class="cube-language-info">
+                          <div class="cube-language-name">English <small>(Fluent)</small></div>
+                          <div class="cube-language-level">Speaking, Reading, Writing</div>
+                        </div>
+                      </div>
+                      <div class="cube-language">
+                        <div class="cube-language-info">
+                          <div class="cube-language-name">Hindi <small>(Basic)</small></div>
+                          <div class="cube-language-level">Speaking</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Left Face - Hobbies -->
+                <div class="cube-face cube-face-left">
+                  <h3 class="cube-face-title">Hobbies</h3>
+                  <div class="cube-face-content">
+                    <div class="cube-hobbies">
+                      <div class="cube-hobby">
+                        <div class="cube-hobby-icon">🎧</div>
+                        <div class="cube-hobby-name">Audio Books</div>
+                      </div>
+                      <div class="cube-hobby">
+                        <div class="cube-hobby-icon">🎵</div>
+                        <div class="cube-hobby-name">Music</div>
+                      </div>
+                      <div class="cube-hobby">
+                        <div class="cube-hobby-icon">▶</div>
+                        <div class="cube-hobby-name">YouTube</div>
+                      </div>
+                      <div class="cube-hobby">
+                        <div class="cube-hobby-icon">🎬</div>
+                        <div class="cube-hobby-name">Anime</div>
+                      </div>
+                      <div class="cube-hobby">
+                        <div class="cube-hobby-icon">♟️</div>
+                        <div class="cube-hobby-name">Chess</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Top Face - Education -->
+                <div class="cube-face cube-face-top">
+                  <h3 class="cube-face-title">Education</h3>
+                  <div class="cube-face-content">
+                    <ul class="cube-list">
+                      <li class="cube-list-item">
+                        <div class="cube-list-icon">🎓</div>
+                        <div class="cube-list-content">
+                          <div class="cube-list-label">BSc Mathematics (2015-2018)</div>
+                          <div class="cube-list-value">Jairams Arts and Science College, Karur</div>
+                        </div>
+                      </li>
+                      <li class="cube-list-item">
+                        <div class="cube-list-icon">🏫</div>
+                        <div class="cube-list-content">
+                          <div class="cube-list-label">Higher Secondary (2013-2015)</div>
+                          <div class="cube-list-value">Vivekanada Hr. Sec. School, Karur</div>
+                        </div>
+                      </li>
+                      <li class="cube-list-item">
+                        <div class="cube-list-icon">📚</div>
+                        <div class="cube-list-content">
+                          <div class="cube-list-label">SSLC (2013)</div>
+                          <div class="cube-list-value">MPL Kumaran School, Karur</div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Bottom Face - Contact -->
+                <div class="cube-face cube-face-bottom">
+                  <h3 class="cube-face-title">Contact</h3>
+                  <div class="cube-face-content">
+                    <a href="mailto:naveenbsc1@gmail.com" class="contact-link">
+                      <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                          <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                      </div>
+                      <div>
+                        <strong>Email</strong>
+                        <p>naveenbsc1@gmail.com</p>
+                      </div>
+                    </a>
+                    <a href="tel:+919787752302" class="contact-link">
+                      <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                          </path>
+                        </svg>
+                      </div>
+                      <div>
+                        <strong>Phone</strong>
+                        <p>+91 97877 52302</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="footer-links-container">
-        <h4 class="footer-heading">Quick Links</h4>
-        <ul class="footer-links">
-          <li class="footer-link"><a href="#home">Home</a></li>
-          <li class="footer-link"><a href="#about">About</a></li>
-          <li class="footer-link"><a href="#skills">Skills</a></li>
-          <li class="footer-link"><a href="#project-gallery">Projects</a></li>
-          <li class="footer-link"><a href="#certifications">Certifications</a></li>
-          <li class="footer-link"><a href="#personal">Personal</a></li>
-          <li class="footer-link"><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links-container">
-        <h4 class="footer-heading">Interests</h4>
-        <ul class="footer-links">
-          <li class="footer-link"><a href="#">Audio Books</a></li>
-          <li class="footer-link"><a href="#">Music</a></li>
-          <li class="footer-link"><a href="#">Anime</a></li>
-          <li class="footer-link"><a href="#">Chess</a></li>
-          <li class="footer-link"><a href="#">YouTube</a></li>
-        </ul>
-      </div>
     </div>
 
     <div class="container">
@@ -3742,19 +3851,19 @@
       // Add animation styles
       const style = document.createElement('style');
       style.textContent = `
-    @keyframes rotate {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(360deg); }
-    }
-    
-    .rotate-effect {
-      animation: rotate 2s linear infinite;
-    }
-    
-    .glow-effect {
-      box-shadow: 0 0 15px var(--color-primary);
-    }
-  `;
+  @keyframes rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+  
+  .rotate-effect {
+    animation: rotate 2s linear infinite;
+  }
+  
+  .glow-effect {
+    box-shadow: 0 0 15px var(--color-primary);
+  }
+`;
       document.head.appendChild(style);
 
       // 1. Button Hover Effects - Circle Effect with Glow emoji
@@ -3887,7 +3996,7 @@
         });
       });
 
-      const allElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, button, .img, .project-tags, .project-thumbnail, .hero-greeting, .stat-item, .hero-scroll, .timeline-date, li, .project-card, .skill-item');
+      const allElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, button, .img, .project-tags, .certification-icon, .project-thumbnail, .hero-greeting, .stat-item, .hero-scroll, .timeline-date, li, .project-card, .skill-item');
 
       // Store the current position for each element  
       const elementPositions = new Map();
@@ -4271,10 +4380,10 @@
             contextSnippet = contextSnippet.replace(queryRegex, '<span class="search-highlight">$1</span>');
 
             resultElement.innerHTML = `
-    <div class="search-result-title">${highlightedText}</div>
-    <div class="search-result-category">${result.category} in ${result.section}</div>
-    <div class="search-result-snippet">${contextSnippet}</div>
-  `;
+  <div class="search-result-title">${highlightedText}</div>
+  <div class="search-result-category">${result.category} in ${result.section}</div>
+  <div class="search-result-snippet">${contextSnippet}</div>
+`;
 
             resultElement.addEventListener('click', function () {
               searchPanel.classList.remove('active');
@@ -4451,28 +4560,6 @@
         });
       });
 
-      // Form submission
-      const contactForm = document.querySelector('.contact-form');
-
-      contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const submitBtn = contactForm.querySelector('.btn');
-        const originalText = submitBtn.textContent;
-
-        submitBtn.textContent = 'Sending...';
-
-        // Simulate form submission
-        setTimeout(function () {
-          submitBtn.textContent = 'Message Sent!';
-          contactForm.reset();
-
-          setTimeout(function () {
-            submitBtn.textContent = originalText;
-          }, 3000);
-        }, 2000);
-      });
-
       // Parallax effect for hero shapes
       const heroShapes = document.querySelectorAll('.hero-shape');
 
@@ -4496,6 +4583,78 @@
         const progress = (scrollTop / scrollHeight) * 100;
 
         document.querySelector('.scroll-progress').style.width = progress + '%';
+      });
+
+      // 3D Cube functionality
+      const cube = document.getElementById('cube');
+      const cubeNavBtns = document.querySelectorAll('.cube-nav-btn');
+
+      cubeNavBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          cubeNavBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const face = btn.getAttribute('data-face');
+          let rotateX = 0;
+          let rotateY = 0;
+
+          switch (face) {
+            case 'front':
+              rotateX = -15;
+              rotateY = 15;
+              break;
+            case 'back':
+              rotateX = -15;
+              rotateY = 195;
+              break;
+            case 'right':
+              rotateX = -15;
+              rotateY = 105;
+              break;
+            case 'left':
+              rotateX = -15;
+              rotateY = -75;
+              break;
+            case 'top':
+              rotateX = 75;
+              rotateY = 15;
+              break;
+            case 'bottom':
+              rotateX = -105;
+              rotateY = 15;
+              break;
+          }
+
+          cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+      });
+
+      // Optional: Add mouse drag rotation to cube
+      let isDragging = false;
+      let previousMousePosition = { x: 0, y: 0 };
+      let cubeRotation = { x: -15, y: 15 };
+
+      document.querySelector('.scene').addEventListener('mousedown', (e) => {
+        isDragging = true;
+        previousMousePosition = { x: e.clientX, y: e.clientY };
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+
+        const deltaX = e.clientX - previousMousePosition.x;
+        const deltaY = e.clientY - previousMousePosition.y;
+
+        cubeRotation.y += deltaX * 0.5;
+        cubeRotation.x -= deltaY * 0.5;
+
+        cube.style.transform = `rotateX(${cubeRotation.x}deg) rotateY(${cubeRotation.y}deg)`;
+
+        previousMousePosition = { x: e.clientX, y: e.clientY };
+      });
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
       });
     });
   </script>
