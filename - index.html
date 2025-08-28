@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Naveen S - Front-End Developer & UI/UX Designer: specializing in front-end development, web design, and marketing technology.">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<title>Naveen S | Front-End Developer & UI/UX Designer</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- Base styles -->
+<style>
+  /* Root variables for global theming */
+  :root {
+    /* Primary palette */
+    --color-primary: #6C5CE7;
+    --color-primary-rgb: 108, 92, 231;
+    --color-secondary: #00D2D3;
+    --color-secondary-rgb: 0, 210, 211;
+    --color-accent: #FF7675;
+    --color-accent-rgb: 255, 118, 117;
+
+    /* Neutrals */
+    --color-bg: #FFFFFF;
+    --color-surface: #efefef;
+    --color-text-primary: #2D3436;
+    --color-text-secondary: #636E72;
+    --color-border: #DFE6E9;
+
+    /* Typography */
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Spacing */
+    --space-unit: 8px;
+    --space-xs: calc(var(--space-unit) * 1);
+    --space-sm: calc(var(--space-unit) * 2);
+    --space-md: calc(var(--space-unit) * 3);
+    --space-lg: calc(var(--space-unit) * 5);
+    --space-xl: calc(var(--space-unit) * 8);
+    --space-xxl: calc(var(--space-unit) * 13);
+
+    /* Transitions */
+    --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-medium: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-slow: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Dark mode variables */
+  [data-theme="dark"] {
+    --color-bg: #0F1119;
+    --color-surface: #1A1C2A;
+    --color-text-primary: #F5F6FA;
+    --color-text-secondary: #A4B0BE;
+    --color-border: #2F3542;
+  }
+
+  /* Base styles */
+  html {
+    font-size: 62.5%; /* 10px = 1rem */
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg);
+    overflow-x: hidden;
+    transition: background-color var(--transition-medium);
+  }
+
+  /* Scroll progress indicator */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+    z-index: 1001;
+    transition: width 0.1s ease-out;
+  }
+
+  /* Hide default cursor when custom cursor is active */
+  @media (pointer: fine) {
+    body {
+      cursor: none;
+    }
+  }
+</style>
+</head>
+
+<body>
+<!-- Scroll Progress Indicator -->
+<div class="scroll-progress"></div>
+
+<!-- Particle Background -->
+<particle-background></particle-background>
+
+<!-- Custom Cursor (only for desktop) -->
+<custom-cursor></custom-cursor>
+
+<!-- Navigation -->
+<nav-bar></nav-bar>
+
+<!-- Search Panel -->
+<search-panel></search-panel>
+
+<!-- Mobile Menu -->
+<mobile-menu></mobile-menu>
+
+<!-- Hero Section -->
+<hero-section id="home"></hero-section>
+
+<!-- Projects Section -->
+<projects-section id="projects" class="color-surface"></projects-section>
+
+<!-- About Section -->
+<about-section id="about"></about-section>
+
+<!-- Skills Section -->
+<skills-section id="skills" class="color-surface"></skills-section>
+
+<!-- Footer Section -->
+<footer-section id="footer">
+  <!-- Personal Details 3D Cube -->
+  <cube-component id="personal"></cube-component>
+  
+  <!-- Copyright -->
+  <div class="copyright-container">
+    <p class="copyright">© <span id="current-year">2023</span> Naveen S. All rights reserved.</p>
+  </div>
+</footer-section>
+
+<!-- Back to Top Button -->
+<back-to-top></back-to-top>
+
+<!-- Core script for global functionality -->
+<script>
+  // Set current year in footer
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+  
+  // Theme management
+  document.addEventListener('DOMContentLoaded', function() {
+    // Check for saved theme preference or use system preference
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    } else {
+      const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', prefersDarkMode ? 'dark' : 'light');
+    }
+    
+    // Listen for theme toggle events from components
+    document.addEventListener('theme-toggle', function() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+    
+    // Scroll progress indicator
+    window.addEventListener('scroll', function() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      document.querySelector('.scroll-progress').style.width = progress + '%';
+    });
+    
+    // Handle mobile menu toggle events
+    document.addEventListener('mobile-menu-toggle', function(e) {
+      const mobileMenu = document.querySelector('mobile-menu');
+      if (e.detail.isOpen) {
+        mobileMenu.openMenu();
+      } else {
+        mobileMenu.closeMenu();
+      }
+    });
+    
+    // Handle search toggle events
+    document.addEventListener('search-toggle', function() {
+      const searchPanel = document.querySelector('search-panel');
+      searchPanel.toggleSearch();
+    });
+    
+    // Handle intersection observer for animations
+    setupIntersectionObserver();
+  });
+  
+  // Setup intersection observer for fade-in animations
+  function setupIntersectionObserver() {
+    if ('IntersectionObserver' in window) {
+      // Create observer for fade-in elements
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Dispatch custom event to the component
+            entry.target.dispatchEvent(new CustomEvent('component-visible', {
+              bubbles: true,
+              composed: true
+            }));
+            fadeObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      // Observe all section components
+      document.querySelectorAll('hero-section, projects-section, about-section, skills-section, footer-section')
+        .forEach(section => {
+          fadeObserver.observe(section);
+        });
+    }
+  }
+</script>
+
+<!-- Load all component scripts -->
+<script src="js/components/particle-background.js"></script>
+<script src="js/components/custom-cursor.js"></script>
+<script src="js/components/navbar.js"></script>
+<script src="js/components/search-panel.js"></script>
+<script src="js/components/mobile-menu.js"></script>
+<script src="js/components/hero-section.js"></script>
+<script src="js/components/projects-section.js"></script>
+<script src="js/components/about-section.js"></script>
+<script src="js/components/skills-section.js"></script>
+<script src="js/components/footer-section.js"></script>
+<script src="js/components/cube-component.js"></script>
+<script src="js/components/back-to-top.js"></script>
+</body>
+
+</html>

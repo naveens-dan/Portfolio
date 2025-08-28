@@ -1,0 +1,11 @@
+These JavaScript files provide all the web components needed for your portfolio. Each component is fully self-contained with its own HTML, CSS, and JavaScript, making them reusable and maintainable.
+
+True encapsulation: Each component's styles and functionality are isolated
+No naming conflicts: Even with identical class names, Shadow DOM prevents conflicts
+Reusability: Components can be dropped into any project without modification
+Maintainability: Each component can be developed, tested, and updated independently
+Performance: Components can be lazy-loaded as needed
+Responsive by design: Each component handles its own responsive behavior
+
+
+I converted this project into components. custom-cursor.js is not working exactly as in the original project:
