@@ -1,0 +1,4879 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Naveen S - Front-End Developer & UI/UX Designer: specializing in front-end development, web design, and marketing technology.">
+  <link rel="icon" type="image/png" href="img/favicon.webp">
+  <title>Naveen S | Front-End Developer & UI/UX Designer</title>
+  <style>
+    /* Core Variables */
+    :root {
+      /* Primary palette */
+      --color-primary: #6C5CE7;
+      --color-primary-rgb: 108, 92, 231;
+      --color-secondary: #00D2D3;
+      --color-secondary-rgb: 0, 210, 211;
+      --color-accent: #FF7675;
+      --color-accent-rgb: 255, 118, 117;
+
+      /* Neutrals */
+      --color-bg: #FFFFFF;
+      --color-surface: #efefef;
+      --color-text-primary: #2D3436;
+      --color-text-secondary: #636E72;
+      --color-border: #DFE6E9;
+      --timeline-box-shadow: 0 0px 15px rgba(0, 0, 0, 0.25);
+      --timeline-box-shadow-hover: 0 0px 30px rgba(0, 0, 0, 0.5);
+
+      /* Typography */
+      --font-heading: sans-serif;
+      --font-body: sans-serif;
+
+      /* Spacing */
+      --space-unit: 8px;
+      --space-xs: calc(var(--space-unit) * 1);
+      --space-sm: calc(var(--space-unit) * 2);
+      --space-md: calc(var(--space-unit) * 3);
+      --space-lg: calc(var(--space-unit) * 5);
+      --space-xl: calc(var(--space-unit) * 8);
+      --space-xxl: calc(var(--space-unit) * 13);
+
+      /* Transitions */
+      --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition-medium: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition-slow: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Dark mode */
+    html[data-theme="dark"] {
+      --color-bg: #0F1119;
+      --color-surface: #1A1C2A;
+      --color-text-primary: #F5F6FA;
+      --color-text-secondary: #A4B0BE;
+      --color-border: #2F3542;
+      --timeline-box-shadow: 0 0px 15px rgba(255, 255, 255, 0.25);
+      --timeline-box-shadow-hover: 0 0px 30px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Enhanced Particle Background Styles */
+    .particle-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      will-change: transform;
+      transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+      pointer-events: none;
+    }
+
+    .circle {
+      border-radius: 50%;
+    }
+
+    .square {
+      border-radius: 4px;
+    }
+
+    .triangle {
+      width: 0 !important;
+      height: 0 !important;
+      background-color: transparent !important;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-bottom: 43px solid var(--color-primary);
+    }
+
+    .star {
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 62.5%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 1.6rem;
+      line-height: 1.6;
+      color: var(--color-text-primary);
+      background-color: var(--color-bg);
+      overflow-x: hidden;
+      transition: background-color var(--transition-medium);
+      cursor: none;
+      /* Hide default cursor */
+    }
+
+    /* Typography */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.2;
+      position: relative;
+      padding-left: var(--space-md);
+      transition: all var(--transition-medium);
+      border-left: 0px solid transparent;
+      width: fit-content;
+    }
+
+    /* NEW: Left border with gradient text for headings */
+    h1:hover,
+    h2:hover,
+    h3:hover,
+    h4:hover,
+    h5:hover {
+      border-left: 4px solid var(--color-primary);
+      background-image: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+      background-size: 100%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    h1 {
+      font-size: clamp(4rem, 8vw, 9rem);
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: clamp(3.2rem, 5vw, 5.6rem);
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: clamp(2.4rem, 3vw, 3.2rem);
+    }
+
+    p {
+      margin-bottom: var(--space-md);
+      color: var(--color-text-secondary);
+      position: relative;
+      width: fit-content;
+    }
+
+    /* NEW: Reveal from bottom animation for paragraphs */
+    p::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.5s ease;
+    }
+
+    p:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: all var(--transition-fast);
+      cursor: none;
+      /* Hide default cursor */
+    }
+
+    a:hover {
+      color: var(--color-accent);
+    }
+
+    /* Layout */
+    .container {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding: 0 var(--space-lg);
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .container {
+        padding: 0 var(--space-xl);
+      }
+    }
+
+    section {
+      padding: var(--space-xl) 0;
+    }
+
+    @media (min-width: 768px) {
+      section {
+        padding: var(--space-xxl) 0;
+      }
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: var(--space-md) 0;
+      transition: all var(--transition-medium);
+    }
+
+    .navbar.scrolled {
+      background-color: var(--color-bg);
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+      padding: var(--space-xs) 0;
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      z-index: 1002;
+    }
+
+    .logo-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: var(--color-accent);
+      border-radius: 50%;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    @media (min-width: 992px) {
+      .nav-links {
+        display: flex;
+        gap: var(--space-lg);
+        list-style: none;
+      }
+
+      .nav-link {
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: var(--color-text-secondary);
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--color-accent);
+        transition: width var(--transition-medium);
+      }
+
+      .nav-link:hover {
+        color: var(--color-text-primary);
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      z-index: 1002;
+    }
+
+    /* Search */
+    .search-container {
+      position: relative;
+      margin-right: var(--space-sm);
+    }
+
+    .search-toggle {
+      background: none;
+      border: none;
+      cursor: none;
+      /* Hide default cursor */
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-primary);
+      transition: all var(--transition-fast);
+      font-size: 1.8rem;
+    }
+
+    .search-toggle:hover {
+      background-color: var(--color-surface);
+    }
+
+    .search-panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-bg);
+      padding: var(--space-xl);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: all var(--transition-medium);
+      z-index: 1005;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .search-panel.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .search-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .search-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+    }
+
+    .search-close {
+      background: none;
+      border: none;
+      cursor: none;
+      /* Hide default cursor */
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-primary);
+      transition: all var(--transition-fast);
+      font-size: 2.4rem;
+    }
+
+    .search-close:hover {
+      background-color: var(--color-surface);
+    }
+
+    .search-form {
+      display: flex;
+      align-items: center;
+      background-color: var(--color-surface);
+      border-radius: 8px;
+      padding: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+
+    .search-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: var(--space-sm);
+      font-size: 1.8rem;
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      cursor: none;
+      /* Hide default cursor */
+    }
+
+    .search-input:focus {
+      outline: none;
+    }
+
+    .search-submit {
+      background: none;
+      border: none;
+      color: var(--color-text-secondary);
+      cursor: none;
+      /* Hide default cursor */
+      padding: var(--space-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    .search-submit:hover {
+      color: var(--color-primary);
+    }
+
+    .search-results {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .search-result {
+      padding: var(--space-md);
+      border-radius: 8px;
+      margin-bottom: var(--space-sm);
+      cursor: none;
+      /* Hide default cursor */
+      transition: all var(--transition-fast);
+      border: 1px solid var(--color-border);
+    }
+
+    .search-result:hover {
+      background-color: var(--color-surface);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px var(--shadow-color);
+    }
+
+    .search-result-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--color-text-primary);
+      font-size: 1.8rem;
+    }
+
+    .search-result-category {
+      font-size: 1.4rem;
+      color: var(--color-accent);
+      margin-bottom: 8px;
+      display: inline-block;
+      padding: 2px 8px;
+      background-color: rgba(255, 118, 117, 0.1);
+      border-radius: 4px;
+    }
+
+    .search-result-snippet {
+      font-size: 1.6rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    .search-highlight {
+      background-color: rgba(108, 92, 231, 0.2);
+      padding: 0 2px;
+      border-radius: 2px;
+      font-weight: 500;
+    }
+
+    .search-empty {
+      text-align: center;
+      padding: var(--space-xl);
+      color: var(--color-text-secondary);
+      font-size: 1.8rem;
+    }
+
+    .search-info {
+      text-align: center;
+      padding: var(--space-xl);
+      color: var(--color-text-secondary);
+      font-size: 1.6rem;
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: none;
+      /* Hide default cursor */
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-primary);
+      transition: all var(--transition-fast);
+      position: relative;
+    }
+
+    .theme-toggle:hover {
+      background-color: var(--color-surface);
+    }
+
+    .theme-icon {
+      position: absolute;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      font-size: 1.8rem;
+    }
+
+    .sun-icon {
+      opacity: 1;
+      transform: rotate(0);
+    }
+
+    .moon-icon {
+      opacity: 0;
+      transform: rotate(90deg);
+    }
+
+    html[data-theme="dark"] .sun-icon {
+      opacity: 0;
+      transform: rotate(-90deg);
+    }
+
+    html[data-theme="dark"] .moon-icon {
+      opacity: 1;
+      transform: rotate(0);
+    }
+
+    /* Hamburger Menu - Updated design */
+    .hamburger {
+      width: 30px;
+      height: 24px;
+      position: relative;
+      cursor: none;
+      /* Hide default cursor */
+      z-index: 1002;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 3px;
+      background-color: var(--color-text-primary);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    /* Make first and third lines shorter */
+    .hamburger span:nth-child(1) {
+      width: 70%;
+      align-self: flex-end;
+      border-radius: 3px 10px 10px 3px;
+      /* Rounded on right side */
+    }
+
+    .hamburger span:nth-child(2) {
+      width: 100%;
+    }
+
+    .hamburger span:nth-child(3) {
+      width: 70%;
+      align-self: flex-start;
+      border-radius: 10px 3px 3px 10px;
+      /* Rounded on left side */
+    }
+
+    /* Update the active state for the new design */
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(10.5px) rotate(45deg);
+      width: 100%;
+      border-radius: 3px;
+      align-self: center;
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-10.5px) rotate(-45deg);
+      width: 100%;
+      border-radius: 3px;
+      align-self: center;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: var(--color-bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-medium);
+      transform: translateY(-20px);
+    }
+
+    .mobile-menu.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      text-align: center;
+    }
+
+    .mobile-nav-link {
+      margin-bottom: var(--space-lg);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+    }
+
+    .mobile-menu.active .mobile-nav-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-menu.active .mobile-nav-link:nth-child(1) {
+      transition-delay: 0.1s;
+    }
+
+    .mobile-menu.active .mobile-nav-link:nth-child(2) {
+      transition-delay: 0.2s;
+    }
+
+    .mobile-menu.active .mobile-nav-link:nth-child(3) {
+      transition-delay: 0.3s;
+    }
+
+    .mobile-menu.active .mobile-nav-link:nth-child(4) {
+      transition-delay: 0.4s;
+    }
+
+    .mobile-menu.active .mobile-nav-link:nth-child(5) {
+      transition-delay: 0.5s;
+    }
+
+    .mobile-menu.active .mobile-nav-link:nth-child(6) {
+      transition-delay: 0.6s;
+    }
+
+    .mobile-menu.active .mobile-nav-link:nth-child(7) {
+      transition-delay: 0.7s;
+    }
+
+    .mobile-menu.active .mobile-nav-link:nth-child(8) {
+      transition-delay: 0.8s;
+    }
+
+    .mobile-nav-link a {
+      font-family: var(--font-heading);
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-greeting {
+      font-family: var(--font-body);
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: var(--color-accent);
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      width: fit-content;
+    }
+
+    .hero-greeting::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 2px;
+      background-color: var(--color-accent);
+    }
+
+    .hero-title {
+      margin-bottom: var(--space-md);
+      position: relative;
+    }
+
+    .hero-title .highlight {
+      color: var(--color-primary);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-title .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      height: 12px;
+      background-color: var(--color-accent);
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin-bottom: var(--space-lg);
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-sm) var(--space-lg);
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.6rem;
+      transition: all var(--transition-fast);
+      position: relative;
+      cursor: none;
+      /* Hide default cursor */
+    }
+
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--color-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);
+      color: white;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      transform: translateY(-3px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: var(--space-lg);
+      left: 45%;
+      width: 100%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xs);
+      color: var(--color-text-secondary);
+      font-size: 1.4rem;
+    }
+
+    .scroll-indicator {
+      width: 24px;
+      height: 40px;
+      border: 2px solid var(--color-text-secondary);
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .scroll-indicator::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 8px;
+      background-color: var(--color-accent);
+      border-radius: 2px;
+      animation: scrollIndicator 2s infinite;
+    }
+
+    @keyframes scrollIndicator {
+      0% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateX(-50%) translateY(15px);
+        opacity: 0;
+      }
+    }
+
+    .hero-background {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      transition: transform 0.2s ease-out;
+      will-change: transform;
+    }
+
+    .hero-shape-1 {
+      top: 10%;
+      right: 10%;
+      width: 300px;
+      height: 300px;
+      background-color: rgba(108, 92, 231, 0.15);
+    }
+
+    .hero-shape-2 {
+      bottom: 20%;
+      right: 30%;
+      width: 200px;
+      height: 200px;
+      background-color: rgba(0, 210, 211, 0.15);
+    }
+
+    .hero-shape-3 {
+      top: 40%;
+      left: 10%;
+      width: 250px;
+      height: 250px;
+      background-color: rgba(255, 118, 117, 0.1);
+    }
+
+    /* About Section */
+    .about {
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: var(--space-xl);
+    }
+
+    .section-title-container {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+
+    .section-number {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--color-accent);
+    }
+
+    .section-title {
+      position: relative;
+    }
+
+    .section-subtitle {
+      font-size: 1.8rem;
+      color: var(--color-text-secondary);
+      max-width: 600px;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    @media (min-width: 992px) {
+      .about-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .about-image {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-medium);
+      cursor: none;
+      /* Hide default cursor */
+    }
+
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%);
+    }
+
+    .about-text h3 {
+      margin-bottom: var(--space-md);
+      position: relative;
+      display: inline-block;
+    }
+
+    .about-text h3::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--color-accent);
+    }
+
+    .about-text p {
+      margin-bottom: var(--space-lg);
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+    }
+
+    .stat-item {
+      text-align: left;
+    }
+
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: 3.6rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+    }
+
+    .stat-label {
+      font-size: 1.4rem;
+      color: var(--color-text-secondary);
+    }
+
+    /* Timeline Styles for Skills Section */
+    .timeline-container {
+      position: relative;
+      margin: var(--space-xl) 0;
+      padding-left: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .timeline-container.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile-specific adjustments for timeline */
+    @media (max-width: 768px) {
+      .timeline-container {
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        /* Faster transition on mobile */
+      }
+    }
+
+    /* Timeline vertical line */
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 15px;
+      width: 2px;
+      background: linear-gradient(to bottom,
+          var(--color-primary) 0%,
+          var(--color-accent) 100%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: var(--space-xl);
+      padding-bottom: var(--space-lg);
+      opacity: 0;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item.visible {
+      animation: fadeInLeft 0.6s ease forwards;
+    }
+
+    .timeline-item:nth-child(2).visible {
+      animation-delay: 0.2s;
+    }
+
+    .timeline-item:nth-child(3).visible {
+      animation-delay: 0.4s;
+    }
+
+    .timeline-item:nth-child(4).visible {
+      animation-delay: 0.6s;
+    }
+
+    .timeline-item:nth-child(5).visible {
+      animation-delay: 0.8s;
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Timeline marker (circle on the line) */
+    .timeline-marker {
+      position: absolute;
+      left: -40px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: var(--color-primary);
+      border: 4px solid var(--color-bg);
+      box-shadow: 0 0 0 2px var(--color-primary);
+      z-index: 1;
+    }
+
+    /* Special marker for education */
+    .education-marker {
+      background-color: var(--color-accent);
+      box-shadow: 0 0 0 2px var(--color-accent);
+    }
+
+    .timeline-content {
+      background-color: var(--color-surface);
+      border-radius: 16px;
+      padding: var(--space-lg);
+      box-shadow: var(--timeline-box-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: var(--timeline-box-shadow-hover);
+      background-color: rgba(var(--color-primary-rgb), 0.05);
+    }
+
+    .timeline-date {
+      display: inline-block;
+      padding: var(--space-xs) var(--space-sm);
+      background-color: var(--color-primary);
+      color: white;
+      border-radius: 30px;
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: var(--space-sm);
+    }
+
+    .timeline-title {
+      font-size: 2.2rem;
+      margin-bottom: var(--space-xs);
+    }
+
+    .timeline-company {
+      font-size: 1.8rem;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-md);
+      font-weight: 500;
+    }
+
+    .timeline-institution {
+      font-size: 1.6rem;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-md);
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .timeline-details {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    @media (min-width: 768px) {
+      .timeline-container {
+        padding-left: 60px;
+      }
+
+      .timeline-container::before {
+        left: 25px;
+      }
+
+      .timeline-marker {
+        left: -50px;
+      }
+
+      .timeline-details {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .timeline-skills h5,
+    .timeline-projects h5 {
+      font-size: 1.6rem;
+      margin-top: var(--space-sm);
+      margin-bottom: var(--space-sm);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .timeline-skills h5::before,
+    .timeline-projects h5::before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      background-color: var(--color-accent);
+      border-radius: 50%;
+    }
+
+    .timeline-projects ul {
+      padding-left: var(--space-lg);
+      color: var(--color-text-secondary);
+    }
+
+    .timeline-projects li {
+      margin-bottom: var(--space-xs);
+      line-height: 1.6;
+    }
+
+    /* Skills Summary Section */
+    .skills-summary {
+      margin-top: var(--space-xxl);
+      padding-top: var(--space-xl);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .skills-summary-title {
+      font-size: 2.4rem;
+      margin-bottom: var(--space-lg);
+      text-align: center;
+    }
+
+    .skills-categories .ml40 {
+      margin-left: 35px;
+    }
+
+    .skills-categories {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    @media (max-width: 768px) {
+      .certification-card {
+        flex-direction: column;
+        margin-left: 0px !important;
+      }
+    }
+
+    .skills-category {
+      margin-bottom: 0;
+    }
+
+    .skills-category-title {
+      font-size: 1.8rem;
+      margin-bottom: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .skills-category-title::before {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 10px;
+      background-color: var(--color-accent);
+      border-radius: 50%;
+    }
+
+    /* Skills Section */
+    .skills {
+      position: relative;
+    }
+
+    .color-surface::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-surface);
+      opacity: 0.7;
+      z-index: -1;
+    }
+
+    .skills-category .skill-item {
+      padding: var(--space-xs) var(--space-sm);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      column-gap: 5px;
+      row-gap: 5px;
+    }
+
+    .skill-item {
+      padding: var(--space-xs) var(--space-md);
+      background-color: var(--color-bg);
+      border-radius: 30px;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid var(--color-border);
+      cursor: none;
+      /* Hide default cursor */
+    }
+
+    .skill-item:hover {
+      background-color: var(--color-primary);
+      color: white;
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 10px 20px rgba(var(--color-primary-rgb), 0.2);
+      border-color: var(--color-primary);
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: var(--space-md);
+    }
+
+    .tool-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-md);
+      background-color: var(--color-bg);
+      border-radius: 12px;
+      transition: all var(--transition-fast);
+      border: 1px solid var(--color-border);
+    }
+
+    .tool-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      border-color: var(--color-primary);
+    }
+
+    .tool-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      color: var(--color-primary);
+    }
+
+    .tool-name {
+      font-size: 1.4rem;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* Projects Section */
+    .projects {
+      position: relative;
+    }
+
+    .projects-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xl);
+    }
+
+    .filter-btn {
+      padding: var(--space-xs) var(--space-md);
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      cursor: none;
+      /* Hide default cursor */
+      transition: all var(--transition-fast);
+      border-radius: 30px;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      color: var(--color-primary);
+      background-color: var(--color-surface);
+    }
+
+    .filter-btn.active {
+      font-weight: 600;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .project-card {
+      border-radius: 16px;
+      background-color: var(--color-surface);
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      cursor: none;
+      box-shadow: var(--timeline-box-shadow);
+      /* Hide default cursor */
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px) rotateX(5deg);
+      box-shadow: var(--timeline-box-shadow-hover);
+    }
+
+    .project-thumbnail {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      border-radius: 15px 15px 0px 0px;
+    }
+
+    .project-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease-out;
+      cursor: none;
+      /* Hide default cursor */
+    }
+
+    .project-card:hover .project-thumbnail img {
+      transform: scale(1.05) translateZ(20px);
+    }
+
+    .project-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+      opacity: 0;
+      transition: opacity var(--transition-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .project-links {
+      display: flex;
+      gap: var(--space-sm);
+    }
+
+    .project-link {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary);
+      font-size: 2rem;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all var(--transition-medium);
+      cursor: none;
+      /* Hide default cursor */
+    }
+
+    .project-card:hover .project-link {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .project-card:hover .project-link:nth-child(2) {
+      transition-delay: 0.1s;
+    }
+
+    .project-link:hover {
+      background-color: var(--color-primary);
+      color: white;
+    }
+
+    .project-content {
+      padding: var(--space-md);
+      transform: translateZ(10px);
+      transition: transform 0.3s ease;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-sm);
+    }
+
+    .project-tag {
+      font-size: 1.2rem;
+      color: var(--color-accent);
+      font-weight: 500;
+    }
+
+    .project-title {
+      font-size: 2rem;
+      margin-bottom: var(--space-xs);
+    }
+
+    .project-description {
+      font-size: 1.4rem;
+      color: var(--color-text-secondary);
+    }
+
+    .projects-cta {
+      text-align: center;
+      margin-top: var(--space-xl);
+    }
+
+    /* Personal Details Section - 3D Cube */
+    .personal-details-cube {
+      position: relative;
+      padding: var(--space-xl) 0;
+      height: 700px;
+    }
+
+    .scene {
+      width: 100%;
+      height: 100%;
+      perspective: 1000px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      touch-action: none;
+      /* Prevents browser handling of touch gestures */
+    }
+
+    .scene::after {
+      content: "Swipe to rotate";
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      opacity: 0.7;
+      pointer-events: none;
+      animation: fadeOut 3s forwards;
+    }
+
+    @keyframes fadeOut {
+
+      0%,
+      50% {
+        opacity: 0.7;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .cube {
+      width: 400px;
+      height: 400px;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateX(-15deg) rotateY(15deg);
+      transition: transform 1s;
+      will-change: transform;
+    }
+
+    .cube.dragging {
+      transition: none !important;
+    }
+
+    /* Add a subtle glow effect during dragging for visual feedback */
+    .cube.dragging .cube-face {
+      box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.5);
+    }
+
+    .cube-face {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: var(--space-lg);
+      background-color: rgba(var(--color-primary-rgb), 0.15);
+      backface-visibility: hidden;
+      overflow: auto;
+    }
+
+    .cube-face-front {
+      transform: translateZ(200px);
+      background-color: rgba(30, 0, 255, 0.15);
+      border: 5px solid rgba(30, 0, 255, 0.3);
+    }
+
+    .cube-face-back {
+      transform: rotateY(180deg) translateZ(200px);
+      background-color: rgba(255, 238, 0, 0.15);
+      border: 5px solid rgba(255, 238, 0, 0.3);
+    }
+
+    .cube-face-right {
+      transform: rotateY(90deg) translateZ(200px);
+      background-color: rgba(255, 0, 0, 0.15);
+      border: 5px solid rgba(255, 0, 0, 0.3);
+    }
+
+    .cube-face-left {
+      transform: rotateY(-90deg) translateZ(200px);
+      background-color: rgba(0, 255, 106, 0.15);
+      border: 5px solid rgba(0, 255, 106, 0.3);
+    }
+
+    .cube-face-top {
+      transform: rotateX(90deg) translateZ(200px);
+      background-color: rgba(0, 153, 255, 0.15);
+      border: 5px solid rgba(0, 153, 255, 0.3);
+    }
+
+    .cube-face-bottom {
+      transform: rotateX(-90deg) translateZ(200px);
+      background-color: rgba(183, 0, 255, 0.15);
+      border: 5px solid rgba(183, 0, 255, 0.3);
+    }
+
+    .cube-face-content.language {
+      text-align: center;
+    }
+
+    .cube-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-xl);
+    }
+
+    .cube-nav {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      z-index: 10;
+    }
+
+    .cube-nav-btn {
+      padding: var(--space-md) var(--space-lg);
+      background-color: rgba(var(--color-primary-rgb), 0.1);
+      border: none;
+      border-radius: 8px;
+      color: var(--color-text-primary);
+      transition: all var(--transition-fast);
+      font-family: var(--font-body);
+      font-size: 1.6rem;
+      text-align: left;
+      position: relative;
+    }
+
+    .cube-nav-btn:hover {
+      background-color: var(--color-primary);
+      color: white;
+      transform: translateX(5px);
+    }
+
+    .cube-nav-btn.active {
+      background-color: var(--color-primary);
+      color: white;
+    }
+
+    .cube-nav {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      z-index: 10;
+    }
+
+    .cube-nav-btn {
+      padding: var(--space-md) var(--space-lg);
+      background-color: rgba(var(--color-primary-rgb), 0.1);
+      border: none;
+      border-radius: 8px;
+      color: var(--color-text-primary);
+      transition: all var(--transition-fast);
+      font-family: var(--font-body);
+      font-size: 1.6rem;
+      text-align: left;
+      position: relative;
+    }
+
+    .cube-nav-btn:hover {
+      background-color: var(--color-primary);
+      color: white;
+      transform: translateX(5px);
+    }
+
+    .cube-nav-btn.active {
+      background-color: var(--color-primary);
+      color: white;
+    }
+
+    .cube-nav-btn.active::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -10px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid var(--color-primary);
+    }
+
+    /* Responsive adjustments for 3D cube */
+    @media (max-width: 992px) {
+      .project-logo.mi img {
+        height: 60px;
+      }
+
+      .cube-container {
+        flex-direction: column;
+      }
+
+      .cube-nav-container {
+        width: 100%;
+        padding-right: 0;
+        padding-bottom: var(--space-lg);
+      }
+
+      .scene {
+        width: 100%;
+      }
+
+      .cube-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .cube-nav-btn.active::after {
+        display: none;
+      }
+
+      .cube-nav-btn:hover {
+        transform: translateY(-5px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cube {
+        width: 350px;
+        height: 350px;
+        transition: transform 0.05s;
+        /* Smoother response on mobile */
+      }
+
+      .cube-face {
+        width: 350px;
+        height: 350px;
+        padding: var(--space-md);
+        overflow-y: auto;
+        /* Enable scrolling for content that might still overflow */
+      }
+
+      .cube-face-front {
+        transform: translateZ(175px);
+      }
+
+      .cube-face-back {
+        transform: rotateY(180deg) translateZ(175px);
+      }
+
+      .cube-face-right {
+        transform: rotateY(90deg) translateZ(175px);
+      }
+
+      .cube-face-left {
+        transform: rotateY(-90deg) translateZ(175px);
+      }
+
+      .cube-face-top {
+        transform: rotateX(90deg) translateZ(175px);
+      }
+
+      .cube-face-bottom {
+        transform: rotateX(-90deg) translateZ(175px);
+      }
+
+      /* Reduce font sizes for better fit */
+      .cube-face-title {
+        font-size: 2rem;
+        margin-bottom: var(--space-md);
+      }
+
+      .cube-list-label {
+        font-size: 1.4rem;
+      }
+
+      .cube-list-value {
+        font-size: 1.2rem;
+      }
+
+      .cube-objective {
+        font-size: 1.4rem;
+        padding: 0 var(--space-xs);
+      }
+
+      .cube-language-name {
+        font-size: 1.4rem;
+      }
+
+      .cube-language-level {
+        font-size: 1.2rem;
+      }
+
+      .cube-hobby-name {
+        font-size: 1.2rem;
+      }
+
+      .cube-nav {
+        padding: 0 var(--space-md);
+      }
+
+      .cube-nav-btn {
+        font-size: 1.2rem;
+        padding: var(--space-xs) var(--space-sm);
+      }
+    }
+
+    .cube-face-title {
+      font-size: 2.4rem;
+      margin-bottom: var(--space-lg);
+      color: var(--color-primary);
+      text-align: center;
+    }
+
+    .cube-face-content {
+      width: 100%;
+    }
+
+    .cube-list {
+      list-style: none;
+      width: 100%;
+    }
+
+    .cube-list-item {
+      display: flex;
+      margin-bottom: var(--space-md);
+      align-items: flex-start;
+    }
+
+    .cube-list-icon {
+      margin-right: var(--space-sm);
+      font-size: 2rem;
+      color: var(--color-primary);
+      flex-shrink: 0;
+    }
+
+    .cube-list-content {
+      flex-grow: 1;
+    }
+
+    .cube-list-label {
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--color-text-primary);
+    }
+
+    .cube-list-value {
+      color: var(--color-text-secondary);
+      font-size: 12px;
+    }
+
+    .cube-objective {
+      font-style: italic;
+      line-height: 1.8;
+      text-align: center;
+      color: var(--color-text-secondary);
+      padding: 0;
+    }
+
+    .cube-languages {
+      width: 100%;
+    }
+
+    .cube-language {
+      display: flex;
+      align-items: center;
+      margin-bottom: var(--space-md);
+    }
+
+    .cube-language-flag {
+      font-size: 2.4rem;
+      margin-right: var(--space-sm);
+    }
+
+    .cube-language-info {
+      flex-grow: 1;
+    }
+
+    .cube-language-name {
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+
+    .cube-language-level {
+      font-size: 1.4rem;
+      color: var(--color-text-secondary);
+    }
+
+    .cube-hobbies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      justify-content: center;
+    }
+
+    .cube-hobby {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .cube-hobby-icon {
+      font-size: 2.4rem;
+      color: var(--color-accent);
+    }
+
+    .cube-hobby-name {
+      font-size: 1.4rem;
+      color: var(--color-text-secondary);
+    }
+
+    /* Project Gallery Section */
+    .project-gallery {
+      position: relative;
+    }
+
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: var(--space-md);
+    }
+
+    .gallery-item {
+      background-color: var(--color-surface);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all var(--transition-medium);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-item a {
+      display: block;
+      padding: var(--space-md);
+      color: var(--color-text-primary);
+      text-decoration: none;
+      height: 100%;
+    }
+
+    .gallery-item h4 {
+      margin-bottom: var(--space-xs);
+      font-size: 1.6rem;
+    }
+
+    .gallery-item p {
+      font-size: 1.4rem;
+      color: var(--color-text-secondary);
+    }
+
+    .gallery-item::after {
+      content: '→';
+      position: absolute;
+      bottom: var(--space-md);
+      right: var(--space-md);
+      color: var(--color-primary);
+      font-size: 1.8rem;
+      opacity: 0;
+      transition: all var(--transition-medium);
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+      transform: translateX(5px);
+    }
+
+    /* Contact Section */
+    .contact {
+      position: relative;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    @media (min-width: 992px) {
+      .contact-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .contact-info h3 {
+      margin-bottom: var(--space-md);
+    }
+
+    .contact-text {
+      margin-bottom: var(--space-lg);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      color: var(--color-text-primary);
+      transition: all var(--transition-fast);
+      width: fit-content;
+    }
+
+    .contact-link:hover {
+      color: var(--color-primary);
+      transform: translateX(5px);
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--color-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--color-primary);
+      transition: all var(--transition-fast);
+    }
+
+    .contact-link:hover .contact-icon {
+      background-color: var(--color-primary);
+      color: white;
+    }
+
+    .contact-form {
+      background-color: var(--color-surface);
+      padding: var(--space-lg);
+      border-radius: 16px;
+    }
+
+    .form-group {
+      margin-bottom: var(--space-md);
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: var(--space-xs);
+      font-weight: 500;
+      color: var(--color-text-primary);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: var(--space-sm);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      font-size: 1.6rem;
+      transition: all var(--transition-fast);
+      cursor: none;
+      /* Hide default cursor */
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+    }
+
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    /* Footer - Classic Three Column */
+    .footer {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      text-decoration: none;
+    }
+
+    .footer-logo .logo-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: var(--color-accent);
+      border-radius: 50%;
+    }
+
+    .footer-text {
+      margin-bottom: var(--space-md);
+    }
+
+    .social-links {
+      display: flex;
+      gap: var(--space-sm);
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--color-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-primary);
+      transition: all var(--transition-fast);
+      font-size: 1.8rem;
+      cursor: none;
+      /* Hide default cursor */
+    }
+
+    .social-link:hover {
+      background-color: var(--color-primary);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .footer-heading {
+      font-size: 1.8rem;
+      margin-bottom: var(--space-md);
+      color: var(--color-text-primary);
+    }
+
+    .footer-links {
+      list-style: none;
+      width: fit-content;
+    }
+
+    .footer-link {
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer-link a {
+      color: var(--color-text-secondary);
+      transition: all var(--transition-fast);
+      font-size: 1.6rem;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .footer-link a::before {
+      content: '→';
+      opacity: 0;
+      transform: translateX(-5px);
+      transition: all var(--transition-fast);
+    }
+
+    .footer-link a:hover {
+      color: var(--color-primary);
+      transform: translateX(5px);
+    }
+
+    .footer-link a:hover::before {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .copyright {
+      text-align: center;
+      padding: var(--space-lg) 0;
+      border-top: 1px solid var(--color-border);
+      margin-top: var(--space-lg);
+      color: var(--color-text-secondary);
+      font-size: 1.4rem;
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: var(--space-lg);
+      right: var(--space-lg);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--color-primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: none;
+      /* Hide default cursor */
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-fast);
+      z-index: 99;
+      box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+      border: none;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: var(--color-accent);
+      transform: translateY(-5px);
+    }
+
+    /* Enhanced Mouse Interactions */
+    /* Custom Cursor */
+    .custom-cursor {
+      position: fixed;
+      width: 10px;
+      height: 30px;
+      border-radius: 10px;
+      background-color: var(--color-accent);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.9;
+      transition: width 0.3s, height 0.3s, opacity 0.3s, background-color 0.3s;
+      mix-blend-mode: difference;
+    }
+
+    .custom-cursor.active {
+      width: 50px;
+      height: 50px;
+      opacity: 0.2;
+    }
+
+    /* Different cursor states */
+    .custom-cursor.hover-link {
+      width: 40px;
+      height: 40px;
+      background-color: var(--color-primary);
+      opacity: 0.3;
+    }
+
+    .custom-cursor.hover-image {
+      width: 80px;
+      height: 80px;
+      background-color: transparent;
+      border: 2px solid var(--color-accent);
+      opacity: 0.8;
+    }
+
+    .custom-cursor.hover-button {
+      width: 60px;
+      height: 60px;
+      background-color: var(--color-primary);
+      opacity: 0.2;
+    }
+
+    .custom-cursor.text-select {
+      width: 10px;
+      height: 30px;
+      border-radius: 2px;
+      opacity: 0.8;
+    }
+
+    .custom-cursor-text {
+      position: absolute;
+      color: white;
+      font-size: 12px;
+      font-weight: 500;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .custom-cursor.with-text .custom-cursor-text {
+      opacity: 1;
+      text-align: center;
+      font-size: 60px;
+      transform: translateY(0);
+    }
+
+    /* Animations for cursor effects */
+    @keyframes rotate {
+      from {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    .rotate-effect {
+      animation: rotate 2s linear infinite;
+    }
+
+    .glow-effect {
+      box-shadow: 0 0 15px var(--color-primary);
+    }
+
+    /* Mouse trail */
+    .mouse-trail {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    /* Scroll progress indicator */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+      z-index: 1001;
+      transition: width 0.1s ease-out;
+    }
+
+    /* Scroll direction indicator */
+    .scroll-direction {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 990;
+      pointer-events: none;
+    }
+
+    /* Enhanced scroll animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-left {
+      animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+
+    .slide-right {
+      animation: slideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(50px);
+      }
+
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(-50px);
+      }
+
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    /* Parallax elements */
+    .parallax {
+      transition: transform 0.1s ease-out;
+      will-change: transform;
+    }
+
+    /* Resume Download Button */
+    .resume-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-lg);
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      color: var(--color-text-primary);
+      font-weight: 600;
+      transition: all var(--transition-medium);
+    }
+
+    .about-text .resume-download {
+      margin-top: var(--space-lg);
+      width: 100%;
+    }
+
+    .resume-download:hover {
+      background-color: var(--color-primary);
+      color: white;
+      border-color: var(--color-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);
+    }
+
+    .resume-download svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .project-logo {
+      padding-left: 40px;
+    }
+
+    .project-logo img {
+      width: fit-content;
+      height: 70px;
+      background-color: white;
+      padding: 5px 8px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+
+    .project-logo.mi img {
+      padding: 18px 15px;
+    }
+
+    .project-logo.cd img {
+      height: 40px;
+    }
+
+    span.skill-logo {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: center;
+      align-items: center;
+      row-gap: 10px;
+    }
+
+    .logos {
+      background-color: white;
+      padding: 15px 25px;
+      border-radius: 10px;
+      overflow: hidden;
+      justify-content: center;
+    }
+
+    .logos .img:last-child {
+      border-right: none;
+    }
+
+    .logos .img {
+      height: 40px;
+      width: auto;
+      border-right: 5px solid #6c5ce780;
+      padding: 5px;
+      margin-right: 15px;
+    }
+
+    .certification-icon {
+      font-size: 50px;
+      width: 45px;
+    }
+
+    .certification-card {
+      margin-top: -5px;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      margin-left: 30px;
+    }
+
+    .certification-card h4 {
+      margin-bottom: 5px;
+    }
+
+    .certification-card p {
+      margin-left: 25px;
+      margin-bottom: 0px;
+    }
+
+    .skills-summary img {
+      height: 45px;
+      width: auto;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress"></div>
+
+  <!-- Enhanced Particle Background -->
+  <div class="particle-container" id="particle-container"></div>
+
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor">
+    <div class="custom-cursor-text"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-container">
+      <a href="#" class="logo">
+        Naveen S<span class="logo-dot"></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#footer" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-controls">
+        <!-- Search Button with Emoji -->
+        <button class="search-toggle" id="search-toggle" aria-label="Search">
+          🔎︎
+        </button>
+
+        <!-- Theme Toggle with Emojis -->
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <span class="theme-icon sun-icon">⛅</span>
+          <span class="theme-icon moon-icon">🌙</span>
+        </button>
+
+        <!-- Updated Hamburger Menu -->
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Search Panel -->
+  <div class="search-panel" id="search-panel">
+    <div class="search-header">
+      <h2 class="search-title">Search</h2>
+      <button class="search-close" id="search-close" aria-label="Close search">×</button>
+    </div>
+    <form class="search-form" id="search-form">
+      <input type="text" class="search-input" id="search-input" placeholder="Type to search..." autocomplete="off">
+      <button type="submit" class="search-submit">
+        🔎︎
+      </button>
+    </form>
+    <div class="search-results" id="search-results">
+      <div class="search-info">Start typing to search through the entire site content...</div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul class="mobile-nav-links">
+      <li class="mobile-nav-link"><a href="#home">Home</a></li>
+      <li class="mobile-nav-link"><a href="#about">About</a></li>
+      <li class="mobile-nav-link"><a href="#projects">Projects</a></li>
+      <li class="mobile-nav-link"><a href="#skills">Skills</a></li>
+      <li class="mobile-nav-link"><a href="#footer">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <div class="hero-greeting">Hello, I'm Naveen S</div>
+      <h1 class="hero-title"> <span class="highlight">Front-End</span> Developer & UI/UX Designer</h1>
+      <p class="hero-subtitle">I craft visually stunning digital experiences with a focus on performance optimization
+        and seamless user interactions.</p>
+      <div class="hero-cta">
+        <a href="#footer" class="btn btn-outline">Let's Talk</a>
+        <a href="#" class="resume-download">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download Resume
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-indicator"></div>
+      <span>Scroll Down</span>
+    </div>
+
+    <div class="hero-background">
+      <div class="hero-shape hero-shape-1"></div>
+      <div class="hero-shape hero-shape-2"></div>
+      <div class="hero-shape hero-shape-3"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about color-surface" id="about">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-container">
+          <span class="section-number">01</span>
+          <h2 class="section-title">About Me</h2>
+        </div>
+        <p class="section-subtitle">Get to know me and my journey in web development and design.</p>
+      </div>
+
+      <div class="about-content">
+        <div class="about-image fade-in">
+          <!-- Replace with your actual image -->
+          <img src="img/about.avif" alt="Naveen S">
+        </div>
+
+        <div class="about-text fade-in">
+          <h3>My Story</h3>
+          <p>I'm a Front-End Developer and UI/UX Designer with over 6 years of experience in creating digital
+            experiences that combine aesthetic appeal with technical functionality. My journey began with web design
+            fundamentals and has evolved to include expertise in front-end frameworks, marketing technology, and team
+            coordination.</p>
+          <p>I'm passionate about optimizing web performance and creating user-friendly interfaces. My experience spans
+            from small business websites to enterprise-level applications, with a focus on clean code and intuitive
+            design.</p>
+          <p>Beyond coding, I enjoy audio books, music, watching anime, and playing chess. I'm constantly exploring new
+            technologies and techniques to enhance my skills and deliver better digital solutions.</p>
+
+          <div class="about-stats">
+            <div class="stat-item">
+              <div class="stat-number">6+</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">150+</div>
+              <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">3</div>
+              <div class="stat-label">Companies Worked With</div>
+            </div>
+          </div>
+
+          <a href="#" class="resume-download">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-container">
+          <span class="section-number">02</span>
+          <h2 class="section-title">Featured Projects</h2>
+        </div>
+        <p class="section-subtitle">A selection of my work showcasing my design and development capabilities.</p>
+      </div>
+
+      <div class="projects-filter">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="Full-Stack">Full-Stack</button>
+        <button class="filter-btn" data-filter="Front-End">Front-End</button>
+        <button class="filter-btn" data-filter="App-Design">App Design</button>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card fade-in" data-category="Full-Stack">
+          <div class="project-thumbnail">
+            <img src="img/projects/rockwellautomation.webp" alt="Rockwell Automation">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://www.rockwellautomation.com/en-us.html" target="_blank" class="project-link">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">Full-Stack</span>
+              <span class="project-tag">Manufacturing</span>
+              <span class="project-tag">International</span>
+            </div>
+            <h3 class="project-title">Rockwell Automation</h3>
+            <p class="project-description">Multi-lingual international website with Geolocation and integrated
+              optimization.</p>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card fade-in" data-category="Front-End">
+          <div class="project-thumbnail">
+            <img src="img/projects/clouddreams.webp" alt="Cloud Dreams Website">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://clouddreams.in" target="_blank" class="project-link">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">Front-End</span>
+              <span class="project-tag">Corporate</span>
+              <span class="project-tag">Responsive</span>
+            </div>
+            <h3 class="project-title">Cloud Dreams</h3>
+            <p class="project-description">Company website with advanced animations and interactive elements.</p>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card fade-in" data-category="Full-Stack">
+          <div class="project-thumbnail">
+            <img src="img/projects/codissia.webp" alt="CODISSIA Website">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://codissia.com" target="_blank" class="project-link">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">Full-Stack</span>
+              <span class="project-tag">Custom Theme</span>
+              <span class="project-tag">Admin Dashboard</span>
+            </div>
+            <h3 class="project-title">CODISSIA</h3>
+            <p class="project-description">Website for a major industrial association with custom features and content
+              management.</p>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card fade-in" data-category="Front-End">
+          <div class="project-thumbnail">
+            <img src="img/projects/tagyourtaxi.webp" alt="Tag Your Taxi">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://tagyourtaxi.com" target="_blank" class="project-link">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">Front-End</span>
+              <span class="project-tag">Service Platform</span>
+              <span class="project-tag">Responsive</span>
+            </div>
+            <h3 class="project-title">TagYourTaxi (Website)</h3>
+            <p class="project-description">
+              Corporate website for Taxi booking platform with real-time tracking and payment integration.
+            </p>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card fade-in" data-category="App-Design">
+          <div class="project-thumbnail">
+            <img src="img/projects/tagyourtaxi_User_Driver.webp" alt="Tag Your Taxi User & Driver App">
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">App design</span>
+              <span class="project-tag">Androide/IOS</span>
+              <span class="project-tag">User & Driver</span>
+            </div>
+            <h3 class="project-title">TagYourTaxi (App)</h3>
+            <p class="project-description">
+              Custom Layout design for Taxi booking platform on Androide and IOS.
+            </p>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card fade-in" data-category="App-Design">
+          <div class="project-thumbnail">
+            <img src="img/projects/gotaxi.webp" alt="GO Taxi User & Driver App">
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">App design</span>
+              <span class="project-tag">Cross Platform</span>
+              <span class="project-tag">User & Driver</span>
+            </div>
+            <h3 class="project-title">GOTaxi (App)</h3>
+            <p class="project-description">
+              Cross Platform Taxi booking App with Live tracking and Private Chat.
+            </p>
+          </div>
+        </div>
+
+        <!-- Project 7 -->
+        <div class="project-card fade-in" data-category="Front-End">
+          <div class="project-thumbnail">
+            <img src="img/projects/misoftwares.webp" alt="MI Softwares Website">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://misoftwares.com" target="_blank" class="project-link">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">Front-End</span>
+              <span class="project-tag">Corporate</span>
+              <span class="project-tag">Responsive</span>
+            </div>
+            <h3 class="project-title">MI Softwares</h3>
+            <p class="project-description">Company website featuring modern design, optimized performance, and
+              responsive layout.</p>
+          </div>
+        </div>
+
+        <!-- Project 8 -->
+        <div class="project-card fade-in" data-category="Full-Stack">
+          <div class="project-thumbnail">
+            <img src="img/projects/5kcarcare.webp" alt="5k Car Care">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://5kcarcare.com/" target="_blank" class="project-link">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">Full-Stack</span>
+              <span class="project-tag">Franchise</span>
+              <span class="project-tag">Custom Dashboard</span>
+            </div>
+            <h3 class="project-title">5k Car Care</h3>
+            <p class="project-description">Website for a Certified Car care specialists with Franchise and CMS.
+            </p>
+          </div>
+        </div>
+
+        <!-- Project 9 -->
+        <div class="project-card fade-in" data-category="Front-End">
+          <div class="project-thumbnail">
+            <img src="img/projects/dobbs.webp" alt="DOBBS PUBLIC SCHOOL">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://dobbsschool.com/" target="_blank" class="project-link">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">Front-End</span>
+              <span class="project-tag">School</span>
+              <span class="project-tag">WhatsApp</span>
+            </div>
+            <h3 class="project-title">DOBBS Public School</h3>
+            <p class="project-description">A School website with Creative/Colourful elements while maintaining SEO
+              optimization.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section (Timeline Format) -->
+  <section class="skills color-surface" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-container">
+          <span class="section-number">03</span>
+          <h2 class="section-title">Professional Journey</h2>
+        </div>
+        <p class="section-subtitle">My career path and the skills I've developed along the way.</p>
+      </div>
+
+      <div class="timeline-container fade-in">
+        <!-- Timeline Item 1 (Most Recent) -->
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+
+            <div class="timeline-details">
+              <div class="timeline-skills">
+                <div class="timeline-date">Sep 2021 - Present</div>
+                <h3 class="timeline-title">Tech Associate</h3>
+                <h4 class="timeline-company">Verticurl Marketing Pvt Ltd</h4>
+                <h5>Key Skills</h5>
+                <div class="skills-list">
+                  <span class="skill-item">Tools Automation</span>
+                  <span class="skill-item">AI Integration</span>
+                  <span class="skill-item">Team Management</span>
+                </div>
+                <h5>Key Technologies</h5>
+                <div class="skills-list logos">
+                  <span class="skill-logo">
+                    <img src="img/oracle_eloqua.webp" class="img" alt="Eloqua" title="Eloqua">
+                    <img src="img/sfmc.webp" class="img" alt="Salesforce Marketing Cloud"
+                      title="Salesforce Marketing Cloud">
+                    <img src="img/certain.webp" class="img" alt="Certain" title="Certain">
+                    <img src="img/uipath.webp" class="img" alt="UIPath" title="UIPath">
+                    <img src="img/wpp_open.webp" class="img" alt="WPP Open" title="WPP Open">
+                    <img src="img/zoho_crm.webp" class="img" alt="ZOHO CRM" title="ZOHO CRM">
+                  </span>
+                </div>
+              </div>
+
+              <div class="timeline-projects">
+                <h5>Key Responsibilities</h5>
+                <ul>
+                  <li>End to End campaign operations from Email and segment creations to DL analysis.</li>
+                  <li>Managed daily administrative tasks and gathered consumer behavior data.</li>
+                  <li>Created report-based metrics and coordinated with teams to develop materials.</li>
+                  <li>Implemented automation solutions to streamline workflows.</li>
+                </ul>
+                <h5>My Projects</h5>
+                <div class="project-logo">
+                  <a href="https://www.rockwellautomation.com/en-us.html" target="_blank">
+                    <img src="img/RockwellAutomation.webp" class="img" alt="Rockwell Automation"
+                      title="Rockwell Automation">
+                  </a>
+                  <a href="https://www.jnj.com/" target="_blank">
+                    <img src="img/JanssenPharmaceutica.webp" class="img" alt="Janssen Pharmaceutica"
+                      title="Janssen Pharmaceutica">
+                  </a>
+                  <a href="https://www.intel.com/content/www/us/en/homepage.html" target="_blank">
+                    <img src="img/Intel.webp" class="img" alt="Intel" title="Intel">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+
+            <div class="timeline-details">
+              <div class="timeline-skills">
+                <div class="timeline-date">8 Months: Jan 2020 - Aug 2021</div>
+                <h3 class="timeline-title">Full-Stack Developer and UI/UX Designer</h3>
+                <h4 class="timeline-company">Mobility Intelligence Softwares</h4>
+                <h5>Key Skills</h5>
+                <div class="skills-list">
+                  <span class="skill-item">API Integration</span>
+                  <span class="skill-item">CI/CD Pipeline</span>
+                  <span class="skill-item">CMS System</span>
+                </div>
+                <h5>Key Technologies</h5>
+                <div class="skills-list logos">
+                  <span class="skill-logo">
+                    <img src="img/React.webp" class="img" alt="React" title="React">
+                    <img src="img/laravel.webp" class="img" alt="Laravel" title="Laravel">
+                    <img src="img/larago.webp" class="img" alt="Larago" title="Larago">
+                    <img src="img/npm.webp" class="img" alt="npm" title="npm">
+                    <img src="img/git.webp" class="img" alt="git" title="git">
+                    <img src="img/stripe.webp" class="img" alt="stripe" title="stripe">
+                    <img src="img/figma.webp" class="img" alt="Figma" title="Figma">
+                  </span>
+                </div>
+              </div>
+
+              <div class="timeline-projects">
+                <h5>My Deliverables</h5>
+                <ul>
+                  <li>Designed & Developed the official misoftwares.com company website.</li>
+                  <li>Created custom dashboards and CMS systems tailored to client requirements.</li>
+                  <li>Optimized to 90%+ Performance for websites with Google PageSpeed, achieving faster load times and
+                    better scores.</li>
+                  <li>Designed mobile applications for Android, iOS and Cross-platform, focusing on user-friendly
+                    interfaces and seamless functionality.</li>
+                </ul>
+                <h5>My Projects</h5>
+                <div class="project-logo mi">
+                  <a href="https://misoftwares.com/" target="_blank">
+                    <img src="img/Mobility_Intelligence_Softwares.webp" class="img"
+                      alt="Mobility_Intelligence_Softwares" title="Mobility_Intelligence_Softwares">
+                  </a>
+                  <a href="https://tagyourtaxi.com/" target="_blank">
+                    <img src="img/tagyourtaxi.webp" class="img" alt="TagYourTaxi" title="TagYourTaxi">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+
+            <div class="timeline-details">
+              <div class="timeline-skills">
+                <div class="timeline-date">2 Years: Mar 2019 - Dec 2020</div>
+                <h3 class="timeline-title">Front-End Developer</h3>
+                <h4 class="timeline-company">Cloud Dreams</h4>
+                <h5>Key Skills</h5>
+                <div class="skills-list">
+                  <span class="skill-item">PSD/XD to HTML conversion</span>
+                  <span class="skill-item">Page Animations</span>
+                  <span class="skill-item">File Format Utilization</span>
+                  <span class="skill-item">FTP</span>
+                  <span class="skill-item">CSS & JS Libraries</span>
+                </div>
+                <h5>Key Technologies</h5>
+                <div class="skills-list logos">
+                  <span class="skill-logo">
+                    <img src="img/google_analytics.webp" class="img" alt="Google analytics" title="Google analytics">
+                    <img src="img/xd.webp" class="img" alt="XD" title="XD">
+                    <img src="img/ps.webp" class="img" alt="Photoshop" title="Photoshop">
+                    <img src="img/php.webp" class="img" alt="php" title="php">
+                    <img src="img/Bootstrap.webp" class="img" alt="Bootstrap" title="Bootstrap">
+                    <img src="img/scss.webp" class="img" alt="scss" title="scss">
+                    <img src="img/wordpress.webp" class="img" alt="Wordpress" title="Wordpress">
+                    <img src="img/jQuery.webp" class="img" alt="jQuery" title="jQuery">
+                    <img src="img/gtmetrix.webp" class="img" alt="GTmetrix" title="GTmetrix">
+                    <img src="img/etc.webp" class="img" alt="etc..." title="etc...">
+                  </span>
+                </div>
+              </div>
+
+              <div class="timeline-projects">
+                <h5>Key Contributions</h5>
+                <ul>
+                  <li>Developed the official clouddreams.in company website.</li>
+                  <li>Developed 100+ websites independently and collaborated on 40+ websites with the team.</li>
+                  <li>Implemented advanced animations like Scroll-triggered effects, Hover-triggered effects, and Smooth
+                    page transitions.</li>
+                  <li>Optimized files and image formats for better performance.</li>
+                </ul>
+                <h5>Key Projects</h5>
+                <div class="project-logo cd">
+                  <a href="https://www.clouddreams.in/" target="_blank">
+                    <img src="img/clouddreams.webp" class="img" alt="clouddreams" title="clouddreams">
+                  </a>
+                  <a href="https://codissia.com/" target="_blank">
+                    <img src="img/codissia.webp" class="img" alt="Codissia" title="Codissia">
+                  </a>
+                  <a href="https://kundanpipes.com/" target="_blank">
+                    <img src="img/kundanpipes.webp" class="img" alt="Kundan Pipes" title="Kundan Pipes">
+                  </a>
+                  <a href="https://www.toxiven.com/" target="_blank">
+                    <img src="img/toxiven.webp" class="img" alt="Toxiven" title="Toxiven">
+                  </a>
+                  <a href="https://www.high5prints.in/" target="_blank">
+                    <img src="img/high5prints.webp" class="img" alt="High 5 Prints" title="High 5 Prints">
+                  </a>
+                  <a href="https://subratex.com/" target="_blank">
+                    <img src="img/subratex.webp" class="img" alt="Subra Tex" title="Subra Tex">
+                  </a>
+                  <a href="https://www.tanelect.com/" target="_blank">
+                    <img src="img/tanelect.webp" class="img" alt="TAN Elect" title="TAN Elect">
+                  </a>
+                  <a href="https://www.primyfilmy.com/" target="_blank">
+                    <img src="img/primyfilmy.webp" class="img" alt="Primy Filmy" title="Primy Filmy">
+                  </a>
+                  <a href="https://www.kongunadusurveyor.in/" target="_blank">
+                    <img src="img/kongunadusurveyor.webp" class="img" alt="Kongunadu Surveyor"
+                      title="Kongunadu Surveyor">
+                  </a>
+                  <a href="https://caenterprises.co.in/" target="_blank">
+                    <img src="img/caenterprises.webp" class="img" alt="CA Enterprises" title="CA Enterprises">
+                  </a>
+                  <a href="https://malamurthycatering.com/" target="_blank">
+                    <img src="img/malamurthycatering.webp" class="img" alt="Malamurthy Catering"
+                      title="Malamurthy Catering">
+                  </a>
+                  <a href="https://www.multisystemtechnologies.com/" target="_blank">
+                    <img src="img/multisystemtechnologies.webp" class="img" alt="Multi-System Technologies"
+                      title="Multi-System Technologies">
+                  </a>
+                  <a href="https://thealchemysourcing.com/" target="_blank">
+                    <img src="img/thealchemysourcing.webp" class="img" alt="The alchemy sourcing"
+                      title="The alchemy sourcing">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Item 4 (First Position) -->
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-details">
+              <div class="timeline-skills">
+                <div class="timeline-date">3 Months: 2018 - Feb 2019</div>
+                <h3 class="timeline-title">Web Design Trainee</h3>
+                <h4 class="timeline-company">Infoem Solutions</h4>
+                <h5>Basic Skills & Technologies</h5>
+                <div class="skills-list logos">
+                  <span class="skill-logo">
+                    <img src="img/vscode.webp" class="img" alt="VSCode" title="VSCode">
+                    <img src="img/hcj.webp" class="img" alt="HTML/CSS/JS" title="HTML/CSS/JS">
+                    <img src="img/jQuery.webp" class="img" alt="jQuery" title="jQuery">
+                    <img src="img/xampp.webp" class="img" alt="xampp" title="xampp">
+                    <img src="img/php.webp" class="img" alt="php" title="php">
+                    <img src="img/mysql.webp" class="img" alt="MySql" title="MySql">
+                    <img src="img/Bootstrap_old.webp" class="img" alt="Bootstrap" title="Bootstrap">
+                    <img src="img/svg.webp" class="img" alt="SVG" title="SVG">
+                  </span>
+                </div>
+              </div>
+
+              <div class="timeline-projects">
+                <h5>Training Focus</h5>
+                <ul>
+                  <li>Successfully completed on-the-job training in web design and web application development, working
+                    on real-world projects under professional guidance.</li>
+                  <li>Acquired a solid understanding of front-end development (HTML, CSS, JavaScript) and back-end
+                    development (server-side scripting, databases, and APIs).</li>
+                  <li>Gained hands-on experience with development tools (such as VS Code, XAMPP) and environments for
+                    building, testing, and deploying web applications.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education Timeline Item - BSc -->
+        <div class="timeline-item">
+          <div class="timeline-marker education-marker"></div>
+          <div class="timeline-content">
+
+            <div class="timeline-details">
+              <div class="timeline-skills">
+                <div class="timeline-date">3 Years: 2015 - 2018</div>
+                <h3 class="timeline-title">Bachelor of Science (Mathematics)</h3>
+                <h4 class="timeline-institution">Jairams Arts and Science College, Karur</h4>
+                <h5>Part-time Jobs Experiences</h5>
+                <div class="skills-list" style="margin-bottom: var(--space-sm);">
+                  <span class="skill-item">OS Change/Maintenance</span>
+                  <span class="skill-item">Driver Pack</span>
+                  <span class="skill-item">Paper Presentation</span>
+                  <span class="skill-item">PowerPoint Create</span>
+                  <span class="skill-item">Photo Editing</span>
+                </div>
+                <div class="skills-list logos">
+                  <span class="skill-logo">
+                    <img src="img/ubuntu.webp" class="img" alt="Ubuntu" title="Ubuntu">
+                    <img src="img/tally.webp" class="img" alt="Tally" title="Tally">
+                    <img src="img/wxp.webp" class="img" alt="Word Excel and Powerpoint"
+                      title="Word Excel and Powerpoint">
+                    <img src="img/coreldraw.webp" class="img" alt="CorelDraw" title="CorelDraw">
+                  </span>
+                </div>
+              </div>
+
+              <div class="timeline-projects">
+                <h5>Certifications & Honors</h5>
+                <div class="certification-card">
+                  <div class="certification-icon">💻</div>
+                  <div class="certification-text">
+                    <h4>Web Designing and Maintenance <small>(On Job Training)</small></h4>
+                    <p>Infoem Solutions Pvt Ltd, Namakkal</p>
+                  </div>
+                </div>
+                <div class="certification-card">
+                  <div class="certification-icon">🧮</div>
+                  <div class="certification-text">
+                    <h4>Applications of Mathematics <small>(National level workshop)</small></h4>
+                    <p>Annai Women's College, Karur</p>
+                  </div>
+                </div>
+                <div class="certification-card">
+                  <div class="certification-icon">📊</div>
+                  <div class="certification-text">
+                    <h4>Graph Theory and its Applications <small>(Workshop)</small></h4>
+                    <p>Jairams College, Karur</p>
+                  </div>
+                </div>
+                <div class="certification-card">
+                  <div class="certification-icon">📚</div>
+                  <div class="certification-text">
+                    <h4>Reading, Note Taking and Memory Skills</h4>
+                    <p>Chettinad College, Karur</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education Timeline Item - HSC -->
+        <div class="timeline-item">
+          <div class="timeline-marker education-marker"></div>
+          <div class="timeline-content">
+
+            <div class="timeline-details">
+              <div class="timeline-skills">
+                <div class="timeline-date">2 Years: 2013 - 2015</div>
+                <h3 class="timeline-title">Higher Secondary Certificate (HSC)</h3>
+                <h4 class="timeline-institution">Vivekanada Hr. Sec. School, Karur</h4>
+              </div>
+
+              <div class="timeline-projects">
+                <h5>Certifications & Honors</h5>
+                <div class="certification-card">
+                  <div class="certification-icon">🏔️</div>
+                  <div class="certification-text">
+                    <h4>Hill Climbing Training Camp <small>(TN Govt. Training Camp)</small></h4>
+                    <p>Department of Forestry and School Education, Karur</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education Timeline Item - SSLC -->
+        <div class="timeline-item">
+          <div class="timeline-marker education-marker"></div>
+          <div class="timeline-content">
+
+            <div class="timeline-details">
+              <div class="timeline-skills">
+                <div class="timeline-date">2013</div>
+                <h3 class="timeline-title">Secondary School Leaving Certificate (SSLC)</h3>
+                <h4 class="timeline-institution">MPL Kumaran School, Karur</h4>
+              </div>
+
+              <div class="timeline-projects">
+                <h5>Certifications & Honors</h5>
+                <div class="certification-card">
+                  <div class="certification-icon">🔬</div>
+                  <div class="certification-text">
+                    <h4>19th National Children's Science Congress-2011 <br>
+                      <small>A Programme of NCSTC, DST, Govt. of India, New Delhi</small>
+                    </h4>
+                    <p>Bannari Amman Institute of Technology, Erode</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills Summary Section -->
+      <div class="skills-summary fade-in">
+        <h3 class="skills-summary-title">Journey Overview</h3>
+
+        <div class="skills-categories">
+          <div class="skills-category">
+            <h4 class="skills-category-title">Tools & Technologies</h4>
+            <div class="skills-list">
+              <span class="project-logo">
+                <img src="img/hcj.webp" class="img" alt="HTML/CSS/JS" title="HTML/CSS/JS">
+                <img src="img/Bootstrap.webp" class="img" alt="Bootstrap" title="Bootstrap">
+                <img src="img/jQuery.webp" class="img" alt="jQuery" title="jQuery">
+                <img src="img/scss.webp" class="img" alt="scss" title="scss">
+                <img src="img/wordpress.webp" class="img" alt="Wordpress" title="Wordpress">
+                <img src="img/php.webp" class="img" alt="php" title="php">
+                <img src="img/xampp.webp" class="img" alt="xampp" title="xampp">
+                <img src="img/mysql.webp" class="img" alt="MySql" title="MySql">
+                <img src="img/figma.webp" class="img" alt="Figma" title="Figma">
+                <img src="img/ps.webp" class="img" alt="Photoshop" title="Photoshop">
+                <img src="img/xd.webp" class="img" alt="XD" title="XD">
+                <img src="img/svg.webp" class="img" alt="SVG" title="SVG">
+                <img src="img/React.webp" class="img" alt="React" title="React">
+                <img src="img/npm.webp" class="img" alt="npm" title="npm">
+                <img src="img/laravel.webp" class="img" alt="Laravel" title="Laravel">
+                <img src="img/larago.webp" class="img" alt="Laragon" title="Laragon">
+                <img src="img/coreldraw.webp" class="img" alt="CorelDraw" title="CorelDraw">
+                <img src="img/wpp_open.webp" class="img" alt="WPP Open" title="WPP Open">
+                <img src="img/git.webp" class="img" alt="git" title="git">
+                <img src="img/google_analytics.webp" class="img" alt="Google analytics" title="Google analytics">
+                <img src="img/gtmetrix.webp" class="img" alt="GTmetrix" title="GTmetrix">
+                <img src="img/vscode.webp" class="img" alt="VSCode" title="VSCode">
+                <img src="img/tally.webp" class="img" alt="Tally" title="Tally">
+                <img src="img/Bootstrap_old.webp" class="img" alt="Bootstrap" title="Bootstrap">
+                <img src="img/ubuntu.webp" class="img" alt="Ubuntu" title="Ubuntu">
+                <img src="img/wxp.webp" class="img" alt="Word Excel and Powerpoint" title="Word Excel and Powerpoint">
+                <img src="img/zoho_crm.webp" class="img" alt="ZOHO CRM" title="ZOHO CRM">
+                <img src="img/certain.webp" class="img" alt="Certain" title="Certain">
+                <img src="img/stripe.webp" class="img" alt="stripe" title="stripe">
+                <img src="img/oracle_eloqua.webp" class="img" alt="Eloqua" title="Eloqua">
+                <img src="img/sfmc.webp" class="img" alt="Salesforce Marketing Cloud"
+                  title="Salesforce Marketing Cloud">
+                <img src="img/uipath.webp" class="img" alt="UIPath" title="UIPath">
+                <img src="img/etc.webp" class="img" alt="etc..." title="etc...">
+              </span>
+            </div>
+          </div>
+          <br>
+          <div class="skills-category">
+            <h4 class="skills-category-title">Skills</h4>
+            <div class="skills-list ml40">
+              <span class="skill-item">HTML conversion</span>
+              <span class="skill-item">Responsive Design</span>
+              <span class="skill-item">CSS & JS Libraries</span>
+              <span class="skill-item">Tools Automation</span>
+              <span class="skill-item">Page Animations</span>
+              <span class="skill-item">Motion Path</span>
+              <span class="skill-item">SVG Animation</span>
+              <span class="skill-item">FTP</span>
+              <span class="skill-item">UI/UX Design</span>
+              <span class="skill-item">App Design</span>
+              <span class="skill-item">Photo Editing</span>
+              <span class="skill-item">Team Management</span>
+              <span class="skill-item">AI Integration</span>
+              <span class="skill-item">API Integration</span>
+              <span class="skill-item">CI/CD Pipeline</span>
+              <span class="skill-item">File Format Utilization</span>
+              <span class="skill-item">Paper Presentation</span>
+              <span class="skill-item">PowerPoint Create</span>
+              <span class="skill-item">CMS System</span>
+              <span class="skill-item">OS Change/Maintenance</span>
+              <span class="skill-item">Driver Pack</span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer - Classic Three Column -->
+  <footer class="footer" id="footer">
+    <div class="container footer-container">
+      <!-- Personal Details Section - 3D Cube -->
+      <section class="personal-details-cube" id="personal">
+        <div class="container">
+          <div class="cube-container">
+            <!-- Left side: Navigation -->
+            <div class="cube-nav-container">
+              <div class="cube-nav">
+                <button class="cube-nav-btn" data-face="top">Personal</button>
+                <button class="cube-nav-btn" data-face="left">Languages</button>
+                <button class="cube-nav-btn" data-face="back">Objective</button>
+                <button class="cube-nav-btn" data-face="right">Hobbies</button>
+                <button class="cube-nav-btn" data-face="bottom">Address</button>
+                <button class="cube-nav-btn active" data-face="front">Contact</button>
+              </div>
+            </div>
+
+            <!-- Right side: Cube -->
+            <div class="scene">
+              <div class="cube" id="cube">
+                <!-- Front Face - Personal Info -->
+                <div class="cube-face cube-face-bottom">
+                  <h3 class="cube-face-title">Personal Information</h3>
+                  <div class="cube-face-content">
+                    <ul class="cube-list">
+                      <li class="cube-list-item">
+                        <div class="cube-list-icon">💍</div>
+                        <div class="cube-list-content">
+                          <div class="cube-list-label">Marital Status</div>
+                          <div class="cube-list-value">Married</div>
+                        </div>
+                      </li>
+                      <li class="cube-list-item">
+                        <div class="cube-list-icon">📆</div>
+                        <div class="cube-list-content">
+                          <div class="cube-list-label">Date of Birth</div>
+                          <div class="cube-list-value">09 June 1998</div>
+                        </div>
+                      </li>
+                      <li class="cube-list-item">
+                        <div class="cube-list-icon">🌏</div>
+                        <div class="cube-list-content">
+                          <div class="cube-list-label">Nationality</div>
+                          <div class="cube-list-value">Indian</div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Back Face - Career Objective -->
+                <div class="cube-face cube-face-back">
+                  <h3 class="cube-face-title">Career Objective</h3>
+                  <div class="cube-face-content">
+                    <p class="cube-objective">Passionate front-end developer seeking challenging projects that require
+                      continuous learning and adaptation to new technologies, with the goal of creating innovative,
+                      accessible, and performance-optimized digital experiences.</p>
+                  </div>
+                </div>
+
+                <!-- Right Face - Languages -->
+                <div class="cube-face cube-face-right">
+                  <h3 class="cube-face-title">Languages</h3>
+                  <div class="cube-face-content language">
+                    <div class="cube-languages">
+                      <div class="cube-language">
+                        <div class="cube-language-info">
+                          <div class="cube-language-name">Tamil <small>(Native)</small></div>
+                          <div class="cube-language-level">Speaking, Reading, Writing</div>
+                        </div>
+                      </div>
+                      <div class="cube-language">
+                        <div class="cube-language-info">
+                          <div class="cube-language-name">English <small>(Fluent)</small></div>
+                          <div class="cube-language-level">Speaking, Reading, Writing</div>
+                        </div>
+                      </div>
+                      <div class="cube-language">
+                        <div class="cube-language-info">
+                          <div class="cube-language-name">Hindi <small>(Basic)</small></div>
+                          <div class="cube-language-level">Speaking</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Left Face - Hobbies -->
+                <div class="cube-face cube-face-left">
+                  <h3 class="cube-face-title">Hobbies</h3>
+                  <div class="cube-face-content">
+                    <div class="cube-hobbies">
+                      <div class="cube-hobby">
+                        <div class="cube-hobby-icon">🎧</div>
+                        <div class="cube-hobby-name">Audio Books</div>
+                      </div>
+                      <div class="cube-hobby">
+                        <div class="cube-hobby-icon">🎵</div>
+                        <div class="cube-hobby-name">Music</div>
+                      </div>
+                      <div class="cube-hobby">
+                        <div class="cube-hobby-icon">▶</div>
+                        <div class="cube-hobby-name">YouTube</div>
+                      </div>
+                      <div class="cube-hobby">
+                        <div class="cube-hobby-icon">🎬</div>
+                        <div class="cube-hobby-name">Anime</div>
+                      </div>
+                      <div class="cube-hobby">
+                        <div class="cube-hobby-icon">♟️</div>
+                        <div class="cube-hobby-name">Chess</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Top Face - Address -->
+                <div class="cube-face cube-face-top">
+                  <h3 class="cube-face-title">Address</h3>
+                  <div class="cube-face-content">
+                    <ul class="cube-list">
+                      <li class="cube-list-item">
+                        <div class="cube-list-icon">🏠</div>
+                        <div class="cube-list-content">
+                          <div class="cube-list-label">
+                            Flat No.1, <br>
+                            41, Rajendra Nagar Rd, <br>
+                            Narasimhanaickenpalayam, <br>
+                            Tamil Nadu 641031
+                          </div>
+                          <div class="cube-list-value">Near: Eagle Service</div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Bottom Face - Contact -->
+                <div class="cube-face cube-face-front">
+                  <h3 class="cube-face-title">Contact</h3>
+                  <div class="cube-face-content">
+                    <a href="mailto:naveenbsc1@gmail.com" class="contact-link">
+                      <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                          <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                      </div>
+                      <div>
+                        <strong>Email</strong>
+                        <p>naveenbsc1@gmail.com</p>
+                      </div>
+                    </a>
+                    <a href="tel:+919787752302" class="contact-link">
+                      <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                          </path>
+                        </svg>
+                      </div>
+                      <div>
+                        <strong>Phone</strong>
+                        <p>+91 97877 52302</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        © <span id="current-year">2023</span> Naveen S. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <script>
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function () {
+      // Set current year in footer
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+
+      // Enhanced Particle Background Implementation
+      const particleContainer = document.getElementById('particle-container');
+      const particles = [];
+
+      // Configuration with your specified values
+      const config = {
+        count: 30,                // 30 particles
+        minSize: 10,               // Minimum size 10px
+        maxSize: 50,              // Maximum size 50px
+        speed: 1,                  // Speed factor of 1
+        interactionRadius: 500,    // Mouse interaction radius 500px
+        shapes: ['circle', 'square', 'triangle', 'star'], // All 4 shapes
+        colors: [
+          '#6C5CE7', '#00D2D3', '#FF7675', // Primary theme colors
+          '#2ecc71', '#3498db', '#9b59b6',  // Additional colors
+          '#e74c3c', '#f1c40f', '#1abc9c'   // More variety
+        ],
+        minOpacity: 0.05,
+        maxOpacity: 0.2
+      };
+
+      // Mouse position tracking
+      let mouseX = 0;
+      let mouseY = 0;
+      let isMouseMoving = false;
+      let mouseMovingTimeout;
+
+      // Create particles
+      function createParticles() {
+        // Clear existing particles
+        while (particleContainer.firstChild) {
+          particleContainer.removeChild(particleContainer.firstChild);
+        }
+        particles.length = 0;
+
+        // Create new particles
+        for (let i = 0; i < config.count; i++) {
+          createParticle();
+        }
+      }
+
+      function createParticle() {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+
+        // Random shape
+        const shape = config.shapes[Math.floor(Math.random() * config.shapes.length)];
+        particle.classList.add(shape);
+
+        // Random size
+        const size = Math.random() * (config.maxSize - config.minSize) + config.minSize;
+
+        // Random position
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * window.innerHeight;
+
+        // Random opacity
+        const opacity = Math.random() * (config.maxOpacity - config.minOpacity) + config.minOpacity;
+
+        // Random color
+        const color = config.colors[Math.floor(Math.random() * config.colors.length)];
+
+        // Set styles
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+        particle.style.opacity = opacity.toString();
+
+        if (shape === 'triangle') {
+          // For triangles, set the border sizes proportionally to the particle size
+          particle.style.borderLeftWidth = `${size / 2}px`;
+          particle.style.borderRightWidth = `${size / 2}px`;
+          particle.style.borderBottomWidth = `${size * 0.866}px`; // height of equilateral triangle
+          particle.style.borderBottomColor = color;
+        } else {
+          particle.style.backgroundColor = color;
+        }
+
+        particleContainer.appendChild(particle);
+
+        // Store particle properties
+        const particleObj = {
+          element: particle,
+          x: x,
+          y: y,
+          size: size,
+          speedX: (Math.random() * 2 - 1) * config.speed,
+          speedY: (Math.random() * 2 - 1) * config.speed,
+          opacity: opacity,
+          color: color,
+          shape: shape,
+          baseX: x,
+          baseY: y,
+          density: (Math.random() * 30) + 10,
+          angle: Math.random() * 360 // For rotation
+        };
+
+        particles.push(particleObj);
+        return particleObj;
+      }
+
+      // Animation loop
+      function animateParticles() {
+        particles.forEach(particle => {
+          // Update position
+          particle.x += particle.speedX;
+          particle.y += particle.speedY;
+
+          // Boundary check with bounce effect
+          if (particle.x > window.innerWidth || particle.x < 0) {
+            particle.speedX *= -1;
+          }
+
+          if (particle.y > window.innerHeight || particle.y < 0) {
+            particle.speedY *= -1;
+          }
+
+          // Mouse interaction
+          if (isMouseMoving) {
+            let dx = mouseX - particle.x;
+            let dy = mouseY - particle.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < config.interactionRadius) {
+              // Calculate force direction
+              const forceDirectionX = dx / distance;
+              const forceDirectionY = dy / distance;
+
+              // Calculate force strength
+              const force = (config.interactionRadius - distance) / config.interactionRadius;
+
+              // Apply force with density factor
+              const directionX = forceDirectionX * force * particle.density * 0.2;
+              const directionY = forceDirectionY * force * particle.density * 0.2;
+
+              // Move particle away from mouse
+              particle.x -= directionX;
+              particle.y -= directionY;
+            }
+          } else {
+            // Gradually return to base position when not affected by mouse
+            particle.x += (particle.baseX - particle.x) * 0.01;
+            particle.y += (particle.baseY - particle.y) * 0.01;
+          }
+
+          // Rotate particles (especially for squares, triangles, and stars)
+          if (particle.shape !== 'circle') {
+            particle.angle += 0.2 * (particle.size / config.maxSize); // Larger particles rotate slower
+            const rotation = `rotate(${particle.angle}deg)`;
+            particle.element.style.transform = rotation;
+          }
+
+          // Update particle position
+          particle.element.style.left = `${particle.x}px`;
+          particle.element.style.top = `${particle.y}px`;
+        });
+
+        requestAnimationFrame(animateParticles);
+      }
+
+      // Mouse interaction
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        isMouseMoving = true;
+
+        // Reset the timeout on each mouse move
+        clearTimeout(mouseMovingTimeout);
+        mouseMovingTimeout = setTimeout(() => {
+          isMouseMoving = false;
+        }, 2000); // Consider mouse stopped after 2 seconds of inactivity
+      });
+
+      // Touch interaction
+      document.addEventListener('touchmove', (e) => {
+        if (e.touches[0]) {
+          mouseX = e.touches[0].clientX;
+          mouseY = e.touches[0].clientY;
+          isMouseMoving = true;
+
+          // Reset the timeout on each touch move
+          clearTimeout(mouseMovingTimeout);
+          mouseMovingTimeout = setTimeout(() => {
+            isMouseMoving = false;
+          }, 2000);
+        }
+      });
+
+      // Handle window resize
+      window.addEventListener('resize', () => {
+        particles.forEach(particle => {
+          // Keep particles within the new window bounds
+          if (particle.x > window.innerWidth) {
+            particle.x = window.innerWidth * Math.random();
+            particle.baseX = particle.x;
+          }
+
+          if (particle.y > window.innerHeight) {
+            particle.y = window.innerHeight * Math.random();
+            particle.baseY = particle.y;
+          }
+        });
+      });
+
+      // Initialize
+      createParticles();
+      requestAnimationFrame(animateParticles);
+
+      // Remove preloader after page loads
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          document.querySelector('.preloader').classList.add('loaded');
+        }, 500);
+      });
+
+      // Custom cursor with selected hover effects
+      const cursor = document.querySelector('.custom-cursor');
+      const cursorText = document.querySelector('.custom-cursor-text');
+
+      // Disable custom cursor on touch devices
+      if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        cursor.style.display = 'none';
+      } else {
+        // Track mouse position
+        let mouseX = 0;
+        let mouseY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+
+        // Mouse movement with smooth follow
+        document.addEventListener('mousemove', function (e) {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        });
+
+        // Animate cursor with slight lag for smooth effect
+        function animateCursor() {
+          const speed = 0.2; // Adjust for faster/slower follow
+
+          cursorX += (mouseX - cursorX) * speed;
+          cursorY += (mouseY - cursorY) * speed;
+
+          cursor.style.left = cursorX + 'px';
+          cursor.style.top = cursorY + 'px';
+
+          requestAnimationFrame(animateCursor);
+        }
+
+        animateCursor();
+      }
+
+      // Add animation styles
+      const style = document.createElement('style');
+      style.textContent = `
+@keyframes rotate {
+from { transform: translate(-50%, -50%) rotate(0deg); }
+to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.rotate-effect {
+animation: rotate 2s linear infinite;
+}
+
+.glow-effect {
+box-shadow: 0 0 15px var(--color-primary);
+}
+`;
+      document.head.appendChild(style);
+
+      // 1. Button Hover Effects - Circle Effect with Glow emoji
+      const buttons = document.querySelectorAll('.btn');
+      buttons.forEach(button => {
+        button.addEventListener('mouseenter', () => {
+          cursor.classList.add('with-text', 'glow-effect');
+          cursorText.textContent = '';
+          cursor.style.width = '50px';
+          cursor.style.height = '50px';
+          cursor.style.borderRadius = '50%';
+          cursor.style.border = '2px solid var(--color-primary)';
+          cursor.style.backgroundColor = 'rgba(108, 92, 231, 0.1)';
+        });
+
+        button.addEventListener('mouseleave', () => {
+          cursor.classList.remove('with-text', 'glow-effect');
+          cursorText.textContent = '';
+          cursor.style.width = '';
+          cursor.style.height = '';
+          cursor.style.borderRadius = '';
+          cursor.style.border = '';
+          cursor.style.backgroundColor = '';
+        });
+      });
+
+      // 2. Image Hover Effects - Frame Effect
+      const images = document.querySelectorAll('img, .project-thumbnail, .about-image, .img-container');
+      images.forEach(image => {
+        image.addEventListener('mouseenter', () => {
+          cursor.classList.add('hover-image');
+          cursor.style.width = '80px';
+          cursor.style.height = '80px';
+          cursor.style.borderRadius = '8px';
+          cursor.style.border = '2px solid var(--color-secondary)';
+          cursor.style.backgroundColor = 'transparent';
+        });
+
+        image.addEventListener('mouseleave', () => {
+          cursor.classList.remove('hover-image');
+          cursor.style.width = '';
+          cursor.style.height = '';
+          cursor.style.borderRadius = '';
+          cursor.style.border = '';
+          cursor.style.backgroundColor = '';
+        });
+      });
+
+      // 3. Text Hover Effects - Rotate Animation
+      const textElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, .section-title, .section-subtitle, .hero-title, .hero-subtitle');
+      textElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+          cursor.classList.add('rotate-effect');
+          cursor.style.backgroundColor = 'rgba(0, 210, 211, 0.8)';
+          cursor.style.width = '40px';
+          cursor.style.height = '40px';
+          cursor.style.borderRadius = '5px';
+        });
+
+        element.addEventListener('mouseleave', () => {
+          cursor.classList.remove('rotate-effect');
+          cursor.style.backgroundColor = '';
+          cursor.style.width = '';
+          cursor.style.height = '';
+          cursor.style.borderRadius = '';
+        });
+      });
+
+      // 4. Link Hover Effects - Select Effect (similar to form input effect)
+      const links = document.querySelectorAll('a:not(.btn), .nav-link, .social-link, .footer-link, .project-card, .filter-btn');
+      links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+          cursor.classList.add('hover-link');
+          cursor.style.width = '15px';
+          cursor.style.height = '15px';
+          cursor.style.borderRadius = '50%';
+          cursor.style.backgroundColor = 'var(--color-secondary)';
+          cursor.style.opacity = '0.5';
+        });
+
+        link.addEventListener('mouseleave', () => {
+          cursor.classList.remove('hover-link');
+          cursor.style.width = '';
+          cursor.style.height = '';
+          cursor.style.borderRadius = '';
+          cursor.style.backgroundColor = '';
+          cursor.style.opacity = '';
+        });
+      });
+
+      // 6. Form Elements - Input Effect
+      const formElements = document.querySelectorAll('input, textarea, select, .form-control');
+      formElements.forEach(input => {
+        input.addEventListener('mouseenter', () => {
+          cursor.classList.add('form-hover');
+          cursor.style.width = '15px';
+          cursor.style.height = '15px';
+          cursor.style.borderRadius = '50%';
+          cursor.style.backgroundColor = 'var(--color-secondary)';
+          cursor.style.opacity = '0.5';
+        });
+
+        input.addEventListener('focus', () => {
+          cursor.classList.add('form-focus');
+          cursor.style.width = '5px';
+          cursor.style.height = '25px';
+          cursor.style.borderRadius = '2px';
+          cursor.style.backgroundColor = 'var(--color-accent)';
+          cursor.style.opacity = '0.7';
+        });
+
+        input.addEventListener('mouseleave', () => {
+          if (!input.matches(':focus')) {
+            cursor.classList.remove('form-hover');
+            cursor.style.width = '';
+            cursor.style.height = '';
+            cursor.style.borderRadius = '';
+            cursor.style.backgroundColor = '';
+            cursor.style.opacity = '';
+          }
+        });
+
+        input.addEventListener('blur', () => {
+          cursor.classList.remove('form-focus');
+          cursor.style.width = '';
+          cursor.style.height = '';
+          cursor.style.borderRadius = '';
+          cursor.style.backgroundColor = '';
+          cursor.style.opacity = '';
+        });
+      });
+
+      const allElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, button, .img, .project-tags, .certification-icon, .project-thumbnail, .hero-greeting, .stat-item, .hero-scroll, .timeline-date, li, .project-card, .skill-item');
+
+      // Store the current position for each element  
+      const elementPositions = new Map();
+
+      allElements.forEach(element => {
+        // Initialize with default position (0,0)
+        elementPositions.set(element, { x: 0, y: 0, active: false });
+
+        element.addEventListener('mouseenter', function () {
+          // Remove transition when mouse enters to allow smooth animation
+          this.style.transition = 'none';
+          elementPositions.get(this).active = true;
+        });
+
+        element.addEventListener('mousemove', function (e) {
+          const rect = this.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          // Calculate target position
+          const targetX = (x - centerX) / 3;
+          const targetY = (y - centerY) / 3;
+
+          // Update the stored target position
+          const posData = elementPositions.get(this);
+          posData.x = targetX;
+          posData.y = targetY;
+        });
+
+        element.addEventListener('mouseleave', function () {
+          // Add smooth transition when mouse leaves
+          this.style.transition = 'transform 3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+          this.style.transform = 'translate(0, 0)';
+
+          // Mark as inactive and reset target position
+          const posData = elementPositions.get(this);
+          posData.active = false;
+          posData.x = 0;
+          posData.y = 0;
+        });
+      });
+
+      // Animation loop for smooth movement
+      function animateMagneticElements() {
+        const easing = 0.1; // Adjust this value for faster/slower movement
+
+        elementPositions.forEach((posData, element) => {
+          // Only animate elements that are currently being hovered
+          if (posData.active) {
+            // Get current transform
+            const currentTransform = window.getComputedStyle(element).transform;
+            let currentX = 0;
+            let currentY = 0;
+
+            // If there's already a transform, extract the current x,y values
+            if (currentTransform && currentTransform !== 'none') {
+              const matrix = new DOMMatrix(currentTransform);
+              currentX = matrix.m41;
+              currentY = matrix.m42;
+            }
+
+            // Calculate new position with easing
+            const newX = currentX + (posData.x - currentX) * easing;
+            const newY = currentY + (posData.y - currentY) * easing;
+
+            // Apply the new position
+            element.style.transform = `translate(${newX}px, ${newY}px)`;
+          }
+        });
+
+        requestAnimationFrame(animateMagneticElements);
+      }
+
+      // Start the animation loop
+      animateMagneticElements();
+
+      // Special handling for theme toggle and search toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      if (themeToggle) {
+        themeToggle.addEventListener('mouseenter', () => {
+          cursor.classList.add('hover-link');
+          cursor.style.width = '15px';
+          cursor.style.height = '15px';
+          cursor.style.borderRadius = '50%';
+          cursor.style.backgroundColor = 'var(--color-secondary)';
+          cursor.style.opacity = '0.5';
+        });
+
+        themeToggle.addEventListener('mouseleave', () => {
+          cursor.classList.remove('hover-link');
+          cursor.style.width = '';
+          cursor.style.height = '';
+          cursor.style.borderRadius = '';
+          cursor.style.backgroundColor = '';
+          cursor.style.opacity = '';
+        });
+      }
+
+      const searchToggle = document.getElementById('search-toggle');
+      if (searchToggle) {
+        searchToggle.addEventListener('mouseenter', () => {
+          cursor.classList.add('hover-link');
+          cursor.style.width = '15px';
+          cursor.style.height = '15px';
+          cursor.style.borderRadius = '50%';
+          cursor.style.backgroundColor = 'var(--color-secondary)';
+          cursor.style.opacity = '0.5';
+        });
+
+        searchToggle.addEventListener('mouseleave', () => {
+          cursor.classList.remove('hover-link');
+          cursor.style.width = '';
+          cursor.style.height = '';
+          cursor.style.borderRadius = '';
+          cursor.style.backgroundColor = '';
+          cursor.style.opacity = '';
+        });
+      }
+
+      // Navbar scroll effect
+      const navbar = document.getElementById('navbar');
+
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+
+      // Hamburger menu toggle
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      hamburger.addEventListener('click', function () {
+        this.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+      });
+
+      // Close mobile menu when clicking a link
+      const mobileLinks = document.querySelectorAll('.mobile-nav-link a');
+
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', function () {
+          hamburger.classList.remove('active');
+          mobileMenu.classList.remove('active');
+          document.body.classList.remove('menu-open');
+        });
+      });
+
+      // Search functionality
+      const searchToggleBtn = document.getElementById('search-toggle');
+      const searchPanel = document.getElementById('search-panel');
+      const searchClose = document.getElementById('search-close');
+      const searchInput = document.getElementById('search-input');
+      const searchResults = document.getElementById('search-results');
+
+      // Toggle search panel
+      searchToggleBtn.addEventListener('click', function () {
+        searchPanel.classList.add('active');
+        setTimeout(() => {
+          searchInput.focus();
+        }, 300);
+      });
+
+      // Close search panel
+      searchClose.addEventListener('click', function () {
+        searchPanel.classList.remove('active');
+      });
+
+      // Close search panel with Escape key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && searchPanel.classList.contains('active')) {
+          searchPanel.classList.remove('active');
+        }
+      });
+
+      // Search functionality
+      const searchForm = document.getElementById('search-form');
+      searchForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        performSearch();
+      });
+
+      searchInput.addEventListener('input', debounce(function () {
+        performSearch();
+      }, 300));
+
+      function debounce(func, wait) {
+        let timeout;
+        return function (...args) {
+          clearTimeout(timeout);
+          timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+      }
+
+      function performSearch() {
+        const query = searchInput.value.trim().toLowerCase();
+
+        if (query.length < 2) {
+          searchResults.innerHTML = '<div class="search-info">Start typing to search through the entire site content...</div>';
+          return;
+        }
+
+        // Extract all text content from the page
+        const pageContent = extractPageContent();
+
+        // Filter content based on search query
+        const results = searchPageContent(pageContent, query);
+
+        // Display results
+        displaySearchResults(results, query);
+      }
+
+      function extractPageContent() {
+        const content = [];
+
+        // Extract all text from the page
+        document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, span, button, .skill-item, .project-title, .project-description, .project-tag, .testimonial-quote, .form-label, .btn, .section-title, .section-subtitle, .hero-title, .hero-subtitle, .footer-text, .copyright, .cube-list-label, .cube-list-value, .cube-face-title, .cube-objective, .cube-language-name, .cube-language-level, .cube-hobby-name').forEach(element => {
+          // Skip elements in the search panel itself
+          if (searchPanel.contains(element)) {
+            return;
+          }
+
+          const text = element.textContent.trim();
+          if (text.length > 1) {
+            // Determine the category based on element type or class
+            let category = element.tagName;
+            let section = 'General';
+
+            // Find the closest section
+            const parentSection = element.closest('section');
+            if (parentSection && parentSection.id) {
+              section = parentSection.id.charAt(0).toUpperCase() + parentSection.id.slice(1);
+            }
+
+            // Special handling for cube content
+            const cubeFace = element.closest('.cube-face');
+            if (cubeFace) {
+              const faceTitle = cubeFace.querySelector('.cube-face-title');
+              if (faceTitle) {
+                category = 'Personal Info';
+                section = faceTitle.textContent.trim();
+              }
+            }
+
+            // More specific categorization
+            if (element.classList.contains('project-title')) {
+              category = 'Project';
+            } else if (element.classList.contains('skill-item')) {
+              category = 'Skill';
+            } else if (element.classList.contains('testimonial-quote')) {
+              category = 'Testimonial';
+            } else if (element.classList.contains('btn')) {
+              category = 'Button';
+            } else if (element.classList.contains('section-title')) {
+              category = 'Section';
+            } else if (element.classList.contains('cube-list-label')) {
+              category = 'Personal Detail';
+            }
+
+            // Get the element's URL (for navigation)
+            let url = '#';
+            if (parentSection && parentSection.id) {
+              url = '#' + parentSection.id;
+            } else if (element.closest('[id]')) {
+              url = '#' + element.closest('[id]').id;
+            }
+
+            // Special handling for cube content - always point to personal section
+            if (cubeFace) {
+              url = '#personal';
+            }
+
+            // Get surrounding context
+            let context = text;
+            const parentParagraph = element.closest('p');
+            if (parentParagraph) {
+              context = parentParagraph.textContent.trim();
+            }
+
+            // For cube list items, include the label and value together for better context
+            if (element.classList.contains('cube-list-label')) {
+              const valueElement = element.closest('.cube-list-item')?.querySelector('.cube-list-value');
+              if (valueElement) {
+                context = `${text}: ${valueElement.textContent.trim()}`;
+              }
+            }
+
+            content.push({
+              text: text,
+              element: element,
+              category: category,
+              section: section,
+              url: url,
+              context: context
+            });
+          }
+        });
+
+        return content;
+      }
+
+      function searchPageContent(content, query) {
+        const results = [];
+
+        content.forEach(item => {
+          if (item.text.toLowerCase().includes(query) ||
+            item.context.toLowerCase().includes(query)) {
+
+            // Calculate relevance score
+            let score = 0;
+
+            // Exact match in text
+            if (item.text.toLowerCase() === query) {
+              score += 10;
+            }
+            // Text starts with query
+            else if (item.text.toLowerCase().startsWith(query)) {
+              score += 8;
+            }
+            // Text contains query
+            else if (item.text.toLowerCase().includes(query)) {
+              score += 5;
+            }
+            // Context contains query
+            else if (item.context.toLowerCase().includes(query)) {
+              score += 3;
+            }
+
+            // Boost score for headings and important elements
+            if (item.element.tagName.startsWith('H')) {
+              score += 3;
+            }
+
+            // Boost score for project titles and section titles
+            if (item.category === 'Project' || item.category === 'Section') {
+              score += 2;
+            }
+
+            results.push({
+              ...item,
+              score: score
+            });
+          }
+        });
+
+        // Sort by relevance score (highest first)
+        return results.sort((a, b) => b.score - a.score);
+      }
+
+      function displaySearchResults(results, query) {
+        searchResults.innerHTML = '';
+
+        if (results.length === 0) {
+          searchResults.innerHTML = '<div class="search-empty">No results found for "' + query + '"</div>';
+          return;
+        }
+
+        // Group results by section
+        const groupedResults = {};
+        results.forEach(result => {
+          if (!groupedResults[result.section]) {
+            groupedResults[result.section] = [];
+          }
+          groupedResults[result.section].push(result);
+        });
+
+        // Display results by section
+        for (const section in groupedResults) {
+          // Take only top 3 results per section
+          const sectionResults = groupedResults[section].slice(0, 3);
+
+          sectionResults.forEach(result => {
+            const resultElement = document.createElement('div');
+            resultElement.className = 'search-result';
+
+            // Highlight the query in the text
+            let highlightedText = result.text;
+            const queryRegex = new RegExp(`(${query})`, 'gi');
+            highlightedText = highlightedText.replace(queryRegex, '<span class="search-highlight">$1</span>');
+
+            // Get context snippet with highlighted query
+            let contextSnippet = result.context;
+            if (contextSnippet.length > 100) {
+              // Find the position of the query in the context
+              const queryPos = contextSnippet.toLowerCase().indexOf(query.toLowerCase());
+              if (queryPos !== -1) {
+                // Create a snippet centered around the query
+                const startPos = Math.max(0, queryPos - 40);
+                const endPos = Math.min(contextSnippet.length, queryPos + query.length + 40);
+                contextSnippet = (startPos > 0 ? '...' : '') +
+                  contextSnippet.substring(startPos, endPos) +
+                  (endPos < contextSnippet.length ? '...' : '');
+              } else {
+                // If query not found in context, just take the first 100 chars
+                contextSnippet = contextSnippet.substring(0, 100) + '...';
+              }
+            }
+
+            // Highlight the query in the context
+            contextSnippet = contextSnippet.replace(queryRegex, '<span class="search-highlight">$1</span>');
+
+            resultElement.innerHTML = `
+<div class="search-result-title">${highlightedText}</div>
+<div class="search-result-category">${result.category} in ${result.section}</div>
+<div class="search-result-snippet">${contextSnippet}</div>
+`;
+
+            resultElement.addEventListener('click', function () {
+              searchPanel.classList.remove('active');
+
+              // Scroll to the element
+              const targetElement = result.element;
+              if (targetElement) {
+                setTimeout(() => {
+                  const navbarHeight = navbar.offsetHeight;
+                  const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
+
+                  window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                  });
+
+                  // For cube content, make sure the correct face is shown
+                  const cubeFace = targetElement.closest('.cube-face');
+                  if (cubeFace) {
+                    // Determine which face this is
+                    const faces = ['front', 'back', 'right', 'left', 'top', 'bottom'];
+                    for (const face of faces) {
+                      if (cubeFace.classList.contains(`cube-face-${face}`)) {
+                        // Find and click the corresponding navigation button
+                        const navBtn = document.querySelector(`.cube-nav-btn[data-face="${face}"]`);
+                        if (navBtn) {
+                          navBtn.click();
+                          break;
+                        }
+                      }
+                    }
+                  }
+
+                  // Highlight the element briefly
+                  targetElement.style.transition = 'background-color 0.5s ease';
+                  const originalBg = window.getComputedStyle(targetElement).backgroundColor;
+                  targetElement.style.backgroundColor = 'rgba(108, 92, 231, 0.2)';
+
+                  setTimeout(() => {
+                    targetElement.style.backgroundColor = originalBg;
+                    setTimeout(() => {
+                      targetElement.style.transition = '';
+                    }, 500);
+                  }, 1500);
+                }, 300);
+              }
+            });
+
+            searchResults.appendChild(resultElement);
+          });
+        }
+      }
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            const navbarHeight = navbar.offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Theme toggle
+      const themeToggleBtn = document.getElementById('theme-toggle');
+
+      // Check for saved theme preference or use system preference
+      const savedTheme = localStorage.getItem('theme');
+
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      } else {
+        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', prefersDarkMode ? 'dark' : 'light');
+      }
+
+      themeToggleBtn.addEventListener('click', function () {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      });
+
+      // Intersection Observer for fade-in animations
+      if ('IntersectionObserver' in window) {
+        // Timeline container observer with more sensitive settings
+        const timelineContainer = document.querySelector('.timeline-container');
+        const containerObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              containerObserver.unobserve(entry.target);
+
+              // Optional: Add a small delay before showing child elements
+              setTimeout(() => {
+                // This will trigger the timeline items to fade in sequentially
+                const timelineItems = entry.target.querySelectorAll('.timeline-item');
+                timelineItems.forEach((item, index) => {
+                  setTimeout(() => {
+                    item.classList.add('visible');
+                  }, 200 * index); // Staggered delay
+                });
+              }, 300);
+            }
+          });
+        }, {
+          threshold: 0.05, // More sensitive threshold
+          rootMargin: '0px 0px -10% 0px' // Trigger slightly before the element is in view
+        });
+
+        // Observe the timeline container
+        if (timelineContainer) {
+          containerObserver.observe(timelineContainer);
+        }
+
+        // Regular fade-in elements
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // Add random delay for staggered effect
+              const delay = Math.random() * 0.5;
+              entry.target.style.transitionDelay = `${delay}s`;
+              entry.target.classList.add('visible');
+
+              // Add extra animation class based on position
+              const rect = entry.target.getBoundingClientRect();
+              if (rect.left < window.innerWidth / 2) {
+                entry.target.classList.add('slide-right');
+              } else {
+                entry.target.classList.add('slide-left');
+              }
+
+              fadeObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(element => {
+          fadeObserver.observe(element);
+        });
+      } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        document.querySelectorAll('.fade-in, .timeline-container, .timeline-item').forEach(element => {
+          element.classList.add('visible');
+        });
+      }
+
+      // Project filtering
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          // Remove active class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+
+          // Add active class to clicked button
+          this.classList.add('active');
+
+          const filter = this.getAttribute('data-filter');
+
+          projectCards.forEach(card => {
+            if (filter === 'all') {
+              card.style.display = 'block';
+            } else {
+              const category = card.getAttribute('data-category');
+              if (category.includes(filter)) {
+                card.style.display = 'block';
+              } else {
+                card.style.display = 'none';
+              }
+            }
+          });
+        });
+      });
+
+      // Back to top button
+      const backToTopBtn = document.getElementById('back-to-top');
+
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 500) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      });
+
+      backToTopBtn.addEventListener('click', function () {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      // Parallax effect for hero shapes
+      const heroShapes = document.querySelectorAll('.hero-shape');
+
+      document.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX / window.innerWidth;
+        const mouseY = e.clientY / window.innerHeight;
+
+        heroShapes.forEach((shape, index) => {
+          const depth = (index + 1) * 20; // Different depth for each shape
+          const moveX = (mouseX - 0.5) * depth;
+          const moveY = (mouseY - 0.5) * depth;
+
+          shape.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+        });
+      });
+
+      // Scroll progress indicator
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (scrollTop / scrollHeight) * 100;
+
+        document.querySelector('.scroll-progress').style.width = progress + '%';
+      });
+
+      // 3D Cube functionality with touch support
+      const cube = document.getElementById('cube');
+      const cubeNavBtns = document.querySelectorAll('.cube-nav-btn');
+      let isDragging = false;
+      let previousPosition = { x: 0, y: 0 };
+      let cubeRotation = { x: -15, y: 15 };
+      let lastFrameTime = 0;
+      const fps = 30; // Limit to 30fps on mobile for better performance
+      const frameInterval = 1000 / fps;
+
+      // Handle button navigation
+      cubeNavBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          cubeNavBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const face = btn.getAttribute('data-face');
+          let rotateX = 0;
+          let rotateY = 0;
+
+          switch (face) {
+            case 'front':
+              rotateX = -15;
+              rotateY = 15;
+              break;
+            case 'back':
+              rotateX = -15;
+              rotateY = 195;
+              break;
+            case 'right':
+              rotateX = -15;
+              rotateY = 105;
+              break;
+            case 'left':
+              rotateX = -15;
+              rotateY = -75;
+              break;
+            case 'top':
+              rotateX = 75;
+              rotateY = 15;
+              break;
+            case 'bottom':
+              rotateX = -105;
+              rotateY = 15;
+              break;
+          }
+
+          cubeRotation.x = rotateX;
+          cubeRotation.y = rotateY;
+          cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+      });
+
+      // Mouse events for desktop
+      const sceneElement = document.querySelector('.scene');
+      sceneElement.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        previousPosition = { x: e.clientX, y: e.clientY };
+        sceneElement.style.cursor = 'grabbing';
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+
+        const deltaX = e.clientX - previousPosition.x;
+        const deltaY = e.clientY - previousPosition.y;
+
+        updateCubeRotation(deltaX, deltaY);
+        previousPosition = { x: e.clientX, y: e.clientY };
+      });
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+        sceneElement.style.cursor = 'grab';
+      });
+
+      // Touch events for mobile with improved handling
+      let animationFrameId = null;
+      let touchDeltaX = 0;
+      let touchDeltaY = 0;
+
+      sceneElement.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          previousPosition = {
+            x: e.touches[0].clientX,
+            y: e.touches[0].clientY
+          };
+          // Prevent default to avoid scrolling while rotating the cube
+          e.preventDefault();
+
+          // Add a class to indicate active dragging for visual feedback
+          cube.classList.add('dragging');
+        }
+      });
+
+      document.addEventListener('touchmove', (e) => {
+        if (!isDragging || e.touches.length !== 1) return;
+
+        // Store the deltas for use in animation frame
+        touchDeltaX = e.touches[0].clientX - previousPosition.x;
+        touchDeltaY = e.touches[0].clientY - previousPosition.y;
+
+        previousPosition = {
+          x: e.touches[0].clientX,
+          y: e.touches[0].clientY
+        };
+
+        // Cancel any existing animation frame
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+        }
+
+        // Request a new frame for the update
+        animationFrameId = requestAnimationFrame(updateCubeRotationSmooth);
+
+        // Prevent default to avoid scrolling while rotating the cube
+        e.preventDefault();
+      });
+
+      document.addEventListener('touchend', () => {
+        isDragging = false;
+        cube.classList.remove('dragging');
+
+        // Apply inertia effect
+        applyInertia();
+      });
+
+      document.addEventListener('touchcancel', () => {
+        isDragging = false;
+        cube.classList.remove('dragging');
+      });
+
+      // Smooth update function with damping
+      function updateCubeRotationSmooth() {
+        // Apply damping factor for smoother movement
+        const damping = 0.8;
+        const sensitivity = 0.3; // Reduced sensitivity for more control
+
+        // Apply the rotation with damping
+        cubeRotation.y += touchDeltaX * sensitivity * damping;
+        cubeRotation.x -= touchDeltaY * sensitivity * damping;
+
+        // Apply the transform with hardware acceleration
+        cube.style.transform = `rotateX(${cubeRotation.x}deg) rotateY(${cubeRotation.y}deg)`;
+        cube.style.willChange = 'transform';
+      }
+
+      // Add inertia effect when touch ends
+      let inertiaFrameId = null;
+      let velocityX = 0;
+      let velocityY = 0;
+      const friction = 0.95; // Friction factor (0-1)
+
+      function applyInertia() {
+        // Calculate velocity based on recent movement
+        velocityX = touchDeltaX * 0.1;
+        velocityY = touchDeltaY * 0.1;
+
+        // Start inertia animation
+        animateInertia();
+      }
+
+      function animateInertia() {
+        // If velocity is very small, stop the animation
+        if (Math.abs(velocityX) < 0.1 && Math.abs(velocityY) < 0.1) {
+          cube.style.willChange = 'auto'; // Release hardware acceleration
+          return;
+        }
+
+        // Apply velocity with friction
+        cubeRotation.y += velocityX;
+        cubeRotation.x -= velocityY;
+
+        // Apply friction
+        velocityX *= friction;
+        velocityY *= friction;
+
+        // Update cube rotation
+        cube.style.transform = `rotateX(${cubeRotation.x}deg) rotateY(${cubeRotation.y}deg)`;
+
+        // Continue animation
+        inertiaFrameId = requestAnimationFrame(animateInertia);
+      }
+
+      // Shared function to update cube rotation
+      function updateCubeRotation(deltaX, deltaY) {
+        // Adjust sensitivity for touch vs mouse
+        const sensitivity = 0.5;
+
+        cubeRotation.y += deltaX * sensitivity;
+        cubeRotation.x -= deltaY * sensitivity;
+
+        // Optional: Add limits to rotation
+        cubeRotation.x = Math.max(-180, Math.min(180, cubeRotation.x));
+
+        cube.style.transform = `rotateX(${cubeRotation.x}deg) rotateY(${cubeRotation.y}deg)`;
+      }
+    });
+  </script>
+</body>
+
+</html>
