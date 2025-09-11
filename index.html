@@ -1149,11 +1149,14 @@
     }
 
     .skills-category-title {
-      font-size: 1.6rem;
+      font-size: 2.6rem;
       display: flex;
       margin-left: -35px;
       align-items: center;
-      gap: var(--space-xs)
+      gap: var(--space-xs);
+      background: linear-gradient(303deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
     .skills-category-title::before {
@@ -1167,6 +1170,10 @@
 
     .skills-category .skills-list {
       margin: var(--space-md);
+    }
+
+    .skills-category .skills-item:last-child {
+      border-right: none;
     }
 
     .skills-category .skills-item {
@@ -1285,6 +1292,7 @@
     .skills-list {
       display: flex;
       flex-wrap: wrap;
+      align-items: flex-end;
       gap: var(--space-sm);
       column-gap: 5px;
       row-gap: 5px
@@ -2514,6 +2522,7 @@
         <li><a href=#about class=nav-link>About</a>
         <li><a href=#projects class=nav-link>Projects</a>
         <li><a href=#skills class=nav-link>Journey</a>
+        <li><a href=#overview class=nav-link>Overview</a>
         <li><a href=#footer class=nav-link>Contact</a>
       </ul>
       <div class=nav-controls><button class=search-toggle aria-label=Search id=search-toggle>🔎︎</button> <button
@@ -2585,7 +2594,7 @@
   </div>
   <section class=hero id=home>
     <div class="container hero-content">
-      <div class=hero-greeting>Hello, I'm Naveen S</div>
+      <div class=hero-greeting><span class=section-number>01</span>Hello, I'm Naveen S</div>
       <h1 class=hero-title><span class=highlight>Front-End</span> Developer & UI/UX Designer</h1>
       <p class=hero-subtitle>I craft visually stunning digital experiences with a focus on performance optimization and
         seamless user interactions.
@@ -2609,7 +2618,7 @@
   <section class="color-surface about" id=about>
     <div class=container>
       <div class=section-header>
-        <div class=section-title-container><span class=section-number>01</span>
+        <div class=section-title-container><span class=section-number>02</span>
           <h2 class=section-title>About Me</h2>
         </div>
         <p class=section-subtitle>Get to know me and my journey in web development and design.
@@ -2658,10 +2667,10 @@
   <section class=projects id=projects>
     <div class=container>
       <div class=section-header>
-        <div class=section-title-container><span class=section-number>04</span>
+        <div class=section-title-container><span class=section-number>03</span>
           <h2 class=section-title>Featured Projects</h2>
         </div>
-        <p class=section-subtitle>A selection of my work showcasing my design and development capabilities.
+        <p class=section-subtitle>A selection of my work showcasing my capabilities.
       </div>
       <div class=projects-filter><button class="filter-btn active" data-filter=all>All</button> <button class=filter-btn
           data-filter=Full-Stack>Full-Stack</button> <button class=filter-btn data-filter=Front-End>Front-End</button>
@@ -2834,7 +2843,7 @@
   <section class="color-surface skills" id=skills>
     <div class=container>
       <div class=section-header>
-        <div class=section-title-container><span class=section-number>05</span>
+        <div class=section-title-container><span class=section-number>04</span>
           <h2 class=section-title>Professional Journey</h2>
         </div>
         <p class=section-subtitle>My career path and the skills I've developed along the way.
@@ -2849,7 +2858,7 @@
                 <h3 class=timeline-title>Tech Associate</h3>
                 <h4 class=timeline-company>Verticurl Marketing Pvt Ltd</h4>
                 <h5>Key Skills</h5>
-                <div class=skills-list><span class=skill-item>Tools Automation</span> <span class=skill-item>AI
+                <div class=skills-list><span class=skill-item>A/B testing</span> <span class=skill-item>AI
                     Integration</span> <span class=skill-item>Email on Acid</span> <span class=skill-item>Litmus</span>
                 </div>
                 <h5>Key Technologies</h5>
@@ -2859,6 +2868,13 @@
                     <img alt=UIPath src=img/uipath.webp class=img title=UIPath> <img alt="WPP Open"
                       src=img/wpp_open.webp class=img title="WPP Open"> <img alt="ZOHO CRM" src=img/zoho_crm.webp
                       class=img title="ZOHO CRM"></span></div>
+                <h5>My Responsibilities</h5>
+                <div class=project-logo><a href=https://www.rockwellautomation.com/en-us.html target=_blank><img
+                      alt="Rockwell Automation" src=img/RockwellAutomation.webp class=img title="Rockwell Automation">
+                  </a><a href=https://www.jnj.com/ target=_blank><img alt="Janssen Pharmaceutica"
+                      src=img/JanssenPharmaceutica.webp class=img title="Janssen Pharmaceutica"> </a><a
+                    href=https://www.intel.com/content/www/us/en/homepage.html target=_blank><img alt=Intel
+                      src=img/Intel.webp class=img title=Intel></a></div>
               </div>
               <div class=timeline-projects>
                 <h5>Key Responsibilities</h5>
@@ -2868,13 +2884,30 @@
                   <li>Created report-based metrics and coordinated with teams to develop materials.
                   <li>Implemented automation solutions to streamline workflows.
                 </ul>
-                <h5>My Projects</h5>
-                <div class=project-logo><a href=https://www.rockwellautomation.com/en-us.html target=_blank><img
-                      alt="Rockwell Automation" src=img/RockwellAutomation.webp class=img title="Rockwell Automation">
-                  </a><a href=https://www.jnj.com/ target=_blank><img alt="Janssen Pharmaceutica"
-                      src=img/JanssenPharmaceutica.webp class=img title="Janssen Pharmaceutica"> </a><a
-                    href=https://www.intel.com/content/www/us/en/homepage.html target=_blank><img alt=Intel
-                      src=img/Intel.webp class=img title=Intel></a></div>
+                <div class=timeline-projects>
+                  <h5>Certifications & Honors</h5>
+                  <div class="certification-card">
+                    <div class="certification-icon">🤖</div>
+                    <div>
+                      <h4>Intro to Generative AI</h4>
+                      <p>WPP Online Training (QA Ltd)</p>
+                    </div>
+                  </div>
+                  <div class="certification-card">
+                    <div class="certification-icon">📈</div>
+                    <div>
+                      <h4>Marketing Automation</h4>
+                      <p>WPP Online Training (QA Ltd)</p>
+                    </div>
+                  </div>
+                  <div class="certification-card">
+                    <div class="certification-icon">💡</div>
+                    <div>
+                      <h4>Introduction to Prompt Engineering</h4>
+                      <p>WPP Online Training (QA Ltd)</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2997,12 +3030,21 @@
                 <h5>Training Focus</h5>
                 <ul>
                   <li>Successfully completed on-the-job training in web design and web application development, working
-                    on real-world projects under professional guidance.
-                  <li>Acquired a solid understanding of front-end development (HTML, CSS, JavaScript) and back-end
-                    development (server-side scripting, databases, and APIs).
-                  <li>Gained hands-on experience with development tools (such as VS Code, XAMPP) and environments for
+                    under professional guidance.
+                  <li>Acquired a solid understanding of front/back-end development.
+                  <li>Gained hands-on experience with development tools and environments for
                     building, testing, and deploying web applications.
                 </ul>
+                <div class=timeline-projects>
+                  <h5>Certifications & Honors</h5>
+                  <div class=certification-card>
+                    <div class=certification-icon>💻</div>
+                    <div class=certification-text>
+                      <h4>Web Designing and Maintenance <small>(On Job Training)</small></h4>
+                      <p>Infoem Solutions Pvt Ltd, Namakkal
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -3027,13 +3069,6 @@
               </div>
               <div class=timeline-projects>
                 <h5>Certifications & Honors</h5>
-                <div class=certification-card>
-                  <div class=certification-icon>💻</div>
-                  <div class=certification-text>
-                    <h4>Web Designing and Maintenance <small>(On Job Training)</small></h4>
-                    <p>Infoem Solutions Pvt Ltd, Namakkal
-                  </div>
-                </div>
                 <div class=certification-card>
                   <div class=certification-icon>🧮</div>
                   <div class=certification-text>
@@ -3108,10 +3143,10 @@
     </div>
   </section>
 
-  <section class="skills-summary">
+  <section class="skills-summary" id="overview">
     <div class=container>
-            <div class=section-header>
-        <div class=section-title-container><span class=section-number>04</span>
+      <div class=section-header>
+        <div class=section-title-container><span class=section-number>05</span>
           <h2 class=section-title>Journey Overview</h2>
         </div>
       </div>
@@ -3228,47 +3263,7 @@
     </div>
   </section>
 
-  <!-- Certifications -->
-  <section class="certifications" id="certifications">
-    <div class="container fade-in">
-      <div class="section-header">
-        <div class="section-title-container">
-          <span class="section-number">06</span>
-          <h2 class="section-title">Certifications</h2>
-        </div>
-      </div>
-      <div class="certification-card">
-        <div class="certification-icon">💻</div>
-        <div>
-          <h4>Web Designing and Maintenance</h4>
-          <p>Infoem Solutions</p>
-        </div>
-      </div>
-      <div class="certification-card">
-        <div class="certification-icon">🤖</div>
-        <div>
-          <h4>Intro to Generative AI</h4>
-          <p>WPP Online Training (Verticurl)</p>
-        </div>
-      </div>
-      <div class="certification-card">
-        <div class="certification-icon">📈</div>
-        <div>
-          <h4>Marketing Automation</h4>
-          <p>WPP Online Training (Verticurl)</p>
-        </div>
-      </div>
-      <div class="certification-card">
-        <div class="certification-icon">💡</div>
-        <div>
-          <h4>Introduction to Prompt Engineering</h4>
-          <p>WPP Online Training (Verticurl)</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class=footer id=footer>
+  <footer class="color-surface footer" id=footer>
     <div class="container footer-container">
       <section class=personal-details-cube id=personal>
         <div class=container>
