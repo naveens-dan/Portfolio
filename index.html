@@ -271,7 +271,10 @@
       padding: 0 var(--space-md)
     }
 
-    .about-text p,
+    .about-text p {
+      margin-bottom: var(--space-sm)
+    }
+
     .contact-text,
     .search-form,
     .search-header {
@@ -975,7 +978,7 @@
     .about-image {
       border-radius: 16px;
       overflow: hidden;
-      aspect-ratio: 4/5
+      aspect-ratio: 6/5
     }
 
     .about-image img {
@@ -1145,7 +1148,32 @@
       transition: transform .3s, box-shadow .3s, background-color .3s
     }
 
-    .skills-category .skill-item,
+    .skills-category-title {
+      font-size: 1.6rem;
+      display: flex;
+      margin-left: -35px;
+      align-items: center;
+      gap: var(--space-xs)
+    }
+
+    .skills-category-title::before {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 10px;
+      background-color: var(--color-accent);
+      border-radius: 50%
+    }
+
+    .skills-category .skills-list {
+      margin: var(--space-md);
+    }
+
+    .skills-category .skills-item {
+      padding: 0 var(--space-xs);
+      border-right: 2px solid var(--color-text-secondary);
+    }
+
     .timeline-date {
       padding: var(--space-xs) var(--space-sm)
     }
@@ -1233,41 +1261,13 @@
     }
 
     .skills-summary {
-      margin-top: var(--space-xxl);
-      padding-top: var(--space-xl);
-      border-top: 1px solid var(--color-border)
+      background: var(--color-bg);
     }
 
     .skills-summary-title {
       font-size: 2.4rem;
       margin-bottom: var(--space-lg);
       text-align: center
-    }
-
-    .skills-categories .ml40 {
-      margin-left: 35px
-    }
-
-    .skills-categories {
-      display: grid;
-      grid-template-columns: 1fr
-    }
-
-    .skills-category-title {
-      font-size: 1.8rem;
-      margin-bottom: var(--space-md);
-      display: flex;
-      align-items: center;
-      gap: var(--space-xs)
-    }
-
-    .skills-category-title::before {
-      content: '';
-      display: block;
-      width: 10px;
-      height: 10px;
-      background-color: var(--color-accent);
-      border-radius: 50%
     }
 
     .color-surface::before {
@@ -2513,7 +2513,7 @@
         <li><a href=#home class=nav-link>Home</a>
         <li><a href=#about class=nav-link>About</a>
         <li><a href=#projects class=nav-link>Projects</a>
-        <li><a href=#skills class=nav-link>Skills</a>
+        <li><a href=#skills class=nav-link>Journey</a>
         <li><a href=#footer class=nav-link>Contact</a>
       </ul>
       <div class=nav-controls><button class=search-toggle aria-label=Search id=search-toggle>🔎︎</button> <button
@@ -2596,7 +2596,7 @@
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1=12 x2=12 y1=15 y2=3></line>
           </svg> Download Resume</a></div>
-    </div><a href=#about class=hero-scroll>
+    </div><a href=#summary class=hero-scroll>
       <div class=scroll-indicator></div><span>Scroll Down</span>
     </a>
     <div class=hero-background>
@@ -2605,6 +2605,7 @@
       <div class="hero-shape hero-shape-3"></div>
     </div>
   </section>
+
   <section class="color-surface about" id=about>
     <div class=container>
       <div class=section-header>
@@ -2617,50 +2618,55 @@
         <div class="fade-in about-image"><img alt="Naveen S" src=img/about.avif></div>
         <div class="fade-in about-text">
           <h3>My Story</h3>
-          <p>I'm a Front-End Developer and UI/UX Designer with over 6 years of experience in creating digital
-            experiences that combine aesthetic appeal with technical functionality. My journey began with web design
-            fundamentals and has evolved to include expertise in front-end frameworks, marketing technology, and team
-            coordination.
+          <p>I'm a results-driven Front-End Developer and UI/UX Designer with over 6 years of experience creating
+            digital experiences that combine aesthetic appeal with technical functionality. My journey began with web
+            design fundamentals and has evolved to include expertise in JavaScript (ES6+), React, HTML5, CSS3, SCSS,
+            marketing automation platforms (Oracle Eloqua, Salesforce Marketing Cloud, Marketo), and team coordination.
+          </p>
+
           <p>I'm passionate about optimizing web performance and creating user-friendly interfaces. My experience spans
-            from small business websites to enterprise-level applications, with a focus on clean code and intuitive
-            design.
-          <p>Beyond coding, I enjoy audio books, music, watching anime, and playing chess. I'm constantly exploring new
-            technologies and techniques to enhance my skills and deliver better digital solutions.
-          <div class=about-stats>
-            <div class=stat-item>
-              <div class=stat-number>6+</div>
-              <div class=stat-label>Years Experience</div>
-            </div>
-            <div class=stat-item>
-              <div class=stat-number>150+</div>
-              <div class=stat-label>Projects Completed</div>
-            </div>
-            <div class=stat-item>
-              <div class=stat-number>3</div>
-              <div class=stat-label>Companies Worked With</div>
-            </div>
-          </div><a href=NaveenS_Resume.pdf target=_blank class=resume-download><svg fill=none height=24
-              stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 viewBox="0 0 24 24"
-              width=24>
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1=12 x2=12 y1=15 y2=3></line>
-            </svg> Download Resume</a>
+            from small business websites to enterprise-level applications for SaaS, eCommerce, B2B, and B2C industries,
+            with a focus on clean code, intuitive design, and accessibility. I've delivered 150+ projects achieving 100%
+            Google PageSpeed scores and 90%+ performance improvements.</p>
+
+          <p>I'm currently exploring AI integration and advanced animation techniques while staying updated with the
+            latest front-end frameworks to deliver cutting-edge digital solutions that exceed client expectations.
+            Beyond coding, I enjoy audio books, music, watching anime, and playing chess.</p>
+        </div>
+      </div>
+      <div class=about-stats>
+        <div class=stat-item>
+          <div class=stat-number>6+</div>
+          <div class=stat-label>Years Experience</div>
+        </div>
+        <div class=stat-item>
+          <div class=stat-number>150+</div>
+          <div class=stat-label>Projects Completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Google PageSpeed Scores</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">90%+</div>
+          <div class="stat-label">Performance Improvements</div>
         </div>
       </div>
     </div>
   </section>
+
   <section class=projects id=projects>
     <div class=container>
       <div class=section-header>
-        <div class=section-title-container><span class=section-number>02</span>
+        <div class=section-title-container><span class=section-number>04</span>
           <h2 class=section-title>Featured Projects</h2>
         </div>
         <p class=section-subtitle>A selection of my work showcasing my design and development capabilities.
       </div>
       <div class=projects-filter><button class="filter-btn active" data-filter=all>All</button> <button class=filter-btn
           data-filter=Full-Stack>Full-Stack</button> <button class=filter-btn data-filter=Front-End>Front-End</button>
-        <button class=filter-btn data-filter=App-Design>App Design</button></div>
+        <button class=filter-btn data-filter=App-Design>App Design</button>
+      </div>
       <div class=projects-grid>
         <div class="fade-in project-card" data-category=Full-Stack>
           <div class=project-thumbnail><img alt="Rockwell Automation" src=img/projects/rockwellautomation.webp>
@@ -2696,7 +2702,8 @@
           </div>
           <div class=project-content>
             <div class=project-tags><span class=project-tag>Front-End</span> <span class=project-tag>Corporate</span>
-              <span class=project-tag>Responsive</span></div>
+              <span class=project-tag>Responsive</span>
+            </div>
             <h3 class=project-title>Cloud Dreams</h3>
             <p class=project-description>Company website with advanced animations and interactive elements.
           </div>
@@ -2774,7 +2781,8 @@
           </div>
           <div class=project-content>
             <div class=project-tags><span class=project-tag>Front-End</span> <span class=project-tag>Corporate</span>
-              <span class=project-tag>Responsive</span></div>
+              <span class=project-tag>Responsive</span>
+            </div>
             <h3 class=project-title>MI Softwares</h3>
             <p class=project-description>Company website featuring modern design, optimized performance, and responsive
               layout.
@@ -2794,7 +2802,8 @@
           </div>
           <div class=project-content>
             <div class=project-tags><span class=project-tag>Full-Stack</span> <span class=project-tag>Franchise</span>
-              <span class=project-tag>Custom Dashboard</span></div>
+              <span class=project-tag>Custom Dashboard</span>
+            </div>
             <h3 class=project-title>5k Car Care</h3>
             <p class=project-description>Website for a Certified Car care specialists with Franchise and CMS.
           </div>
@@ -2825,7 +2834,7 @@
   <section class="color-surface skills" id=skills>
     <div class=container>
       <div class=section-header>
-        <div class=section-title-container><span class=section-number>03</span>
+        <div class=section-title-container><span class=section-number>05</span>
           <h2 class=section-title>Professional Journey</h2>
         </div>
         <p class=section-subtitle>My career path and the skills I've developed along the way.
@@ -2841,7 +2850,8 @@
                 <h4 class=timeline-company>Verticurl Marketing Pvt Ltd</h4>
                 <h5>Key Skills</h5>
                 <div class=skills-list><span class=skill-item>Tools Automation</span> <span class=skill-item>AI
-                    Integration</span> <span class=skill-item>Email on Acid</span> <span class=skill-item>Litmus</span></div>
+                    Integration</span> <span class=skill-item>Email on Acid</span> <span class=skill-item>Litmus</span>
+                </div>
                 <h5>Key Technologies</h5>
                 <div class="skills-list logos"><span class=skill-logo><img alt=Eloqua src=img/oracle_eloqua.webp
                       class=img title=Eloqua> <img alt="Salesforce Marketing Cloud" src=img/sfmc.webp class=img
@@ -2879,13 +2889,15 @@
                 <h4 class=timeline-company>Mobility Intelligence Softwares</h4>
                 <h5>Key Skills</h5>
                 <div class=skills-list><span class=skill-item>API Integration</span> <span class=skill-item>CI/CD
-                    Pipeline</span> <span class=skill-item>CMS System</span> <span class=skill-item>WCAG</span> <span class=skill-item>ARIA</span> <span class=skill-item>Cross-platform Troubleshooting</span></div>
+                    Pipeline</span> <span class=skill-item>CMS System</span> <span class=skill-item>WCAG</span> <span
+                    class=skill-item>ARIA</span> <span class=skill-item>Cross-platform Troubleshooting</span></div>
                 <h5>Key Technologies</h5>
                 <div class="skills-list logos"><span class=skill-logo><img alt=React src=img/React.webp class=img
                       title=React> <img alt=Laravel src=img/laravel.webp class=img title=Laravel> <img alt=Larago
-                      src=img/larago.webp class=img title=Larago> <img alt=git src=img/git.webp class=img title=git> <img alt=npm src=img/npm.webp class=img title=npm>
-                    <img alt=stripe src=img/stripe.webp class=img
-                      title=stripe> <img alt=Figma src=img/figma.webp class=img title=Figma></span></div>
+                      src=img/larago.webp class=img title=Larago> <img alt=git src=img/git.webp class=img title=git>
+                    <img alt=npm src=img/npm.webp class=img title=npm>
+                    <img alt=stripe src=img/stripe.webp class=img title=stripe> <img alt=Figma src=img/figma.webp
+                      class=img title=Figma></span></div>
               </div>
               <div class=timeline-projects>
                 <h5>My Deliverables</h5>
@@ -2915,8 +2927,9 @@
                 <h3 class=timeline-title>Front-End Developer</h3>
                 <h4 class=timeline-company>Cloud Dreams</h4>
                 <h5>Key Skills</h5>
-                <div class=skills-list><span class=skill-item>PSD/XD to HTML Conversion</span> <span class=skill-item>File Format Utilization</span> <span
-                    class=skill-item>FTP</span> <span class=skill-item>Code Debugging</span> <span class=skill-item>CSS & JS Libraries</span> <span
+                <div class=skills-list><span class=skill-item>PSD/XD to HTML Conversion</span> <span
+                    class=skill-item>File Format Utilization</span> <span class=skill-item>FTP</span> <span
+                    class=skill-item>Code Debugging</span> <span class=skill-item>CSS & JS Libraries</span> <span
                     class=skill-item>Page Animations</span></div>
                 <h5>Key Technologies</h5>
                 <div class="skills-list logos"><span class=skill-logo><img alt="Google analytics"
@@ -2974,10 +2987,11 @@
                 <h5>Basic Skills & Technologies</h5>
                 <div class="skills-list logos"><span class=skill-logo><img alt=VSCode src=img/vscode.webp class=img
                       title=VSCode> <img alt=HTML/CSS/JS src=img/hcj.webp class=img title=HTML/CSS/JS> <img alt=jQuery
-                      src=img/jQuery.webp class=img title=jQuery>  <img alt=xampp src=img/xampp.webp class=img
+                      src=img/jQuery.webp class=img title=jQuery> <img alt=xampp src=img/xampp.webp class=img
                       title=xampp> <img alt=php src=img/php.webp class=img title=php> <img alt=MySql src=img/mysql.webp
                       class=img title=MySql> <img alt=Bootstrap src=img/Bootstrap_old.webp class=img title=Bootstrap>
-                     <img alt=json src=img/json.webp class=img title=json><img alt=SVG src=img/svg.webp class=img title=SVG></span></div>
+                    <img alt=json src=img/json.webp class=img title=json><img alt=SVG src=img/svg.webp class=img
+                      title=SVG></span></div>
               </div>
               <div class=timeline-projects>
                 <h5>Training Focus</h5>
@@ -3091,53 +3105,169 @@
           </div>
         </div>
       </div>
-      <div class="fade-in skills-summary">
-        <h3 class=skills-summary-title>Journey Overview</h3>
-        <div class=skills-categories>
-          <div class=skills-category>
-            <h4 class=skills-category-title>Tools & Technologies</h4>
-            <div class=skills-list><span class=project-logo><img alt=HTML/CSS/JS src=img/hcj.webp class=img
-                  title=HTML/CSS/JS> <img alt=Bootstrap src=img/Bootstrap.webp class=img title=Bootstrap> <img
-                  alt=jQuery src=img/jQuery.webp class=img title=jQuery> <img alt=scss src=img/scss.webp class=img
-                  title=scss> <img alt=Wordpress src=img/wordpress.webp class=img title=Wordpress> <img alt=php
-                  src=img/php.webp class=img title=php> <img alt=xampp src=img/xampp.webp class=img title=xampp> <img
-                  alt=MySql src=img/mysql.webp class=img title=MySql> <img alt=Figma src=img/figma.webp class=img
-                  title=Figma> <img alt=Photoshop src=img/ps.webp class=img title=Photoshop> <img alt=XD src=img/xd.webp
-                  class=img title=XD> <img alt=SVG src=img/svg.webp class=img title=SVG> <img alt=React
-                  src=img/React.webp class=img title=React> <img alt=npm src=img/npm.webp class=img title=npm> <img
-                  alt=Laravel src=img/laravel.webp class=img title=Laravel> <img alt=Laragon src=img/larago.webp
-                  class=img title=Laragon> <img alt=CorelDraw src=img/coreldraw.webp class=img title=CorelDraw> <img
-                  alt="WPP Open" src=img/wpp_open.webp class=img title="WPP Open"> <img alt=git src=img/git.webp
-                  class=img title=git> <img alt="Google analytics" src=img/google_analytics.webp class=img
-                  title="Google analytics"> <img alt=GTmetrix src=img/gtmetrix.webp class=img title=GTmetrix> <img
-                  alt=VSCode src=img/vscode.webp class=img title=VSCode> <img alt=Tally src=img/tally.webp class=img
-                  title=Tally> <img alt=Bootstrap src=img/Bootstrap_old.webp class=img title=Bootstrap> <img alt=Ubuntu
-                  src=img/ubuntu.webp class=img title=Ubuntu> <img alt="Word Excel and Powerpoint" src=img/wxp.webp
-                  class=img title="Word Excel and Powerpoint"> <img alt="ZOHO CRM" src=img/zoho_crm.webp class=img
-                  title="ZOHO CRM"> <img alt=Certain src=img/certain.webp class=img title=Certain> <img alt=stripe
-                  src=img/stripe.webp class=img title=stripe> <img alt=Eloqua src=img/oracle_eloqua.webp class=img
-                  title=Eloqua> <img alt="Salesforce Marketing Cloud" src=img/sfmc.webp class=img
-                  title="Salesforce Marketing Cloud"> <img alt=UIPath src=img/uipath.webp class=img title=UIPath> <img
-                  alt=etc... src=img/etc.webp class=img title=etc...></span></div>
-          </div><br>
-          <div class=skills-category>
-            <h4 class=skills-category-title>Skills</h4>
-            <div class="skills-list ml40"><span class=skill-item>HTML conversion</span> <span
-                class=skill-item>Responsive Design</span> <span class=skill-item>CSS & JS Libraries</span> <span
-                class=skill-item>Tools Automation</span> <span class=skill-item>Page Animations</span><span class=skill-item>Email on Acid</span> <span class=skill-item>Litmus</span> <span
-                class=skill-item>Motion Path</span> <span class=skill-item>SVG Animation</span> <span
-                class=skill-item>FTP</span> <span class=skill-item>UI/UX Design</span> <span class=skill-item>App
-                Design</span> <span class=skill-item>Photo Editing</span> <span class=skill-item>Team Management</span>
-              <span class=skill-item>AI Integration</span> <span class=skill-item>API Integration</span> <span
-                class=skill-item>CI/CD Pipeline</span> <span class=skill-item>File Format Utilization</span>  <span class=skill-item>Code Debugging</span><span
-                class=skill-item>Paper Presentation</span> <span class=skill-item>PowerPoint Create</span> <span
-                class=skill-item>CMS System</span> <span class=skill-item>WCAG</span> <span class=skill-item>ARIA</span> <span class=skill-item>Cross-platform Troubleshooting</span> <span class=skill-item>OS Change/Maintenance</span> <span
-                class=skill-item>Driver Pack</span></div>
+    </div>
+  </section>
+
+  <section class="skills-summary">
+    <div class=container>
+            <div class=section-header>
+        <div class=section-title-container><span class=section-number>04</span>
+          <h2 class=section-title>Journey Overview</h2>
+        </div>
+      </div>
+      <div class="fade-in">
+        <div class=skills-category>
+          <div class="skills-list">
+            <h4 class=skills-category-title>Front-End Development : </h4>
+            <span class=skills-item>JavaScript (ES6+)</span>
+            <span class=skills-item>React JS</span>
+            <span class=skills-item>Svelte</span>
+            <span class=skills-item>HTML5</span>
+            <span class=skills-item>CSS3</span>
+            <span class=skills-item>SCSS</span>
+            <span class=skills-item>jQuery</span>
+            <span class=skills-item>Bootstrap</span>
+            <span class=skills-item>SVG</span>
+            <span class=skills-item>GSAP</span>
+            <span class=skills-item>Animate.js</span>
+            <span class=skills-item>Scroll Magic</span>
+            <span class=skills-item>wow.js</span>
+            <span class=skills-item>Responsive Design</span>
+            <span class=skills-item>Cross-Browser Compatibility</span>
+            <span class=skills-item>Web Performance Optimization</span>
           </div>
+        </div>
+        <div class=skills-category>
+          <div class="skills-list">
+            <h4 class=skills-category-title>Back-End Development : </h4>
+            <span class=skills-item>Node.js</span>
+            <span class=skills-item>PHP</span>
+            <span class=skills-item>Laravel</span>
+            <span class=skills-item>MySQL</span>
+            <span class=skills-item>XAMPP</span>
+          </div>
+        </div>
+        <div class=skills-category>
+          <div class="skills-list">
+            <h4 class=skills-category-title>UI/UX Design : </h4>
+            <span class=skills-item>Figma</span>
+            <span class=skills-item>Adobe XD</span>
+            <span class=skills-item>Adobe Photoshop</span>
+            <span class=skills-item>Canva</span>
+            <span class=skills-item>CorelDraw</span>
+            <span class=skills-item>User-Centric Design</span>
+            <span class=skills-item>Wireframing</span>
+            <span class=skills-item>Prototyping</span>
+            <span class=skills-item>User Journey Mapping</span>
+            <span class=skills-item>Material Design</span>
+            <span class=skills-item>WCAG</span>
+            <span class=skills-item>ARIA</span>
+          </div>
+        </div>
+        <div class=skills-category>
+          <div class="skills-list">
+            <h4 class=skills-category-title>Email Development & Marketing : </h4>
+            <span class=skills-item>HTML Email Templates</span>
+            <span class=skills-item>Responsive Email Design</span>
+            <span class=skills-item>Email on Acid</span>
+            <span class=skills-item>Litmus</span>
+            <span class=skills-item>A/B Testing</span>
+            <span class=skills-item>Campaign Optimization</span>
+            <span class=skills-item>Cross-Client Compatibility</span>
+          </div>
+        </div>
+        <div class=skills-category>
+          <div class="skills-list">
+            <h4 class=skills-category-title>Marketing Automation & CRM : </h4>
+            <span class=skills-item>Oracle Eloqua</span>
+            <span class=skills-item>SFMC</span>
+            <span class=skills-item>Marketo</span>
+            <span class=skills-item>UIPath Studio</span>
+            <span class=skills-item>Zoho CRM</span>
+            <span class=skills-item>Certain</span>
+            <span class=skills-item>WPP Open</span>
+          </div>
+        </div>
+        <div class=skills-category>
+          <div class="skills-list">
+            <h4 class=skills-category-title>Development Tools & Methodologies : </h4>
+            <span class=skills-item>Git & GitHub</span>
+            <span class=skills-item>npm</span>
+            <span class=skills-item>VS Code</span>
+            <span class=skills-item>WordPress</span>
+            <span class=skills-item>Shopify</span>
+            <span class=skills-item>Postman</span>
+            <span class=skills-item>Jira</span>
+            <span class=skills-item>CI/CD Pipelines</span>
+            <span class=skills-item>Agile Methodologies</span>
+            <span class=skills-item>RESTful APIs</span>
+            <span class=skills-item>Code Debugging</span>
+            <span class=skills-item>FTP</span>
+          </div>
+        </div>
+        <div class=skills-category>
+          <div class="skills-list">
+            <h4 class=skills-category-title>Performance & Analytics : </h4>
+            <span class=skills-item>Google Page Speed</span>
+            <span class=skills-item>GTmetrix</span>
+            <span class=skills-item>Google Analytics</span>
+            <span class=skills-item>Tableau</span>
+          </div>
+        </div>
+        <div class=skills-category>
+          <div class="skills-list">
+            <h4 class=skills-category-title>SEO & Digital Marketing : </h4>
+            <span class=skills-item>Search Engine Optimization (SEO)</span>
+            <span class=skills-item>On-Page SEO</span>
+            <span class=skills-item>Keyword Research</span>
+            <span class=skills-item>Web Accessibility</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="certifications" id="certifications">
+    <div class="container fade-in">
+      <div class="section-header">
+        <div class="section-title-container">
+          <span class="section-number">06</span>
+          <h2 class="section-title">Certifications</h2>
+        </div>
+      </div>
+      <div class="certification-card">
+        <div class="certification-icon">💻</div>
+        <div>
+          <h4>Web Designing and Maintenance</h4>
+          <p>Infoem Solutions</p>
+        </div>
+      </div>
+      <div class="certification-card">
+        <div class="certification-icon">🤖</div>
+        <div>
+          <h4>Intro to Generative AI</h4>
+          <p>WPP Online Training (Verticurl)</p>
+        </div>
+      </div>
+      <div class="certification-card">
+        <div class="certification-icon">📈</div>
+        <div>
+          <h4>Marketing Automation</h4>
+          <p>WPP Online Training (Verticurl)</p>
+        </div>
+      </div>
+      <div class="certification-card">
+        <div class="certification-icon">💡</div>
+        <div>
+          <h4>Introduction to Prompt Engineering</h4>
+          <p>WPP Online Training (Verticurl)</p>
         </div>
       </div>
     </div>
   </section>
+
   <footer class=footer id=footer>
     <div class="container footer-container">
       <section class=personal-details-cube id=personal>
