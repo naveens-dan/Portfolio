@@ -5,189 +5,411 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NaveenS_Resume</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Calibri, Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       max-width: 798px;
       margin: auto;
       line-height: 1.5;
-      color: #222;
+    }
+
+    .resume-container {
+      background: white;
+    }
+
+    /* Header Section */
+    header {
+      text-align: left;
+      padding-bottom: 10px;
+      border-bottom: 3px solid orange;
+      margin-bottom: 15px;
     }
 
     h1 {
-      font-size: 28px;
-      margin-bottom: 5px;
+      font-size: 42px;
+      color: #1a365d;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 0px;
     }
 
-    h2 {
-      font-size: 20px;
-      border-bottom: 2px solid #2c3e50;
-      padding-bottom: 4px;
-      margin-top: 20px;
-    }
-
-    h3 {
+    .title {
       font-size: 16px;
-      margin: 15px 0 0 0;
-    }
-
-    h3~p {
-      margin: 0;
-      font-size: 14px;
-      color: #555;
+      color: #4a5568;
+      font-weight: 500;
+      margin-bottom: 0px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
     .contact-info {
-      text-align: center;
-      margin-bottom: 0px;
+      display: flex;
+      justify-content: left;
+      flex-wrap: wrap;
+      gap: 8px 20px;
       font-size: 14px;
+      color: #4a5568;
+      margin-top: 5px;
     }
 
+    .contact-info a {
+      color: black;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-info a:hover {
+      color: #2c5282;
+      text-decoration: underline;
+    }
+
+    .contact-info span {
+      color: #cbd5e0;
+    }
+
+    /* Section Styling */
+    section {
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 22px;
+      color: #1a365d;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e2e8f0;
+      position: relative;
+    }
+
+    h2::before {
+      content: '----------';
+      position: absolute;
+      bottom: 16px;
+      left: 0;
+      height: 2px;
+      letter-spacing: -3px;
+      color: orange;
+    }
+
+    /* Experience Entries */
+    .experience-item,
+    .project-item {
+      margin-bottom: 25px;
+    }
+
+    h3 {
+      font-size: 18px;
+      color: #2d3748;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .job-meta,
+    .project-meta {
+      font-size: 14px;
+      color: #718096;
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+
+    .job-meta strong {
+      color: #4a5568;
+      font-weight: 500;
+    }
+
+    /* Lists */
     ul {
-      margin: 5px 0 10px 20px;
+      margin-left: 20px;
+      margin-top: 10px;
     }
 
     li {
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      line-height: 1.6;
+      color: #4a5568;
     }
 
-    strong {
-      color: #000;
+    li strong {
+      color: #2d3748;
+      font-weight: 600;
+    }
+
+    /* Summary Section */
+    .summary-text {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #4a5568;
+      text-align: justify;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      gap: 5px;
+    }
+
+    .skill-item {
+      background: #f7fafc;
+      padding: 3px 10px;
+      border-radius: 6px;
+      border-left: 4px solid orange;
+      transition: all 0.2s;
+    }
+
+    .skill-item:hover {
+      background: #edf2f7;
+      transform: translateX(5px);
+    }
+
+    .skill-category {
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 4px;
+    }
+
+    .skill-list {
+      color: #4a5568;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Projects */
+    .project-link {
+      color: orange;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .project-link:hover {
+      color: #2c5282;
+      text-decoration: underline;
+    }
+
+    .featured-project {
+      background: #ebf8ff;
+      padding: 18px;
+      border-radius: 6px;
+      border-left: 4px solid orange;
+      margin-bottom: 15px;
+    }
+
+    .featured-project h3 {
+      color: #2c5282;
+      margin-bottom: 8px;
+    }
+
+    .featured-project a {
+      font-size: 16px;
+      word-break: break-all;
+    }
+
+    .featured-project .project-meta {
+      margin-top: 8px;
+      margin-bottom: 0;
+    }
+
+    /* Achievements */
+    .achievements-list li {
+      padding-left: 10px;
+      position: relative;
+    }
+
+    .achievements-list li::before {
+      content: '▸';
+      position: absolute;
+      left: -10px;
+      color: orange;
+      font-weight: bold;
+    }
+
+    /* Education & Certifications */
+    .education-item,
+    .cert-item {
+      background: #f7fafc;
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .cert-item {
+      border-left: 3px solid #48bb78;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="contact-info">
-    <h1>NAVEEN S</h1>
-    <div>
-      <a href="tel:+919787752302">+91 97877 52302</a> |
-      <a href="mailto:naveenbsc1@gmail.com">naveenbsc1@gmail.com</a> |
-      <a href="https://www.linkedin.com/in/naveens96/">LinkedIn</a> |
-      <a href="https://naveens-dan.github.io/Portfolio/">Portfolio</a>
-    </div>
-    <p>Coimbatore, Tamil Nadu, India</p>
+  <div class="resume-container">
+
+    <!-- Header -->
+    <header>
+      <h1>Navin Shanmugam</h1>
+      <div class="contact-info">
+        <a href="tel:+919788712133">+91 9788712133</a>
+        <span>|</span>
+        <a href="mailto:navin.shanmugam96@gmail.com">navin.shanmugam96@gmail.com</a>
+      </div>
+    </header>
+
+    <!-- Summary -->
+    <section>
+      <h2>Professional Summary</h2>
+      <p class="summary-text">
+        Detail-oriented HTML Developer specializing in <strong>responsive
+          HTML/CSS development</strong> and <strong>email template creation</strong> for enterprise clients in
+        <strong>SaaS, healthcare, and B2B</strong> sectors. Expert in building <strong>pixel-perfect, cross-browser
+          compatible web applications</strong> and <strong>multi-client email campaigns</strong> from design files
+        (Figma, Photoshop, InDesign). Proven expertise in <strong>WCAG and ARIA accessibility standards</strong>,
+        delivering <strong>200+ responsive HTML email templates</strong> tested with <strong>Litmus and Email on
+          Acid</strong>. Skilled in collaborating with Project Managers, Business Analysts, and cross-functional teams
+        in <strong>Agile environments</strong> to deliver high-quality, maintainable code. Strong problem-solver with
+        experience in <strong>marketing automation platforms</strong> (Oracle Eloqua, Salesforce Marketing Cloud,
+        Marketo) and commitment to staying current with modern web development practices.
+      </p>
+    </section>
+
+    <!-- Key Achievements -->
+    <section>
+      <h2>Key Achievements</h2>
+      <ul class="achievements-list">
+        <li>Developed and tested <strong>200+ responsive HTML email templates</strong> ensuring flawless rendering
+          across 40+ email clients using <strong>Litmus and Email on Acid</strong></li>
+        <li>Delivered <strong>150+ web projects</strong> with 100% on-time delivery, achieving 90%+ performance scores
+          and perfect cross-browser compatibility</li>
+        <li>Reduced manual QA effort by <strong>30%</strong> through implementation of automated testing workflows</li>
+        <li>Improved email CTR by <strong>8%</strong> and open rates by <strong>12%</strong> through optimized
+          HTML/CSS coding and A/B testing</li>
+        <li>Converted complex design files into pixel-perfect HTML/CSS with <strong>100% design fidelity</strong> for
+          enterprise clients including Rockwell Automation, Johnson & Johnson, and Intel</li>
+      </ul>
+    </section>
+
+    <!-- Technical Skills -->
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <div class="skill-category">Core HTML/CSS Development:
+            <span class="skill-list">HTML5, CSS3, SCSS/SASS, Responsive Design, Mobile-First Development, Cross-Browser
+              Compatibility, Web Performance Optimization, Semantic HTML, CSS Grid, Flexbox</span>
+          </div>
+
+        </div>
+        <div class="skill-item">
+          <div class="skill-category">Email Development:
+            <span class="skill-list">Responsive HTML Email Templates, Email Client Compatibility (Outlook, Gmail, Apple
+              Mail, Yahoo, etc.), Litmus Testing, Email on Acid, A/B Testing, Dark Mode Email Support, MSO Conditional
+              Coding</span>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-category">Design Tools & Conversion:
+            <span class="skill-list">Adobe Photoshop, Figma, Adobe XD, PSD to HTML, Wireframing, Prototyping</span>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-category">Accessibility & Standards:
+            <span class="skill-list">WCAG, ARIA Roles & Attributes, Keyboard Navigation, Semantic HTML Best
+              Practices</span>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-category">JavaScript & Frameworks:
+            <span class="skill-list">JavaScript (ES6+), React, jQuery, JSON Data Handling, DOM Manipulation,
+              Bootstrap</span>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-category">Marketing Automation Platforms:
+            <span class="skill-list">Oracle Eloqua, Marketo, UIPath Studio, Zoho CRM, Campaign Management</span>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-category">Version Control & Tools:
+            <span class="skill-list">Git/GitHub, VS Code, npm, CI/CD Pipelines, Chrome DevTools, Agile
+              Methodologies</span>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-category">Additional Technical Skills:
+            <span class="skill-list">PHP, Node.js, MySQL, WordPress, Shopify, SEO Best Practices, Google
+              Analytics</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section>
+      <h2>Professional Experience</h2>
+
+      <div class="experience-item">
+        <h3>Associate Engineer - Technology</h3>
+        <div class="job-meta"><strong>Ogilvy - Verticurl division</strong> | Sep 2021 – Present</div>
+        <ul>
+          <li>Developed and maintained <strong>200+ responsive HTML email templates</strong> from design files (Figma,
+            Photoshop, Adobe XD) ensuring pixel-perfect rendering across 40+ email clients</li>
+          <li>Collaborated daily with <strong>Project Managers and Business Analysts</strong> to gather requirements,
+            clarify design specifications, and deliver solutions that meet business and technical needs</li>
+          <li>Performed comprehensive QA using <strong>Litmus and Email on Acid</strong> to ensure cross-client
+            compatibility across desktop, mobile, and webmail platforms (Outlook, Gmail, Apple Mail, Yahoo, etc.)</li>
+          <li>Implemented <strong>WCAG accessibility standards</strong> including ARIA roles, semantic HTML,
+            keyboard navigation, and screen reader optimization across all email and web deliverables</li>
+          <li>Managed <strong>end-to-end marketing automation campaigns</strong> for enterprise healthcare and pharma
+            clients including Rockwell Automation, Johnson & Johnson, and Intel using Oracle Eloqua and Marketo
+          </li>
+          <li>Wrote clean, efficient, and <strong>maintainable HTML/CSS code</strong> following best practices and
+            coding standards, reducing technical debt by 25%</li>
+          <li>Debugged and troubleshooted complex <strong>cross-browser and cross-platform compatibility
+              issues</strong>, resolving 50+ critical rendering bugs</li>
+          <li>Executed <strong>A/B testing</strong> on email templates and landing pages, improving open rates by 12%
+            and CTR by 8%</li>
+          <li>Implemented <strong>UIPath automation</strong> for repetitive QA tasks, reducing manual testing effort by
+            30%</li>
+          <li>Stayed current with HTML/CSS advancements and email development trends, sharing knowledge with team
+            through documentation and training sessions</li>
+          <li>Utilized <strong>Git/GitHub</strong> for version control, maintaining organized repositories and following
+            branching strategies for collaborative development</li>
+          <li>Met tight project deadlines consistently while maintaining <strong>high quality standards</strong> and
+            achieving 100% on-time delivery rate</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- Education -->
+    <section>
+      <h2>Education</h2>
+      <div class="education-item">
+        <strong>Under Graduat in Maths</strong> <small>(JAS College)</small><br>
+        <em>Strong analytical and problem-solving foundation</em>
+      </div>
+    </section>
+
+    <!-- Additional Information -->
+    <section>
+      <h2>Additional Information</h2>
+      <ul>
+        <li><strong>Work Hours:</strong> Flexible and available to work EST hours (9 AM - 5 PM EST / 6:30 PM - 2:30 AM
+          IST)</li>
+        <li><strong>Communication:</strong> Excellent written and verbal English communication skills; experienced in
+          client-facing roles</li>
+        <li><strong>Work Style:</strong> Comfortable working both independently and collaboratively in cross-functional
+          teams</li>
+      </ul>
+    </section>
+
   </div>
 
-  <h2 style="margin-top:0;">Summary</h2>
-  <p>Results-driven Front-End Developer and UI/UX Designer with <strong>6+ years</strong> of experience delivering
-    <strong>responsive,
-      accessible, and high-performance web applications</strong> and <strong>email marketing campaigns</strong> for
-    <strong>SaaS, eCommerce, B2B, and B2C</strong> clients. Expert in <strong>JavaScript (ES6+), React, Angular, HTML5,
-      CSS3, SCSS</strong>, and <strong>UI/UX design</strong>. Proven track record in <strong>SEO, performance
-      optimization</strong>, and <strong>cross-browser/email client compatibility</strong>. Skilled in <strong>marketing
-      automation</strong> (Eloqua, SFMC, Marketo) and analytics (Google Analytics, Tableau). Delivered <strong>150+
-      projects</strong> achieving <strong>100% Google PageSpeed scores</strong> and <strong>90%+ performance
-      improvements</strong>. Adept at collaborating with cross-functional teams in <strong>Agile environments</strong>
-    to
-    deliver innovative, user-centric solutions.
-  </p>
-
-  <h2>Key Achievements</h2>
-  <ul>
-    <li>Delivered <strong>150+ web projects</strong> with 100% on-time delivery and 90%+ performance scores.</li>
-    <li>Improved e-commerce checkout conversion rates by <strong>20%</strong> through optimized Angular workflows.</li>
-    <li>Reduced website load times to <strong>under 2 seconds</strong> for multiple clients.</li>
-    <li>Developed and tested <strong>200+ responsive HTML email templates</strong> with flawless cross-client rendering.
-    </li>
-  </ul>
-
-  <h2>Technical Skills</h2>
-  <ul>
-    <li><strong>Frontend:</strong> JavaScript (ES6+), React, Svelte, HTML5, CSS3, SCSS, jQuery,
-      Bootstrap, SVG, GSAP, Animate.js, Scroll Magic, wow.js, Responsive Design, Cross-Browser Compatibility, Web
-      Performance Optimization</li>
-    <li><strong>Backend:</strong> Node.js, PHP, Laravel, MySQL</li>
-    <li><strong>UI/UX:</strong> Photoshop, Figma, XD, Wireframing, Prototyping, User Journey Mapping, Material Design,
-      WCAG, ARIA</li>
-    <li><strong>Email Marketing:</strong> HTML Email Templates, Responsive Email Design, Email on Acid,
-      Litmus, A/B Testing</li>
-    <li><strong>Marketing Automation & CRM:</strong> Oracle Eloqua, SFMC, Marketo, UIPath Studio, Zoho CRM, Certain,
-      WPP Open</li>
-    <li><strong>Tools & Methodologies:</strong> Git/GitHub, npm, VS Code, WordPress, Shopify, Postman, Jira, CI/CD
-      Pipelines, Agile</li>
-    <li><strong>Analytics & SEO:</strong> Google Analytics, Tableau, SEO Best Practices, On-Page SEO, Keyword Research
-    </li>
-  </ul>
-
-  <h2>Certifications</h2>
-  <ul>
-    <li><strong>Web Designing and Maintenance: </strong>Infoem Solutions</li>
-    <li><strong>Marketing Automation: </strong>WPP Online Training, QA Ltd</li>
-    <li><strong>Intro to Generative AI and Prompt Engineering: </strong>WPP Online Training, QA Ltd</li>
-    <li><strong>AI for Content and Marketing Automation Best Practice: </strong>WPP Online Training, QA Ltd</li>
-    <li><strong>Digital Brand Building Best Practice: </strong>WPP Online Training, QA Ltd</li>
-    <li><strong>Digital Marketing Strategy Essentials and Best Practice: </strong>WPP Online Training, QA Ltd</li>
-    <li><strong>Digital Media Best Strategy and Best Practice: </strong>WPP Online Training, QA Ltd</li>
-    <li><strong>eCommerce Business Models Essentials: </strong>WPP Online Training, QA Ltd</li>
-  </ul>
-
-  <h2>Professional Experience</h2>
-
-  <h3>Associate Engineer - Technology</h3>
-  <p><em>Verticurl Marketing Pvt Ltd | Sep 2021 – Present</em></p>
-  <ul>
-    <li>Managed <strong>end-to-end marketing automation campaigns</strong> for enterprise clients (Rockwell Automation,
-      J&J, Intel).</li>
-    <li>Developed <strong>HTML/CSS templates</strong> from Figma/Photoshop/XD, ensuring pixel-perfect
-      rendering across devices.</li>
-    <li>Implemented <strong>UIPath automation</strong> to reduce manual effort by 30%.</li>
-    <li>Performed QA with <strong>Email on Acid</strong> and <strong>Litmus</strong> to ensure cross-client
-      compatibility.</li>
-    <li>Executed <strong>A/B testing</strong> to improve open rates by 12% and CTR by 8%.</li>
-  </ul>
-
-  <h3>UI/UX Designer & Full-Stack Developer</h3>
-  <p><em>MI Softwares | Jan 2021 – Sep 2021</em></p>
-  <ul>
-    <li>Designed <strong>WCAG-compliant UI/UX</strong> for web apps, improving usability scores by 15%.</li>
-    <li><strong>Frontend:</strong> Built responsive interfaces with React, HTML5, CSS3, integrated with Laravel/Node.js
-      APIs.</li>
-    <li><strong>Backend:</strong> Developed custom CMS dashboards, improving content management efficiency by 25%.</li>
-    <li>Implemented <strong>CI/CD pipelines</strong> with GitHub Actions, reducing deployment time by 40%.</li>
-  </ul>
-
-  <h3>Front-End Developer</h3>
-  <p><em>Cloud Dreams | Mar 2019 – Dec 2020</em></p>
-  <ul>
-    <li>Developed <strong>100+ responsive websites</strong> using HTML5, CSS3, JavaScript, SCSS.</li>
-    <li>Built scalable <strong>Angular e-commerce apps</strong> with reusable components and API integrations.</li>
-    <li>Integrated secure <strong>payment gateways</strong>, reducing checkout abandonment by 15%.</li>
-    <li>Optimized assets/code to achieve <strong>90%+ PageSpeed scores</strong> and load times under 2s.</li>
-    <li>Applied <strong>SEO best practices</strong>, boosting organic traffic by up to 30%.</li>
-  </ul>
-
-  <h3>Web Design & Development Intern</h3>
-  <p><em>Infoem Solutions | Dec 2018 – Mar 2019</em></p>
-  <ul>
-    <li><strong>Frontend:</strong> Developed HTML5/CSS3/JavaScript websites with responsive layouts.</li>
-    <li><strong>Backend:</strong> Built PHP/MySQL features for data storage and CMS functionality.</li>
-    <li>Worked with WordPress & Bootstrap to create mobile-friendly layouts.</li>
-  </ul>
-
-  <h2>Projects</h2>
-  <ul>
-    <li>
-      <h3><strong>Portfolio:</strong> <a
-          href="https://naveens-dan.github.io/Portfolio/">naveens-dan.github.io/Portfolio</a></h3>
-      <p><em>Built entirely with vanilla JavaScript and custom CSS without any external libraries or frameworks.</em>
-      </p>
-    </li>
-    <li><strong>Rockwell Automation:</strong> Multi-lingual corporate site — <a
-        href="https://www.rockwellautomation.com/en-us.html">View</a></li>
-    <li><strong>Cloud Dreams:</strong> Corporate website with advanced animations — <a href="https://clouddreams.in"
-        target="_blank">View</a></li>
-    <li><strong>MI Softwares:</strong> Modern responsive company website — <a href="https://misoftwares.com"
-        target="_blank">View</a></li>
-    <li><strong>CODISSIA:</strong> Industrial association site with custom CMS — <a href="https://codissia.com">View</a>
-    </li>
-    <li><strong>TagYourTaxi:</strong> Taxi booking platform corporate site — <a href="https://tagyourtaxi.com"
-        target="_blank">View</a></li>
-  </ul>
-
-  <h2>Education</h2>
-  <ul>
-    <li><strong>B.Sc. Mathematics</strong> – Jairams Arts & Science College, Karur (2015–2018)</li>
-  </ul>
-
 </body>
+
+</html>
